@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Navbar isVisible={isHomePage ? isVisible : true} />
+      <Navbar isVisible={isHomePage ? isVisible : true} isHomePage={isHomePage} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/content" element={<Content />} />

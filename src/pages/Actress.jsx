@@ -7,6 +7,10 @@ function Actress() {
   const [selectedItem, setSelectedItem] = useState(null)
   const [isClosing, setIsClosing] = useState(false)
 
+  const handleImageContextMenu = (e) => {
+    e.preventDefault()
+  }
+
   const closeModal = () => {
     setIsClosing(true)
     setTimeout(() => {
@@ -74,7 +78,7 @@ function Actress() {
               className="media-item"
               onClick={() => setSelectedItem(item)}
             >
-              <img src={item.image} alt={item.title} className="media-image" />
+              <img src={item.image} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
             </div>
           ))}
         </div>
@@ -84,7 +88,7 @@ function Actress() {
         <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" />
+            <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
           </div>
         </div>
       )}

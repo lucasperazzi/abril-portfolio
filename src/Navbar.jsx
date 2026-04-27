@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
 
-function Navbar({ isVisible = true }) {
+function Navbar({ isVisible = true, isHomePage = false }) {
   const { language, setLanguage } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
@@ -43,12 +43,14 @@ function Navbar({ isVisible = true }) {
   const translations = {
     en: {
       menu: 'Menu',
+      home: 'Home',
       contact: 'Contact',
       actress: 'Actress',
       content: 'Content'
     },
     es: {
       menu: 'Menú',
+      home: 'Inicio',
       contact: 'Contacto',
       actress: 'Actriz',
       content: 'Contenido'
@@ -122,6 +124,11 @@ function Navbar({ isVisible = true }) {
           <div className="simple-menu-content">
             <button className="simple-menu-close" onClick={closeMenu}>×</button>
             <div className="simple-menu-items">
+              {!isHomePage && (
+                <Link to="/" className="simple-menu-item" onClick={closeMenu}>
+                  {t.home}
+                </Link>
+              )}
               <Link to="/content" className="simple-menu-item" onClick={closeMenu}>
                 {t.content}
               </Link>

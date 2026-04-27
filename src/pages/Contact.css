@@ -49,7 +49,7 @@
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.1s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
@@ -58,50 +58,18 @@
   min-height: 180px;
   text-decoration: none;
   color: inherit;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.contact-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  border-color: #c0c0c0;
-}
-
-.contact-item:hover::before {
-  opacity: 1;
 }
 
 .contact-item:active {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.1s ease;
+  transform: scale(0.98);
 }
 
 .contact-item.non-clickable {
   cursor: default;
 }
 
-.contact-item.non-clickable:hover {
+.contact-item.non-clickable:active {
   transform: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-color: #e0e0e0;
-}
-
-.contact-item.non-clickable::before {
-  display: none;
 }
 
 .contact-item h3 {

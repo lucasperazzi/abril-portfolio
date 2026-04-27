@@ -223,6 +223,10 @@
   animation-delay: 0.2s;
 }
 
+.simple-menu-item:nth-child(4) {
+  animation-delay: 0.25s;
+}
+
 @keyframes slideUp {
   from {
     transform: translateY(20px);

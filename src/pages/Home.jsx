@@ -6,6 +6,10 @@ import '../App.css'
 function Home() {
   const { language } = useLanguage()
 
+  const handleImageContextMenu = (e) => {
+    e.preventDefault()
+  }
+
   const translations = {
     en: {
       name: 'Abril Bianco',
@@ -39,11 +43,11 @@ function Home() {
       <main className="content">
         <section className="image-section">
           <div className="gallery">
-            <img src="/Abril1.jpeg" alt="Abril Bianco 1" className="gallery-image" />
-            <img src="/Abril2.jpeg" alt="Abril Bianco 2" className="gallery-image" />
-            <img src="/Abril3.jpeg" alt="Abril Bianco 3" className="gallery-image desktop-only" />
-            <img src="/Abril4.jpeg" alt="Abril Bianco 4" className="gallery-image desktop-only" />
-            <img src="/Abril5.jpeg" alt="Abril Bianco 5" className="gallery-image desktop-only" />
+            <img src="/Abril1.jpeg" alt="Abril Bianco 1" className="gallery-image" onContextMenu={handleImageContextMenu} />
+            <img src="/Abril2.jpeg" alt="Abril Bianco 2" className="gallery-image" onContextMenu={handleImageContextMenu} />
+            <img src="/Abril3.jpeg" alt="Abril Bianco 3" className="gallery-image desktop-only" onContextMenu={handleImageContextMenu} />
+            <img src="/Abril4.jpeg" alt="Abril Bianco 4" className="gallery-image desktop-only" onContextMenu={handleImageContextMenu} />
+            <img src="/Abril5.jpeg" alt="Abril Bianco 5" className="gallery-image desktop-only" onContextMenu={handleImageContextMenu} />
           </div>
         </section>
 
@@ -68,7 +72,7 @@ function Home() {
       </main>
 
       <footer className="footer">
-        <p>&copy; 2024 Abril. All rights reserved.</p>
+        <p>&copy; 2026 Abril. All rights reserved.</p>
       </footer>
     </div>
   )

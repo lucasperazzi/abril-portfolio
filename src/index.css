@@ -23,3 +23,15 @@ body {
 #root {
   min-height: 100vh;
 }
+
+/* Prevent image downloads */
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-drag: none;
+}
