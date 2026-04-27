@@ -16,43 +16,6 @@
 .header {
   text-align: center;
   padding: 4rem 1rem 2rem;
-  position: relative;
-}
-
-.header-language-selector {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.header-language-selector .lang-btn {
-  background: none;
-  border: none;
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
-  color: #999;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.3s ease;
-  font-family: 'Inter', sans-serif;
-}
-
-.header-language-selector .lang-btn:hover {
-  color: black;
-}
-
-.header-language-selector .lang-btn.active {
-  color: black;
-  font-weight: 600;
-}
-
-.header-language-selector .lang-divider {
-  color: #999;
-  font-size: 0.85rem;
 }
 
 .name {
@@ -208,15 +171,6 @@
 @media (max-width: 768px) {
   .header {
     padding: 5rem 1rem 2rem;
-  }
-
-  .header-language-selector {
-    top: 1.5rem;
-    right: 1rem;
-  }
-
-  .header-language-selector .lang-btn {
-    font-size: 0.75rem;
   }
 
   .name {

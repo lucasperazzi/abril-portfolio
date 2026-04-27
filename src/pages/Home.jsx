@@ -4,7 +4,7 @@ import { FiInstagram, FiMail } from 'react-icons/fi'
 import '../App.css'
 
 function Home() {
-  const { language, setLanguage } = useLanguage()
+  const { language } = useLanguage()
 
   const translations = {
     en: {
@@ -32,21 +32,6 @@ function Home() {
   return (
     <div className="portfolio">
       <header className="header">
-        <div className="header-language-selector">
-          <button
-            className={`lang-btn ${language === 'en' ? 'active' : ''}`}
-            onClick={() => setLanguage('en')}
-          >
-            EN
-          </button>
-          <span className="lang-divider">/</span>
-          <button
-            className={`lang-btn ${language === 'es' ? 'active' : ''}`}
-            onClick={() => setLanguage('es')}
-          >
-            ES
-          </button>
-        </div>
         <h1 className="name">{t.name}</h1>
         <p className="tagline">{t.tagline}</p>
       </header>

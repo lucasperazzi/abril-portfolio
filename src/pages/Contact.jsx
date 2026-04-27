@@ -10,6 +10,7 @@ function Contact() {
       description: 'Get in touch for collaborations, projects, or inquiries.',
       email: 'Email',
       instagram: 'Instagram',
+      tiktok: 'TikTok',
       location: 'Location'
     },
     es: {
@@ -17,6 +18,7 @@ function Contact() {
       description: 'Ponte en contacto para colaboraciones, proyectos o consultas.',
       email: 'Correo',
       instagram: 'Instagram',
+      tiktok: 'TikTok',
       location: 'Ubicación'
     }
   }
@@ -34,11 +36,15 @@ function Contact() {
         <div className="contact-info">
           <div className="contact-item">
             <h3>{t.email}</h3>
-            <p>contact@abrilbianco.com</p>
+            <a href="mailto:contact@abrilbianco.com" className="contact-link">contact@abrilbianco.com</a>
           </div>
           <div className="contact-item">
             <h3>{t.instagram}</h3>
-            <p>@abrilbianco</p>
+            <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="contact-link">@biancoabril_</a>
+          </div>
+          <div className="contact-item">
+            <h3>{t.tiktok}</h3>
+            <a href="https://www.tiktok.com/@abrilbiancotav" target="_blank" rel="noopener noreferrer" className="contact-link">@abrilbiancotav</a>
           </div>
           <div className="contact-item">
             <h3>{t.location}</h3>

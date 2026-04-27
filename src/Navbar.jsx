@@ -13,6 +13,14 @@ function Navbar({ isVisible = true }) {
     setIsMounted(true)
   }, [])
 
+  useEffect(() => {
+    if (isMenuOpen || isClosing) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMenuOpen, isClosing])
+
   const closeMenu = () => {
     setIsClosing(true)
     setTimeout(() => {

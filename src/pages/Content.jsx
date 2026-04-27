@@ -5,17 +5,34 @@ import './Content.css'
 function Content() {
   const { language } = useLanguage()
   const [selectedItem, setSelectedItem] = useState(null)
+  const [isClosing, setIsClosing] = useState(false)
+
+  const closeModal = () => {
+    setIsClosing(true)
+    setTimeout(() => {
+      setSelectedItem(null)
+      setIsClosing(false)
+    }, 300)
+  }
 
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape' && selectedItem) {
-        setSelectedItem(null)
+        closeModal()
       }
     }
 
     window.addEventListener('keydown', handleEscape)
     return () => window.removeEventListener('keydown', handleEscape)
   }, [selectedItem])
+
+  useEffect(() => {
+    if (selectedItem || isClosing) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedItem, isClosing])
 
   const translations = {
     en: {
@@ -63,10 +80,10 @@ function Content() {
         </div>
       </div>
 
-      {selectedItem && (
-        <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
+      {(selectedItem || isClosing) && (
+        <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedItem(null)}>×</button>
+            <button className="modal-close" onClick={closeModal}>×</button>
             <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" />
           </div>
         </div>
