@@ -1,17 +1,46 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
 
 function Navbar({ isVisible = true }) {
   const { language, setLanguage } = useLanguage()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  const closeMenu = () => {
+    setIsClosing(true)
+    setTimeout(() => {
+      setIsMenuOpen(false)
+      setIsClosing(false)
+    }, 300)
+  }
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        closeMenu()
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [isMenuOpen])
 
   const translations = {
     en: {
+      menu: 'Menu',
       contact: 'Contact',
       actress: 'Actress',
       content: 'Content'
     },
     es: {
+      menu: 'Menú',
       contact: 'Contacto',
       actress: 'Actriz',
       content: 'Contenido'
@@ -21,15 +50,47 @@ function Navbar({ isVisible = true }) {
   const t = translations[language]
 
   return (
-    <nav className={`top-nav ${isVisible ? 'visible' : ''}`}>
-      <div className="nav-content">
-        <Link to="/" className="nav-logo">Abril Bianco</Link>
-        <div className="nav-right">
-          <div className="nav-links">
-            <Link to="/content" className="nav-link">{t.content}</Link>
-            <Link to="/actress" className="nav-link">{t.actress}</Link>
-            <Link to="/contact" className="nav-link">{t.contact}</Link>
+    <>
+      {isVisible && (
+        <nav className="top-nav visible">
+          <div className="nav-content">
+            <Link to="/" className="nav-logo">Abril Bianco</Link>
+            <div className="nav-right">
+              <button
+                className="menu-button"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {t.menu}
+              </button>
+              <div className="language-selector">
+                <button
+                  className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+                  onClick={() => setLanguage('en')}
+                >
+                  EN
+                </button>
+                <span className="lang-divider">/</span>
+                <button
+                  className={`lang-btn ${language === 'es' ? 'active' : ''}`}
+                  onClick={() => setLanguage('es')}
+                >
+                  ES
+                </button>
+              </div>
+            </div>
           </div>
+        </nav>
+      )}
+
+      {/* Always visible menu button and language selector for main page */}
+      {!isVisible && isMounted && (
+        <div className="floating-nav show">
+          <button
+            className="menu-button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {t.menu}
+          </button>
           <div className="language-selector">
             <button
               className={`lang-btn ${language === 'en' ? 'active' : ''}`}
@@ -46,8 +107,27 @@ function Navbar({ isVisible = true }) {
             </button>
           </div>
         </div>
-      </div>
-    </nav>
+      )}
+
+      {(isMenuOpen || isClosing) && (
+        <div className={`simple-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMenu}>
+          <div className="simple-menu-content">
+            <button className="simple-menu-close" onClick={closeMenu}>×</button>
+            <div className="simple-menu-items">
+              <Link to="/content" className="simple-menu-item" onClick={closeMenu}>
+                {t.content}
+              </Link>
+              <Link to="/actress" className="simple-menu-item" onClick={closeMenu}>
+                {t.actress}
+              </Link>
+              <Link to="/contact" className="simple-menu-item" onClick={closeMenu}>
+                {t.contact}
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

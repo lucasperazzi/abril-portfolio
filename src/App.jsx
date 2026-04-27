@@ -13,18 +13,20 @@ function App() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    if (!isHomePage) return
-
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
+    // Reset visibility when switching to home page
+    if (isHomePage) {
+      setIsVisible(false)
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setIsVisible(true)
+        } else {
+          setIsVisible(false)
+        }
       }
-    }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }
   }, [isHomePage])
 
   return (
