@@ -34,19 +34,19 @@ function Contact() {
 
       <div className="page-content">
         <div className="contact-info">
-          <div className="contact-item">
+          <a href="mailto:abrilbiancotav@gmail.com" className="contact-item">
             <h3>{t.email}</h3>
-            <a href="mailto:contact@abrilbianco.com" className="contact-link">contact@abrilbianco.com</a>
-          </div>
-          <div className="contact-item">
+            <p>abrilbiancotav@gmail.com</p>
+          </a>
+          <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="contact-item">
             <h3>{t.instagram}</h3>
-            <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="contact-link">@biancoabril_</a>
-          </div>
-          <div className="contact-item">
+            <p>@biancoabril_</p>
+          </a>
+          <a href="https://www.tiktok.com/@abrilbiancotav" target="_blank" rel="noopener noreferrer" className="contact-item">
             <h3>{t.tiktok}</h3>
-            <a href="https://www.tiktok.com/@abrilbiancotav" target="_blank" rel="noopener noreferrer" className="contact-link">@abrilbiancotav</a>
-          </div>
-          <div className="contact-item">
+            <p>@abrilbiancotav</p>
+          </a>
+          <div className="contact-item non-clickable">
             <h3>{t.location}</h3>
             <p>Available upon request</p>
           </div>

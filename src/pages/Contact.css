@@ -35,44 +35,91 @@
 }
 
 .contact-info {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
 .contact-item {
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   background: white;
   border: 1px solid #e0e0e0;
-  margin-bottom: 1rem;
+  border-radius: 12px;
   text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-color: #c0c0c0;
+}
+
+.contact-item:hover::before {
+  opacity: 1;
+}
+
+.contact-item:active {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease;
+}
+
+.contact-item.non-clickable {
+  cursor: default;
+}
+
+.contact-item.non-clickable:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-color: #e0e0e0;
+}
+
+.contact-item.non-clickable::before {
+  display: none;
 }
 
 .contact-item h3 {
   font-family: 'Classy Vogue', serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: black;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
   letter-spacing: 0.1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-item p {
   font-family: 'Inter', sans-serif;
   color: #333;
   font-size: 1rem;
-}
-
-.contact-link {
-  font-family: 'Inter', sans-serif;
-  color: #333;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.contact-link:hover {
-  color: #000;
-  text-decoration: underline;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -83,5 +130,20 @@
 
   .page-description {
     font-size: 1rem;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .contact-item {
+    padding: 2rem 1.5rem;
+    min-height: 150px;
+  }
+
+  .contact-item h3 {
+    font-size: 1.1rem;
   }
 }
