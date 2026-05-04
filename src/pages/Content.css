@@ -1,7 +1,9 @@
 .page-container {
   min-height: 100vh;
   padding-top: 80px;
-  background: white;
+  background-color: white !important;
+  position: relative;
+  z-index: 1;
 }
 
 .page-header {

@@ -39,6 +39,8 @@ function Actress() {
     }
   }, [selectedItem, isClosing])
 
+
+
   const translations = {
     en: {
       title: 'Actress',
@@ -66,7 +68,7 @@ function Actress() {
   return (
     <>
       <ActrizSection description={t.description} />
-      
+
       <div className="page-container">
         <div className="page-content">
           <h2 className="gallery-title">{t.galleryTitle}</h2>
