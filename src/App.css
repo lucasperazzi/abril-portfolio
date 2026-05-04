@@ -17,6 +17,18 @@
   background: black;
 }
 
+.fake-video-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
 /* Reel Modal Styles */
 .reel-modal-overlay {
   position: fixed;
@@ -44,20 +56,29 @@
 }
 
 .reel-modal-close {
-  position: absolute;
-  top: -3rem;
-  right: 0;
-  background: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.6);
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: opacity 0.3s ease;
-  z-index: 10;
+  transition: all 0.3s ease;
+  z-index: 5001;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .reel-modal-close:hover {
-  opacity: 0.7;
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
 }
 
 .reel-modal-video {
@@ -698,6 +719,11 @@
     height: 85vh;
   }
 
+  .fake-video-hero::after {
+    height: 200px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 40%, transparent 100%);
+  }
+
   .hero-content {
     padding: 0.5rem 1rem;
   }
@@ -766,8 +792,12 @@
   }
 
   .reel-modal-close {
-    top: -2.5rem;
+    top: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
     font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
   }
 
   .reel-modal-video {

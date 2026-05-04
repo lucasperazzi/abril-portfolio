@@ -136,7 +136,7 @@
 }
 
 .simple-menu-content {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.92);
   padding: 3rem;
   position: fixed;
   top: 0;
@@ -352,7 +352,7 @@
 
   .simple-menu-content {
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.92);
   }
 
   .simple-menu-close {
