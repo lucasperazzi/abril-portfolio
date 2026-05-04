@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
+import ActrizSection from '../components/ActrizSection'
 import './Actress.css'
 
 function Actress() {
@@ -63,36 +64,35 @@ function Actress() {
   ]
 
   return (
-    <div className="page-container">
-      <div className="page-header">
-        <h1 className="page-title">{t.title}</h1>
-        <p className="page-description">{t.description}</p>
-      </div>
-
-      <div className="page-content">
-        <h2 className="gallery-title">{t.galleryTitle}</h2>
-        <div className="content-gallery">
-          {items.map((item) => (
-            <div
-              key={item.id}
-              className="media-item"
-              onClick={() => setSelectedItem(item)}
-            >
-              <img src={item.image} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {(selectedItem || isClosing) && (
-        <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+    <>
+      <ActrizSection description={t.description} />
+      
+      <div className="page-container">
+        <div className="page-content">
+          <h2 className="gallery-title">{t.galleryTitle}</h2>
+          <div className="content-gallery">
+            {items.map((item) => (
+              <div
+                key={item.id}
+                className="media-item"
+                onClick={() => setSelectedItem(item)}
+              >
+                <img src={item.image} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
+              </div>
+            ))}
           </div>
         </div>
-      )}
-    </div>
+
+        {(selectedItem || isClosing) && (
+          <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close" onClick={closeModal}>×</button>
+              <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   )
 }
 

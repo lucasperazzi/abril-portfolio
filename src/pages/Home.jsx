@@ -1,6 +1,7 @@
 import { useLanguage } from '../LanguageContext'
 import { Link } from 'react-router-dom'
 import { FiInstagram, FiMail } from 'react-icons/fi'
+import FakeVideoHero from '../components/FakeVideoHero'
 import '../App.css'
 
 function Home() {
@@ -35,27 +36,22 @@ function Home() {
 
   return (
     <div className="portfolio">
-      <header className="header">
-        <h1 className="name">{t.name}</h1>
-        <p className="tagline">{t.tagline}</p>
-      </header>
+      {/* Main hero with role selector */}
+      <FakeVideoHero />
 
+      {/* About section with images */}
+      <section className="about-section-with-images">
+        <h2 className="section-title">{t.about}</h2>
+        <p className="description">{t.description}</p>
+        <div className="about-images">
+          <img src="/Abril2.jpeg" alt="Abril Bianco" className="about-image" onContextMenu={handleImageContextMenu} />
+          <img src="/Abril3.jpeg" alt="Abril Bianco" className="about-image" onContextMenu={handleImageContextMenu} />
+          <img src="/Abril4.jpeg" alt="Abril Bianco" className="about-image desktop-only" onContextMenu={handleImageContextMenu} />
+        </div>
+      </section>
+
+      {/* Keep existing sections below */}
       <main className="content">
-        <section className="image-section">
-          <div className="gallery">
-            <img src="/Abril1.jpeg" alt="Abril Bianco 1" className="gallery-image" onContextMenu={handleImageContextMenu} />
-            <img src="/Abril2.jpeg" alt="Abril Bianco 2" className="gallery-image" onContextMenu={handleImageContextMenu} />
-            <img src="/Abril3.jpeg" alt="Abril Bianco 3" className="gallery-image desktop-only" onContextMenu={handleImageContextMenu} />
-            <img src="/Abril4.jpeg" alt="Abril Bianco 4" className="gallery-image desktop-only" onContextMenu={handleImageContextMenu} />
-            <img src="/Abril5.jpeg" alt="Abril Bianco 5" className="gallery-image desktop-only" onContextMenu={handleImageContextMenu} />
-          </div>
-        </section>
-
-        <section className="about-section">
-          <h2 className="section-title">{t.about}</h2>
-          <p className="description">{t.description}</p>
-        </section>
-
         <section className="social-links">
           <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FiInstagram />

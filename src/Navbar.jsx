@@ -61,40 +61,38 @@ function Navbar({ isVisible = true, isHomePage = false }) {
 
   return (
     <>
-      {isVisible && (
-        <nav className="top-nav visible">
-          <div className="nav-content">
-            <Link to="/" className="nav-logo">Abril Bianco</Link>
-            <div className="nav-right">
+      <nav className={`top-nav ${isVisible ? 'visible' : ''}`}>
+        <div className="nav-content">
+          <Link to="/" className="nav-logo">Abril Bianco</Link>
+          <div className="nav-right">
+            <button
+              className="menu-button"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {t.menu}
+            </button>
+            <div className="language-selector">
               <button
-                className="menu-button"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+                onClick={() => setLanguage('en')}
               >
-                {t.menu}
+                EN
               </button>
-              <div className="language-selector">
-                <button
-                  className={`lang-btn ${language === 'en' ? 'active' : ''}`}
-                  onClick={() => setLanguage('en')}
-                >
-                  EN
-                </button>
-                <span className="lang-divider">/</span>
-                <button
-                  className={`lang-btn ${language === 'es' ? 'active' : ''}`}
-                  onClick={() => setLanguage('es')}
-                >
-                  ES
-                </button>
-              </div>
+              <span className="lang-divider">/</span>
+              <button
+                className={`lang-btn ${language === 'es' ? 'active' : ''}`}
+                onClick={() => setLanguage('es')}
+              >
+                ES
+              </button>
             </div>
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
 
       {/* Always visible menu button and language selector for main page */}
-      {!isVisible && isMounted && (
-        <div className="floating-nav show">
+      {isMounted && (
+        <div className={`floating-nav ${isVisible ? 'hide' : 'show'}`}>
           <button
             className="menu-button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -126,17 +124,17 @@ function Navbar({ isVisible = true, isHomePage = false }) {
             <div className="simple-menu-items">
               {!isHomePage && (
                 <Link to="/" className="simple-menu-item" onClick={closeMenu}>
-                  {t.home}
+                  <span>{t.home}</span>
                 </Link>
               )}
               <Link to="/content" className="simple-menu-item" onClick={closeMenu}>
-                {t.content}
+                <span>{t.content}</span>
               </Link>
               <Link to="/actress" className="simple-menu-item" onClick={closeMenu}>
-                {t.actress}
+                <span>{t.actress}</span>
               </Link>
               <Link to="/contact" className="simple-menu-item" onClick={closeMenu}>
-                {t.contact}
+                <span>{t.contact}</span>
               </Link>
             </div>
           </div>
