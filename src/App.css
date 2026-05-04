@@ -37,11 +37,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5000;
+  z-index: 2147483647;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
   padding: 2rem;
@@ -54,6 +54,7 @@
   max-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
+  z-index: 2147483648;
 }
 
 .reel-modal-close {
@@ -66,7 +67,7 @@
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  z-index: 5001;
+  z-index: 2147483648;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -88,6 +89,8 @@
   border-radius: 0.5rem;
   display: block;
   object-fit: contain;
+  position: relative;
+  z-index: 2147483649;
 }
 
 .hero-background {

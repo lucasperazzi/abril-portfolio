@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import ActrizSection from '../components/ActrizSection'
+import ReelModal from '../components/ReelModal'
 import './Actress.css'
 
 function Actress() {
   const { language } = useLanguage()
   const [selectedItem, setSelectedItem] = useState(null)
   const [isClosing, setIsClosing] = useState(false)
+  const [isReelOpen, setIsReelOpen] = useState(false)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -67,7 +69,7 @@ function Actress() {
 
   return (
     <>
-      <ActrizSection description={t.description} />
+      <ActrizSection description={t.description} onOpenReel={() => setIsReelOpen(true)} />
 
       <div className="page-container">
         <div className="page-content">
@@ -84,16 +86,21 @@ function Actress() {
             ))}
           </div>
         </div>
-
-        {(selectedItem || isClosing) && (
-          <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={closeModal}>×</button>
-              <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
-            </div>
-          </div>
-        )}
       </div>
+
+      {(selectedItem || isClosing) && (
+        <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>×</button>
+            <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+          </div>
+        </div>
+      )}
+
+      <ReelModal
+        isOpen={isReelOpen}
+        onClose={() => setIsReelOpen(false)}
+      />
     </>
   )
 }

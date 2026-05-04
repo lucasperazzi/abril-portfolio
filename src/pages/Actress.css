@@ -1,7 +1,9 @@
 .page-container {
   min-height: 100vh;
   padding-top: 0;
-  background-color: white;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .page-header {
@@ -22,7 +24,7 @@
 .page-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.8);
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
@@ -33,12 +35,13 @@
   padding: 3rem 2rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
+  background-color: white;
 }
 
 .gallery-title {
   font-size: 1.5rem;
   font-weight: normal;
-  color: white;
+  color: black;
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
   font-family: 'Classy Vogue', serif;
@@ -94,7 +97,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 99999;
   padding: 2rem;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;

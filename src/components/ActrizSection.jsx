@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
-import ReelModal from './ReelModal'
 
-function ActrizSection({ description }) {
+function ActrizSection({ description, onOpenReel }) {
   const { language } = useLanguage()
-  const [isOpen, setIsOpen] = useState(false)
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
 
   const translations = {
@@ -70,7 +68,7 @@ function ActrizSection({ description }) {
 
         <button
           className="actriz-button"
-          onClick={() => setIsOpen(true)}
+          onClick={onOpenReel}
         >
           {t.watchReel}
         </button>
@@ -88,11 +86,6 @@ function ActrizSection({ description }) {
       >
         <span className="scroll-arrow">↓</span>
       </button>
-
-      <ReelModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
     </section>
   )
 }
