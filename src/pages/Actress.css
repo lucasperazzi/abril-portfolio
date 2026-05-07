@@ -3,10 +3,17 @@
   min-height: 100vh;
 }
 
+.actress-page .page-container {
+  background-color: black !important;
+}
+
+.actress-page .page-content {
+  background-color: black !important;
+}
+
 .page-container {
   min-height: 100vh;
   padding-top: 0;
-  background-color: black;
   position: relative;
   z-index: 1;
 }
@@ -40,7 +47,6 @@
   padding: 3rem 2rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
-  background-color: black;
 }
 
 .gallery-title {
