@@ -7,6 +7,14 @@ import Actress from './pages/Actress'
 import Contact from './pages/Contact'
 import './App.css'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 function App() {
   const location = useLocation()
   const isHomePage = location.pathname === '/'
@@ -31,6 +39,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar isVisible={isHomePage ? isVisible : true} isHomePage={isHomePage} />
       <Routes>
         <Route path="/" element={<Home />} />

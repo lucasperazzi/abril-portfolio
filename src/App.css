@@ -405,7 +405,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .actriz-overlay {
@@ -414,7 +414,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .actriz-content {
@@ -422,7 +422,7 @@
   z-index: 10;
   text-align: center;
   color: white;
-  padding: 4rem 2rem;
+  padding: 0.5rem 1rem;
   max-width: 800px;
   animation: fadeIn 1s ease;
 }
@@ -753,7 +753,7 @@
 
   /* Actriz section desktop styles */
   .actriz-section {
-    min-height: 90vh;
+    height: 100vh;
   }
 
   .actriz-title {
@@ -839,7 +839,7 @@
   /* Role selector mobile styles */
   .role-selector {
     margin-top: 1.5rem;
-    gap: 0.75rem;
+    gap: 1.5rem;
   }
 
   /* Scroll down indicator mobile */
@@ -904,7 +904,7 @@
 
   /* Actriz section mobile styles */
   .actriz-section {
-    height: 75vh;
+    height: 85vh;
   }
 
   .actriz-section::before {
@@ -913,7 +913,7 @@
   }
 
   .actriz-content {
-    padding: 2rem 1rem;
+    padding: 0.5rem 1rem;
     max-width: 100%;
   }
 
