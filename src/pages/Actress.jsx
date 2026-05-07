@@ -68,7 +68,7 @@ function Actress() {
   ]
 
   return (
-    <>
+    <div className="actress-page">
       <ActrizSection description={t.description} onOpenReel={() => setIsReelOpen(true)} />
 
       <div className="page-container">
@@ -101,7 +101,7 @@ function Actress() {
         isOpen={isReelOpen}
         onClose={() => setIsReelOpen(false)}
       />
-    </>
+    </div>
   )
 }
 
