@@ -52,6 +52,7 @@ function Content() {
   const { language } = useLanguage()
   const [selectedItem, setSelectedItem] = useState(null)
   const [isClosing, setIsClosing] = useState(false)
+  const [modalVideoLoaded, setModalVideoLoaded] = useState(false)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -178,7 +179,7 @@ function Content() {
             <div
               key={item.id}
               className="reel-card-wrapper"
-              onClick={() => setSelectedItem(item)}
+              onClick={() => { setSelectedItem(item); setModalVideoLoaded(false) }}
             >
               <h3 className="reel-card-title">{item.title}</h3>
               <div className="reel-card">
@@ -223,14 +224,18 @@ function Content() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedItem.type === 'video' ? (
-              <video
-                src={selectedItem.src}
-                className="modal-image"
-                controls
-                autoPlay
-                playsInline
-                onContextMenu={handleImageContextMenu}
-              />
+              <>
+                {!modalVideoLoaded && <div className="modal-video-skeleton" />}
+                <video
+                  src={selectedItem.src}
+                  className="modal-image"
+                  controls
+                  autoPlay
+                  playsInline
+                  onCanPlay={() => setModalVideoLoaded(true)}
+                  onContextMenu={handleImageContextMenu}
+                />
+              </>
             ) : (
               <img
                 src={selectedItem.src}
