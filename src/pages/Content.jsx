@@ -1,6 +1,48 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../LanguageContext'
 import './Content.css'
+
+function ReelVideo({ src, poster, onContextMenu }) {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const playPromise = video.play()
+            if (playPromise && typeof playPromise.catch === 'function') {
+              playPromise.catch(() => {})
+            }
+          } else {
+            video.pause()
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      poster={poster}
+      className="reel-card-media"
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      onContextMenu={onContextMenu}
+    />
+  )
+}
 
 function Content() {
   const { language } = useLanguage()
@@ -54,12 +96,12 @@ function Content() {
   const t = translations[language]
 
   const items = [
-    { id: 1, title: 'Video Project 1', image: '/Abril1.jpeg' },
-    { id: 2, title: 'Video Project 2', image: '/Abril2.jpeg' },
-    { id: 3, title: 'Photo Project 1', image: '/Abril3.jpeg' },
-    { id: 4, title: 'Photo Project 2', image: '/Abril4.jpeg' },
-    { id: 5, title: 'Social Media 1', image: '/Abril5.jpeg' },
-    { id: 6, title: 'Social Media 2', image: '/Abril1.jpeg' }
+    { id: 1, title: 'Reel 1', type: 'video', src: '/video/reel_converted.mp4', poster: '/Abril1.jpeg' },
+    { id: 2, title: 'Photo Project 1', type: 'image', src: '/Abril2.jpeg' },
+    { id: 3, title: 'Reel 2', type: 'video', src: '/video/reel_converted.mp4', poster: '/Abril3.jpeg' },
+    { id: 4, title: 'Photo Project 2', type: 'image', src: '/Abril4.jpeg' },
+    { id: 5, title: 'Reel 3', type: 'video', src: '/video/reel_converted.mp4', poster: '/Abril5.jpeg' },
+    { id: 6, title: 'Social Media 1', type: 'image', src: '/Abril1.jpeg' }
   ]
 
   return (
@@ -71,14 +113,30 @@ function Content() {
 
       <div className="page-content">
         <h2 className="gallery-title">{t.galleryTitle}</h2>
-        <div className="content-gallery">
+        <div className="reel-gallery">
           {items.map((item) => (
             <div
               key={item.id}
-              className="media-item"
+              className="reel-card-wrapper"
               onClick={() => setSelectedItem(item)}
             >
-              <img src={item.image} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
+              <h3 className="reel-card-title">{item.title}</h3>
+              <div className="reel-card">
+                {item.type === 'video' ? (
+                  <ReelVideo
+                    src={item.src}
+                    poster={item.poster}
+                    onContextMenu={handleImageContextMenu}
+                  />
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="reel-card-media"
+                    onContextMenu={handleImageContextMenu}
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -88,7 +146,23 @@ function Content() {
         <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+            {selectedItem.type === 'video' ? (
+              <video
+                src={selectedItem.src}
+                className="modal-image"
+                controls
+                autoPlay
+                playsInline
+                onContextMenu={handleImageContextMenu}
+              />
+            ) : (
+              <img
+                src={selectedItem.src}
+                alt={selectedItem.title}
+                className="modal-image"
+                onContextMenu={handleImageContextMenu}
+              />
+            )}
           </div>
         </div>
       )}
