@@ -4,6 +4,7 @@ import './Content.css'
 
 function ReelVideo({ src, onContextMenu }) {
   const videoRef = useRef(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     const video = videoRef.current
@@ -30,16 +31,20 @@ function ReelVideo({ src, onContextMenu }) {
   }, [])
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      className="reel-card-media"
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      onContextMenu={onContextMenu}
-    />
+    <>
+      {!isLoaded && <div className="reel-card-skeleton" />}
+      <video
+        ref={videoRef}
+        src={src}
+        className="reel-card-media"
+        muted
+        loop
+        playsInline
+        preload="auto"
+        onLoadedData={() => setIsLoaded(true)}
+        onContextMenu={onContextMenu}
+      />
+    </>
   )
 }
 

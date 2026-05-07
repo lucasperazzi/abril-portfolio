@@ -82,12 +82,26 @@
   position: relative;
   width: 100%;
   aspect-ratio: 9 / 16;
-  background: #111;
+  background: #f0f0f0;
   border: 1px solid #e0e0e0;
   overflow: hidden;
   border-radius: 1rem;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   will-change: transform;
+}
+
+.reel-card-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .reel-card-wrapper:hover .reel-card {
@@ -102,6 +116,7 @@
   object-fit: cover;
   display: block;
 }
+
 
 .media-placeholder {
   color: #999;
