@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../LanguageContext'
 import './Content.css'
 
-function ReelVideo({ src, poster, onContextMenu }) {
+function ReelVideo({ src, onContextMenu }) {
   const videoRef = useRef(null)
 
   useEffect(() => {
@@ -33,7 +33,6 @@ function ReelVideo({ src, poster, onContextMenu }) {
     <video
       ref={videoRef}
       src={src}
-      poster={poster}
       className="reel-card-media"
       muted
       loop
@@ -152,11 +151,11 @@ function Content() {
   const t = translations[language]
 
   const items = [
-    { id: 1, title: 'Reel 1', type: 'video', src: '/video/reel_converted.mp4', poster: '/Abril1.jpeg' },
+    { id: 1, title: 'Reel 1', type: 'video', src: '/video/reel_converted.mp4' },
     { id: 2, title: 'Photo Project 1', type: 'image', src: '/Abril2.jpeg' },
-    { id: 3, title: 'Reel 2', type: 'video', src: '/video/reel_converted.mp4', poster: '/Abril3.jpeg' },
+    { id: 3, title: 'Reel 2', type: 'video', src: '/video/reel_converted.mp4' },
     { id: 4, title: 'Photo Project 2', type: 'image', src: '/Abril4.jpeg' },
-    { id: 5, title: 'Reel 3', type: 'video', src: '/video/reel_converted.mp4', poster: '/Abril5.jpeg' },
+    { id: 5, title: 'Reel 3', type: 'video', src: '/video/reel_converted.mp4' },
     { id: 6, title: 'Social Media 1', type: 'image', src: '/Abril1.jpeg' }
   ]
 
@@ -181,7 +180,6 @@ function Content() {
                 {item.type === 'video' ? (
                   <ReelVideo
                     src={item.src}
-                    poster={item.poster}
                     onContextMenu={handleImageContextMenu}
                   />
                 ) : (

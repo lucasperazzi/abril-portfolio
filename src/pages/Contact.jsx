@@ -11,7 +11,7 @@ function Contact() {
       email: 'Email',
       instagram: 'Instagram',
       tiktok: 'TikTok',
-      location: 'Location'
+      linkedin: 'LinkedIn'
     },
     es: {
       title: 'Contacto',
@@ -19,7 +19,7 @@ function Contact() {
       email: 'Correo',
       instagram: 'Instagram',
       tiktok: 'TikTok',
-      location: 'Ubicación'
+      linkedin: 'LinkedIn'
     }
   }
 
@@ -38,6 +38,10 @@ function Contact() {
             <h3>{t.email}</h3>
             <p>abrilbiancotav@gmail.com</p>
           </a>
+          <a href="https://www.linkedin.com/in/abril-bianco-tavagnacco" target="_blank" rel="noopener noreferrer" className="contact-item">
+            <h3>{t.linkedin}</h3>
+            <p>Abril Bianco Tavagnacco</p>
+          </a>
           <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="contact-item">
             <h3>{t.instagram}</h3>
             <p>@biancoabril_</p>
@@ -46,10 +50,6 @@ function Contact() {
             <h3>{t.tiktok}</h3>
             <p>@abrilbiancotav</p>
           </a>
-          <div className="contact-item non-clickable">
-            <h3>{t.location}</h3>
-            <p>Available upon request</p>
-          </div>
         </div>
       </div>
     </div>
