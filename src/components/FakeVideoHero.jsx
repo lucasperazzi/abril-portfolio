@@ -80,7 +80,6 @@ function FakeVideoHero({ isReelSection = false }) {
       <div className="hero-content">
         <h1 className="hero-title">Abril Bianco</h1>
         <p className="hero-tagline">{t.tagline}</p>
-        <p className="hero-quote">"{t.quote}"</p>
 
         {!isReelSection ? (
           // Role selector buttons (main hero)
