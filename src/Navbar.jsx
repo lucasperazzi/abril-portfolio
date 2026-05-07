@@ -46,24 +46,31 @@ function Navbar({ isVisible = true, isHomePage = false }) {
       home: 'Home',
       contact: 'Contact',
       actress: 'Actress',
-      content: 'Content'
+      content: 'Content Creator'
     },
     es: {
       menu: 'Menú',
       home: 'Inicio',
       contact: 'Contacto',
       actress: 'Actriz',
-      content: 'Contenido'
+      content: 'Creadora de Contenido'
     }
   }
 
   const t = translations[language]
 
+  const handleLogoClick = (e) => {
+    if (isHomePage) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <nav className={`top-nav ${isVisible ? 'visible' : ''}`}>
         <div className="nav-content">
-          <Link to="/" className="nav-logo">Abril Bianco</Link>
+          <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>
           <div className="nav-right">
             <button
               className="menu-button"

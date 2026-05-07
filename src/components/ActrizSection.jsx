@@ -7,8 +7,8 @@ function ActrizSection({ description, onOpenReel }) {
 
   const translations = {
     en: {
-      title: 'Actriz',
-      watchReel: 'Ver Reel'
+      title: 'Actress',
+      watchReel: 'Watch Reel'
     },
     es: {
       title: 'Actriz',

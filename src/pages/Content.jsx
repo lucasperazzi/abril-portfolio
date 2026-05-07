@@ -84,12 +84,68 @@ function Content() {
     en: {
       title: 'Content Creator',
       description: 'Creating compelling digital content that connects with audiences and tells meaningful stories across various platforms and mediums.',
-      galleryTitle: 'Recent Projects'
+      galleryTitle: 'Recent Projects',
+      servicesTitle: 'What I can do for your brand',
+      servicesSubtitle: 'And why your brand needs me on the team.',
+      services: [
+        {
+          label: 'Network presence',
+          description: 'Strategic visibility across Instagram, TikTok, and emerging platforms — keeping your brand where the right audience is paying attention.'
+        },
+        {
+          label: 'Brand storytelling',
+          description: 'Authentic narratives that turn passive viewers into a community that buys, shares, and stays.'
+        },
+        {
+          label: 'Content creation',
+          description: 'High-impact reels, photo campaigns, and editorial pieces produced end-to-end with a refined visual language.'
+        },
+        {
+          label: 'Creative direction',
+          description: 'Concept, styling, and visual identity for digital launches, lookbooks, and campaign rollouts.'
+        },
+        {
+          label: 'Brand collaborations',
+          description: 'Considered partnerships with brands whose values, aesthetic, and audience genuinely align with mine.'
+        },
+        {
+          label: 'Analytics & strategy',
+          description: 'Data-led planning that pairs creative instinct with measurable performance.'
+        }
+      ]
     },
     es: {
       title: 'Creadora de Contenido',
       description: 'Creando contenido digital convincente que conecta con las audiencias y cuenta historias significativas a través de varias plataformas y medios.',
-      galleryTitle: 'Proyectos Recientes'
+      galleryTitle: 'Proyectos Recientes',
+      servicesTitle: 'Qué puedo hacer para tu marca',
+      servicesSubtitle: 'Y por qué tu marca me necesita en el equipo.',
+      services: [
+        {
+          label: 'Presencia digital',
+          description: 'Visibilidad estratégica en Instagram, TikTok y plataformas emergentes — manteniendo tu marca donde la audiencia correcta está prestando atención.'
+        },
+        {
+          label: 'Narrativa de marca',
+          description: 'Historias auténticas que transforman espectadores pasivos en una comunidad que compra, comparte y se queda.'
+        },
+        {
+          label: 'Creación de contenido',
+          description: 'Reels, campañas fotográficas y piezas editoriales de alto impacto producidos de principio a fin con un lenguaje visual refinado.'
+        },
+        {
+          label: 'Dirección creativa',
+          description: 'Concepto, estilismo e identidad visual para lanzamientos digitales, lookbooks y campañas.'
+        },
+        {
+          label: 'Colaboraciones',
+          description: 'Alianzas pensadas con marcas cuyos valores, estética y audiencia se alinean genuinamente con los míos.'
+        },
+        {
+          label: 'Análisis y estrategia',
+          description: 'Planificación basada en datos que combina instinto creativo con rendimiento medible.'
+        }
+      ]
     }
   }
 
@@ -141,6 +197,23 @@ function Content() {
           ))}
         </div>
       </div>
+
+      <section className="services-section">
+        <div className="services-inner">
+          <div className="services-header">
+            <h2 className="services-title">{t.servicesTitle}</h2>
+            <p className="services-subtitle">{t.servicesSubtitle}</p>
+          </div>
+          <ul className="services-list">
+            {t.services.map((service) => (
+              <li key={service.label} className="services-item">
+                <span className="services-item-label">{service.label}</span>
+                <span className="services-item-description">{service.description}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {(selectedItem || isClosing) && (
         <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>

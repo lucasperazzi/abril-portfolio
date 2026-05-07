@@ -258,3 +258,111 @@
     font-size: 1rem;
   }
 }
+
+/* ----- Services section ----- */
+
+.services-section {
+  background-color: white;
+  padding: 5rem 1.5rem 6rem;
+}
+
+.services-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.services-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem;
+}
+
+.services-title {
+  font-family: 'Classy Vogue', serif;
+  font-size: 2.75rem;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+  color: black;
+  margin: 0 0 1rem;
+}
+
+.services-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #555;
+  margin: 0;
+}
+
+.services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.services-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  padding: 1.75rem 1.5rem;
+  background-color: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 1rem;
+  align-items: baseline;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-item:hover {
+  background-color: white;
+  border-color: #d8d8d8;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.services-item-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.services-item-description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+@media (min-width: 769px) {
+  .services-section {
+    padding: 6rem 2rem 8rem;
+  }
+
+  .services-title {
+    font-size: 3.5rem;
+  }
+
+  .services-list {
+    gap: 1.25rem;
+  }
+
+  .services-item {
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-item-label,
+  .services-item-description {
+    text-align: center;
+  }
+}
