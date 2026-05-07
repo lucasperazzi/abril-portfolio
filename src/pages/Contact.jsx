@@ -34,14 +34,6 @@ function Contact() {
 
       <div className="page-content">
         <div className="contact-info">
-          <a href="mailto:abrilbiancotav@gmail.com" className="contact-item">
-            <h3>{t.email}</h3>
-            <p>abrilbiancotav@gmail.com</p>
-          </a>
-          <a href="https://www.linkedin.com/in/abril-bianco-tavagnacco" target="_blank" rel="noopener noreferrer" className="contact-item">
-            <h3>{t.linkedin}</h3>
-            <p>Abril Bianco Tavagnacco</p>
-          </a>
           <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="contact-item">
             <h3>{t.instagram}</h3>
             <p>@biancoabril_</p>
@@ -49,6 +41,14 @@ function Contact() {
           <a href="https://www.tiktok.com/@abrilbiancotav" target="_blank" rel="noopener noreferrer" className="contact-item">
             <h3>{t.tiktok}</h3>
             <p>@abrilbiancotav</p>
+          </a>
+          <a href="https://www.linkedin.com/in/abril-bianco-tavagnacco" target="_blank" rel="noopener noreferrer" className="contact-item">
+            <h3>{t.linkedin}</h3>
+            <p>Abril Bianco Tavagnacco</p>
+          </a>
+          <a href="mailto:abrilbiancotav@gmail.com" className="contact-item">
+            <h3>{t.email}</h3>
+            <p>abrilbiancotav@gmail.com</p>
           </a>
         </div>
       </div>

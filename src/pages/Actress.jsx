@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
-import ActrizSection from '../components/ActrizSection'
 import ReelModal from '../components/ReelModal'
 import './Actress.css'
 
@@ -46,11 +45,13 @@ function Actress() {
   const translations = {
     en: {
       title: 'Actress',
+      watchReel: 'Watch Reel',
       description: 'Bringing characters to life through the art of performance, with dedication to authentic storytelling and emotional depth in every role.',
       galleryTitle: 'Acting Portfolio'
     },
     es: {
       title: 'Actriz',
+      watchReel: 'Ver Reel',
       description: 'Dando vida a los personajes a través del arte de la actuación, con dedicación a la narración auténtica y profundidad emocional en cada papel.',
       galleryTitle: 'Portafolio de Actuación'
     }
@@ -69,9 +70,14 @@ function Actress() {
 
   return (
     <div className="actress-page">
-      <ActrizSection description={t.description} onOpenReel={() => setIsReelOpen(true)} />
-
       <div className="page-container">
+        <div className="page-header">
+          <h1 className="page-title">{t.title}</h1>
+          <button className="actress-reel-button" onClick={() => setIsReelOpen(true)}>
+            {t.watchReel}
+          </button>
+          <p className="page-description">{t.description}</p>
+        </div>
         <div className="page-content">
           <h2 className="gallery-title">{t.galleryTitle}</h2>
           <div className="content-gallery">

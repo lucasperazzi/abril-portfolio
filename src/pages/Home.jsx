@@ -19,7 +19,8 @@ function Home() {
       description: 'Passionate about bringing characters to life through acting and creating compelling content. Dedicated to continuous growth and creative excellence in the entertainment industry.',
       contact: 'Contact',
       actress: 'Actress',
-      content: 'Content'
+      content: 'Content',
+      letsWork: "Let's work together"
     },
     es: {
       name: 'Abril Bianco',
@@ -28,7 +29,8 @@ function Home() {
       description: 'Apasionada por dar vida a los personajes a través de la actuación y crear contenido convincente. Dedicada al crecimiento continuo y la excelencia creativa en la industria del entretenimiento.',
       contact: 'Contacto',
       actress: 'Actriz',
-      content: 'Contenido'
+      content: 'Contenido',
+      letsWork: 'Trabajemos juntos'
     }
   }
 
@@ -55,6 +57,7 @@ function Home() {
 
       {/* Keep existing sections below */}
       <main className="content">
+        <h2 className="social-heading">{t.letsWork}</h2>
         <section className="social-links">
           <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="social-icon">
             <FiInstagram />

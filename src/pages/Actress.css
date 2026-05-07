@@ -1,46 +1,69 @@
 .actress-page {
-  background-color: black;
+  background-color: #FFFAF2;
   min-height: 100vh;
 }
 
 .actress-page .page-container {
-  background-color: black !important;
+  background-color: #FFFAF2 !important;
+  padding-top: 80px;
 }
 
 .actress-page .page-content {
-  background-color: black !important;
+  background-color: #FFFAF2 !important;
 }
 
 .page-container {
   min-height: 100vh;
-  padding-top: 0;
+  padding-top: 80px;
   position: relative;
   z-index: 1;
 }
 
 .page-header {
   text-align: center;
-  padding: 0 1rem 2rem;
+  padding: 4rem 1rem 2rem;
 }
 
 .page-title {
   font-size: 4rem;
   font-weight: normal;
-  color: white;
-  margin-bottom: 0.5rem;
+  color: #E85234;
+  margin-bottom: 2.5rem;
   letter-spacing: 0.1rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   line-height: 1.2;
+}
+
+.actress-reel-button {
+  border: 2px solid #E85234;
+  padding: 1rem 3rem;
+  border-radius: 9999px;
+  background: transparent;
+  color: #E85234;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+.actress-reel-button:hover {
+  background: #E85234;
+  color: #FFFAF2;
+  transform: scale(1.05);
 }
 
 .page-description {
   font-size: 1.1rem;
   line-height: 1.8;
   color: rgba(0, 0, 0, 0.8);
-  font-weight: 300;
+  font-weight: 500 !important;
   max-width: 600px;
   margin: 0 auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .page-content {
@@ -52,10 +75,10 @@
 .gallery-title {
   font-size: 1.5rem;
   font-weight: normal;
-  color: white;
+  color: black;
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   text-align: center;
 }
 
@@ -69,8 +92,8 @@
 .media-item {
   width: 100%;
   aspect-ratio: 16/9;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  border: 1px solid #e0d8cc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,7 +118,7 @@
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal-overlay {
@@ -140,7 +163,7 @@
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
-  background: white;
+  background: #FFFAF2;
   border-radius: 8px;
   overflow: hidden;
   transform: scale(0.95);
@@ -177,7 +200,7 @@
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  background: white;
+  background: #FFFAF2;
   border: none;
   font-size: 1.25rem;
   width: 32px;
@@ -194,7 +217,7 @@
 }
 
 .modal-close:hover {
-  background: #f0f0f0;
+  background: #EDE5D5;
   transform: scale(1.1);
 }
 
@@ -209,7 +232,7 @@
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .modal-image {
@@ -235,6 +258,17 @@
   .page-title {
     font-size: 3rem;
     letter-spacing: 0.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .actress-reel-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .page-header {
+    padding: 2rem 1rem 1.5rem;
   }
 
   .page-description {

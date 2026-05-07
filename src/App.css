@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/fonts/Coolvetica.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Fake Video Hero Styles */
 .fake-video-hero {
   position: relative;
@@ -14,7 +21,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: black;
+  background: #FFFAF2;
   z-index: 1;
 }
 
@@ -109,22 +116,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .hero-content {
   position: relative;
   z-index: 10;
   text-align: center;
-  color: white;
+  color: #FFFAF2;
   padding: 0.5rem 1rem;
 }
 
 .hero-title {
   font-size: 4rem;
-  font-weight: bold;
+  font-weight: 400;
   letter-spacing: 0.1rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   margin-bottom: 0.5rem;
 }
 
@@ -158,7 +165,7 @@
 }
 
 .hero-button:hover {
-  background: white;
+  background: #FFFAF2;
   color: black;
 }
 
@@ -287,12 +294,12 @@
 }
 
 .role-title {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 300;
   display: block;
   margin-bottom: 0.25rem;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.05rem;
+  font-family: 'Coolvetica', sans-serif;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
@@ -302,7 +309,7 @@
   font-size: 0.75rem;
   opacity: 0.7;
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
   line-height: 1.2;
   position: relative;
@@ -381,7 +388,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: black;
+  background: #FFFAF2;
   margin-bottom: 0;
   z-index: 1;
 }
@@ -421,7 +428,7 @@
   position: relative;
   z-index: 10;
   text-align: center;
-  color: white;
+  color: #FFFAF2;
   padding: 0.5rem 1rem;
   max-width: 800px;
   animation: fadeIn 1s ease;
@@ -442,28 +449,28 @@
   font-size: 4rem;
   font-weight: bold;
   letter-spacing: 0.15rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   margin-bottom: 3rem;
   text-transform: uppercase;
 }
 
 .actriz-button {
-  border: 2px solid white;
+  border: 2px solid #FFFAF2;
   padding: 1rem 3rem;
   border-radius: 9999px;
   background: transparent;
-  color: white;
+  color: #FFFAF2;
   font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
 
 .actriz-button:hover {
-  background: white;
+  background: #FFFAF2;
   color: black;
   transform: scale(1.05);
 }
@@ -472,12 +479,12 @@
   margin-top: 2rem;
   font-size: 1.1rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(247, 243, 239, 0.9);
   font-weight: 300;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Portfolio Grid Styles */
@@ -491,7 +498,7 @@
   font-size: 1.875rem;
   font-weight: 600;
   margin-bottom: 2.5rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   color: white;
 }
 
@@ -528,8 +535,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: black !important;
-  color: white;
+  background-color: #FFFAF2 !important;
+  color: black;
   position: relative;
   z-index: 1;
 }
@@ -545,7 +552,7 @@
   color: white;
   margin-bottom: 0.5rem;
   letter-spacing: 0.1rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   line-height: 1.2;
 }
 
@@ -592,37 +599,48 @@
 }
 
 .section-title {
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   font-weight: normal;
-  color: white;
+  color: black;
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
 }
 
 .description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #ccc;
-  font-weight: 300;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 500 !important;
   max-width: 600px;
   margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
   gap: 2rem;
-  padding: 3rem 0 2rem;
+  padding: 1.5rem 0 2rem;
 }
 
 .social-icon {
-  color: white;
+  color: black;
   font-size: 1.5rem;
   transition: opacity 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.social-heading {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: black;
+  letter-spacing: 0.15rem;
+  margin: 3rem 0 0;
 }
 
 .social-icon:hover {
@@ -659,7 +677,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: white;
+  background: #FFFAF2;
   transition: width 0.3s ease;
 }
 

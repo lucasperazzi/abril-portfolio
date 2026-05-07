@@ -14,7 +14,7 @@
   color: black;
   margin-bottom: 0.5rem;
   letter-spacing: 0.1rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   line-height: 1.2;
 }
 
@@ -25,7 +25,7 @@
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .page-content {
@@ -40,7 +40,7 @@
   color: black;
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
-  font-family: 'Classy Vogue', serif;
+  font-family: 'Coolvetica', sans-serif;
   text-align: center;
 }
 
@@ -66,7 +66,7 @@
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 @media (min-width: 769px) {
