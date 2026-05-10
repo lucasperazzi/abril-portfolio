@@ -67,9 +67,15 @@ function FakeVideoHero({ isReelSection = false }) {
     <section className="fake-video-hero">
       {/* Background image */}
       <img
-        src="/home/Abril1.jpeg"
+        src="/home/Firefly.png"
         alt="Abril Bianco"
-        className="hero-background"
+        className="hero-background hero-background-desktop"
+        onContextMenu={handleImageContextMenu}
+      />
+      <img
+        src="/home/backgroundmobile.png"
+        alt="Abril Bianco"
+        className="hero-background hero-background-mobile"
         onContextMenu={handleImageContextMenu}
       />
 

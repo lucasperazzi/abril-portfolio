@@ -168,7 +168,7 @@ function Content() {
   ]
 
   return (
-    <div className="page-container">
+    <div className="page-container content-page">
       <div className="page-header">
         <h1 className="page-title">{t.title}</h1>
         <p className="page-description">{t.description}</p>

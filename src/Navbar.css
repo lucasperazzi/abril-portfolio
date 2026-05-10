@@ -3,13 +3,13 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #FFFAF2;
+  background: var(--site-text);
   z-index: 1000;
   height: 64px;
 }
 
 .top-nav.visible {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgba(29, 29, 27, 0.18);
 }
 
 .nav-content {
@@ -33,7 +33,7 @@
   font-size: 1.2rem;
   font-weight: normal;
   letter-spacing: 0.1rem;
-  color: black;
+  color: var(--site-bg);
   font-family: 'Coolvetica', sans-serif;
   text-decoration: none;
   opacity: 0;
@@ -50,15 +50,15 @@
   font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  color: black;
+  color: var(--site-bg);
   cursor: pointer;
   padding: 0;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
   text-transform: uppercase;
 }
 
 .menu-button:hover {
-  color: #666;
+  opacity: 0.7;
 }
 
 .floating-nav {
@@ -66,7 +66,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #FFFAF2;
+  background: var(--site-text);
   padding: 0 2rem;
   display: flex;
   justify-content: flex-end;
@@ -88,15 +88,15 @@
   font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  color: black;
+  color: var(--site-bg);
   cursor: pointer;
   padding: 0;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
   text-transform: uppercase;
 }
 
 .floating-nav .menu-button:hover {
-  color: #666;
+  opacity: 0.7;
 }
 
 .simple-menu-overlay {
@@ -136,7 +136,7 @@
 }
 
 .simple-menu-content {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--site-menu-bg);
   padding: 3rem;
   position: fixed;
   top: 0;
@@ -185,7 +185,7 @@
   border: none;
   font-size: 2.5rem;
   cursor: pointer;
-  color: black;
+  color: var(--site-text);
   width: 50px;
   height: 50px;
   display: flex;
@@ -197,7 +197,7 @@
 }
 
 .simple-menu-close:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 250, 242, 0.08);
 }
 
 .simple-menu-items {
@@ -209,7 +209,7 @@
 
 .simple-menu-item {
   display: inline-block;
-  color: black;
+  color: var(--site-text);
   text-decoration: none;
   font-size: 1.8rem;
   font-weight: 400;
@@ -270,15 +270,16 @@
   font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
-  color: #999;
+  color: var(--site-bg);
   cursor: pointer;
   padding: 0;
-  transition: color 0.3s ease;
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
   position: relative;
 }
 
 .lang-btn:hover {
-  color: black;
+  opacity: 1;
 }
 
 .lang-btn::after {
@@ -288,7 +289,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background: black;
+  background: var(--site-bg);
   transition: width 0.3s ease;
 }
 
@@ -297,13 +298,15 @@
 }
 
 .lang-btn.active {
-  color: black;
+  color: var(--site-bg);
   font-weight: 600;
+  opacity: 1;
 }
 
 .lang-divider {
-  color: #999;
+  color: var(--site-bg);
   font-size: 0.85rem;
+  opacity: 0.55;
 }
 
 
@@ -352,7 +355,7 @@
 
   .simple-menu-content {
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.92);
+    background: var(--site-menu-bg);
   }
 
   .simple-menu-close {

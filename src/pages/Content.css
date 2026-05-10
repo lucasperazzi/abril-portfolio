@@ -1,7 +1,7 @@
 .page-container {
   min-height: 100vh;
   padding-top: 80px;
-  background-color: #FFFAF2 !important;
+  background-color: transparent !important;
   position: relative;
   z-index: 1;
 }
@@ -14,7 +14,7 @@
 .page-title {
   font-size: 4rem;
   font-weight: normal;
-  color: #E85234;
+  color: var(--site-text);
   margin-bottom: 0.5rem;
   letter-spacing: 0.1rem;
   font-family: 'Coolvetica', sans-serif;
@@ -24,7 +24,7 @@
 .page-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--site-text);
   font-weight: 500 !important;
   max-width: 600px;
   margin: 0 auto;
@@ -37,10 +37,10 @@
   margin: 0 auto;
 }
 
-.gallery-title {
+.content-page .gallery-title {
   font-size: 1.5rem;
   font-weight: normal;
-  color: black;
+  color: var(--site-pink);
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
   font-family: 'Coolvetica', sans-serif;
@@ -74,7 +74,7 @@
   font-weight: 500;
   letter-spacing: 0.25rem;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: var(--site-text);
   text-align: center;
 }
 
@@ -82,8 +82,8 @@
   position: relative;
   width: 100%;
   aspect-ratio: 9 / 16;
-  background: #FFFAF2;
-  border: 3px solid #E85234;
+  background: var(--site-bg);
+  border: 4px solid var(--site-pink);
   overflow: hidden;
   border-radius: 1rem;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -94,7 +94,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg, #FFFAF2 25%, #FBF3E6 50%, #FFFAF2 75%);
+  background: linear-gradient(90deg, #1D1D1B 25%, #2A2A27 50%, #1D1D1B 75%);
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.4s infinite;
 }
@@ -119,7 +119,7 @@
 
 
 .media-placeholder {
-  color: #999;
+  color: var(--site-text);
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.1rem;
@@ -168,7 +168,7 @@
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
-  background: #FFFAF2;
+  background: var(--site-bg);
   border-radius: 8px;
   overflow: hidden;
   transform: scale(0.95);
@@ -205,7 +205,8 @@
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  background: #FFFAF2;
+  background: var(--site-bg);
+  color: var(--site-text);
   border: none;
   font-size: 1.25rem;
   width: 32px;
@@ -222,7 +223,7 @@
 }
 
 .modal-close:hover {
-  background: #EDE5D5;
+  background: var(--site-menu-bg);
   transform: scale(1.1);
 }
 
@@ -232,8 +233,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f5f5f5;
-  color: #333;
+  background: var(--site-bg);
+  color: var(--site-text);
   font-size: 1.5rem;
   font-weight: 300;
   letter-spacing: 0.1rem;
@@ -252,7 +253,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: #3a2e28;
+  background: var(--site-menu-bg);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -264,7 +265,7 @@
   width: 40px;
   height: 40px;
   border: 3px solid rgba(255, 255, 255, 0.2);
-  border-top-color: white;
+  border-top-color: var(--site-text);
   border-radius: 50%;
   animation: modal-spinner 0.8s linear infinite;
 }
@@ -311,7 +312,7 @@
 /* ----- Services section ----- */
 
 .services-section {
-  background-color: #FFFAF2;
+  background-color: transparent;
   padding: 5rem 1.5rem 6rem;
 }
 
@@ -332,7 +333,7 @@
   font-weight: normal;
   letter-spacing: 0.1rem;
   line-height: 1.2;
-  color: black;
+  color: var(--site-text);
   margin: 0 0 1rem;
 }
 
@@ -341,7 +342,7 @@
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 1.7;
-  color: #555;
+  color: var(--site-text);
   margin: 0;
 }
 
@@ -359,17 +360,17 @@
   grid-template-columns: 1fr;
   gap: 0.75rem;
   padding: 1.75rem 1.5rem;
-  background-color: #FDF6EC;
-  border: 2px solid #E85234;
+  background-color: var(--site-bg);
+  border: 2px solid var(--site-pink);
   border-radius: 1rem;
   align-items: baseline;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .services-item:hover {
-  background-color: #FFFAF2;
-  border-color: #E85234;
-  box-shadow: 0 4px 18px rgba(232, 82, 52, 0.15);
+  background-color: var(--site-bg);
+  border-color: var(--site-pink);
+  box-shadow: 0 4px 18px rgba(234, 167, 199, 0.16);
 }
 
 .services-item-label {
@@ -378,7 +379,7 @@
   font-size: 0.95rem;
   letter-spacing: 0.22rem;
   text-transform: uppercase;
-  color: #000;
+  color: var(--site-text);
 }
 
 .services-item-description {
@@ -386,7 +387,7 @@
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: #333;
+  color: var(--site-text);
 }
 
 @media (min-width: 769px) {

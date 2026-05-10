@@ -1,7 +1,7 @@
 .page-container {
   min-height: 100vh;
   padding-top: 80px;
-  background-color: #FFFAF2 !important;
+  background-color: transparent !important;
   position: relative;
   z-index: 1;
 }
@@ -14,7 +14,7 @@
 .page-title {
   font-size: 4rem;
   font-weight: normal;
-  color: #E85234;
+  color: var(--site-text);
   margin-bottom: 0.5rem;
   letter-spacing: 0.1rem;
   font-family: 'Coolvetica', sans-serif;
@@ -24,7 +24,7 @@
 .page-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--site-text);
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
@@ -48,12 +48,12 @@
 
 .contact-item {
   padding: 2.5rem 2rem;
-  background: #FFFAF2;
-  border: 1px solid #e0e0e0;
+  background: var(--site-bg);
+  border: 1px solid var(--site-border);
   border-radius: 12px;
   text-align: center;
   transition: transform 0.1s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -79,7 +79,7 @@
   font-family: 'Coolvetica', sans-serif;
   font-size: 1.3rem;
   font-weight: 400;
-  color: black;
+  color: var(--site-text);
   margin-bottom: 0.75rem;
   letter-spacing: 0.1rem;
   position: relative;
@@ -88,7 +88,7 @@
 
 .contact-item p {
   font-family: 'Poppins', sans-serif;
-  color: #333;
+  color: var(--site-text);
   font-size: 1rem;
   position: relative;
   z-index: 1;

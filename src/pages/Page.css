@@ -11,7 +11,7 @@
 .page-title {
   font-size: 4rem;
   font-weight: normal;
-  color: black;
+  color: var(--site-text);
   margin-bottom: 0.5rem;
   letter-spacing: 0.1rem;
   font-family: 'Coolvetica', sans-serif;
@@ -21,7 +21,7 @@
 .page-description {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #333;
+  color: var(--site-text);
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
@@ -37,7 +37,7 @@
 .gallery-title {
   font-size: 1.5rem;
   font-weight: normal;
-  color: black;
+  color: var(--site-text);
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
   font-family: 'Coolvetica', sans-serif;
@@ -54,15 +54,15 @@
 .media-item {
   width: 100%;
   aspect-ratio: 16/9;
-  background: #f5f5f5;
-  border: 1px solid #e0e0e0;
+  background: var(--site-bg);
+  border: 1px solid var(--site-border);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .media-placeholder {
-  color: #999;
+  color: var(--site-text);
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 0.1rem;
