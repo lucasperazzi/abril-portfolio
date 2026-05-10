@@ -7,7 +7,6 @@ function Contact() {
   const translations = {
     en: {
       title: 'Trabajemos juntos',
-      description: 'Get in touch for collaborations, projects, or inquiries.',
       email: 'Email',
       instagram: 'Instagram',
       tiktok: 'TikTok',
@@ -15,7 +14,6 @@ function Contact() {
     },
     es: {
       title: 'Trabajemos juntos',
-      description: 'Ponte en contacto para colaboraciones, proyectos o consultas.',
       email: 'Correo',
       instagram: 'Instagram',
       tiktok: 'TikTok',
@@ -26,10 +24,9 @@ function Contact() {
   const t = translations[language]
 
   return (
-    <div className="page-container">
+    <div className="page-container contact-page">
       <div className="page-header">
         <h1 className="page-title">{t.title}</h1>
-        <p className="page-description">{t.description}</p>
       </div>
 
       <div className="page-content">

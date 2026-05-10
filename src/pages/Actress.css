@@ -38,24 +38,25 @@
   border: 2px solid var(--site-pink);
   padding: 1rem 3rem;
   border-radius: 9999px;
-  background: transparent;
-  color: var(--site-pink);
+  background: linear-gradient(135deg, var(--site-pink) 0%, #f3b9d4 100%);
+  color: var(--site-bg);
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
-  box-shadow: 0 0 18px rgba(234, 167, 199, 0.22);
+  box-shadow: 0 8px 30px rgba(234, 167, 199, 0.3);
 }
 
 .actress-reel-button:hover {
-  background: var(--site-pink);
+  background: linear-gradient(135deg, #fffaf2 0%, #ffd6e8 100%);
   color: var(--site-bg);
-  transform: scale(1.05);
-  box-shadow: 0 0 26px rgba(234, 167, 199, 0.38);
+  transform: scale(1.03) translateY(-2px);
+  border-color: #fffaf2;
+  box-shadow: 0 0 22px rgba(255, 250, 242, 0.38), 0 14px 48px rgba(234, 167, 199, 0.55);
 }
 
 .page-description {

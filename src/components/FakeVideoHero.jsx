@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../LanguageContext'
 import { useNavigate } from 'react-router-dom'
 import ReelModal from './ReelModal'
@@ -8,6 +8,8 @@ function FakeVideoHero({ isReelSection = false }) {
   const navigate = useNavigate()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
+  const [pressedRole, setPressedRole] = useState(null)
+  const navigationTimeoutRef = useRef(null)
 
   const translations = {
     en: {
@@ -50,6 +52,17 @@ function FakeVideoHero({ isReelSection = false }) {
     }
   }
 
+  const handleRoleClick = (path, role) => {
+    if (window.innerWidth <= 768) {
+      setPressedRole(role)
+      navigationTimeoutRef.current = window.setTimeout(() => {
+        navigate(path)
+      }, 160)
+    } else {
+      navigate(path)
+    }
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -61,6 +74,14 @@ function FakeVideoHero({ isReelSection = false }) {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (navigationTimeoutRef.current) {
+        window.clearTimeout(navigationTimeoutRef.current)
+      }
+    }
   }, [])
 
   return (
@@ -91,15 +112,15 @@ function FakeVideoHero({ isReelSection = false }) {
           // Role selector buttons (main hero)
           <div className="role-selector">
             <button
-              onClick={() => navigate('/actress')}
-              className="role-button"
+              onClick={() => handleRoleClick('/actress', 'actress')}
+              className={`role-button ${pressedRole === 'actress' ? 'role-button-pressed' : ''}`}
             >
               <span className="role-title">{t.actress}</span>
               <span className="role-desc">{t.actressDesc}</span>
             </button>
             <button
-              onClick={() => navigate('/content')}
-              className="role-button"
+              onClick={() => handleRoleClick('/content', 'content')}
+              className={`role-button ${pressedRole === 'content' ? 'role-button-pressed' : ''}`}
             >
               <span className="role-title">{t.creator}</span>
               <span className="role-desc">{t.creatorDesc}</span>
