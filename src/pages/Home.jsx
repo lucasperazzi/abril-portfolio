@@ -46,12 +46,12 @@ function Home() {
         <h2 className="section-title">{t.about}</h2>
         <p className="description">{t.description}</p>
         <div className="about-images">
-          <img src="/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" onContextMenu={handleImageContextMenu} />
-          <img src="/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" onContextMenu={handleImageContextMenu} />
-          <img src="/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" onContextMenu={handleImageContextMenu} />
-          <img src="/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" onContextMenu={handleImageContextMenu} />
-          <img src="/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image-medium desktop-only" onContextMenu={handleImageContextMenu} />
-          <img src="/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" onContextMenu={handleImageContextMenu} />
+          <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" onContextMenu={handleImageContextMenu} />
+          <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" onContextMenu={handleImageContextMenu} />
+          <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" onContextMenu={handleImageContextMenu} />
+          <img src="/home/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" onContextMenu={handleImageContextMenu} />
+          <img src="/home/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image-medium desktop-only" onContextMenu={handleImageContextMenu} />
+          <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" onContextMenu={handleImageContextMenu} />
         </div>
       </section>
 

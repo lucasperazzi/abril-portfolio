@@ -53,7 +53,7 @@ function ActrizSection({ description, onOpenReel }) {
     <section className="actriz-section">
       {/* Background image */}
       <img
-        src="/Abril3.jpeg"
+        src="/actress/Abril3.jpeg"
         alt="Abril Bianco"
         className="actriz-background"
         onContextMenu={handleImageContextMenu}

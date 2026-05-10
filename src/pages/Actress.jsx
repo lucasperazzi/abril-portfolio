@@ -60,12 +60,12 @@ function Actress() {
   const t = translations[language]
 
   const items = [
-    { id: 1, title: 'Film Scene 1', image: '/Abril1.jpeg' },
-    { id: 2, title: 'Film Scene 2', image: '/Abril2.jpeg' },
-    { id: 3, title: 'Theater Performance 1', image: '/Abril3.jpeg' },
-    { id: 4, title: 'Theater Performance 2', image: '/Abril4.jpeg' },
-    { id: 5, title: 'TV Appearance 1', image: '/Abril5.jpeg' },
-    { id: 6, title: 'TV Appearance 2', image: '/Abril1.jpeg' }
+    { id: 1, title: 'Film Scene 1', image: '/actress/Abril1.jpeg' },
+    { id: 2, title: 'Film Scene 2', image: '/actress/Abril2.jpeg' },
+    { id: 3, title: 'Theater Performance 1', image: '/actress/Abril3.jpeg' },
+    { id: 4, title: 'Theater Performance 2', image: '/actress/Abril4.jpeg' },
+    { id: 5, title: 'TV Appearance 1', image: '/actress/Abril5.jpeg' },
+    { id: 6, title: 'TV Appearance 2', image: '/actress/Abril1.jpeg' }
   ]
 
   return (
@@ -106,6 +106,7 @@ function Actress() {
       <ReelModal
         isOpen={isReelOpen}
         onClose={() => setIsReelOpen(false)}
+        videoSrc="/actress/reel_converted.mp4"
       />
     </div>
   )

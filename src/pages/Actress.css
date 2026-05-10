@@ -24,7 +24,7 @@
   padding: 4rem 1rem 2rem;
 }
 
-.page-title {
+.actress-page .page-title {
   font-size: 4rem;
   font-weight: normal;
   color: #E85234;
@@ -255,7 +255,7 @@
 }
 
 @media (max-width: 768px) {
-  .page-title {
+  .actress-page .page-title {
     font-size: 3rem;
     letter-spacing: 0.1rem;
     margin-bottom: 2rem;

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-function ReelModal({ isOpen, onClose }) {
+function ReelModal({ isOpen, onClose, videoSrc = '/actress/reel_converted.mp4' }) {
   // Cerrar con ESC
   useEffect(() => {
     const handleEsc = (e) => {
@@ -45,7 +45,7 @@ function ReelModal({ isOpen, onClose }) {
           playsInline
           className="reel-modal-video"
         >
-          <source src="/video/reel_converted.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
         </video>
       </div>
     </div>

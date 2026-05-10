@@ -67,7 +67,7 @@ function FakeVideoHero({ isReelSection = false }) {
     <section className="fake-video-hero">
       {/* Background image */}
       <img
-        src="/Abril1.jpeg"
+        src="/home/Abril1.jpeg"
         alt="Abril Bianco"
         className="hero-background"
         onContextMenu={handleImageContextMenu}
@@ -127,6 +127,7 @@ function FakeVideoHero({ isReelSection = false }) {
       <ReelModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        videoSrc="/actress/reel_converted.mp4"
       />
     </section>
   )

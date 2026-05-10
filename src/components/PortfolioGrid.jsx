@@ -15,11 +15,11 @@ function PortfolioGrid() {
   const t = translations[language]
 
   const images = [
-    "/Abril2.jpeg",
-    "/Abril3.jpeg",
-    "/Abril4.jpeg",
-    "/Abril5.jpeg",
-    "/Abril1.jpeg",
+    "/home/Abril2.jpeg",
+    "/home/Abril3.jpeg",
+    "/home/Abril4.jpeg",
+    "/home/Abril5.jpeg",
+    "/home/Abril1.jpeg",
   ]
 
   const handleImageContextMenu = (e) => {
