@@ -157,12 +157,14 @@ function Content() {
   const t = translations[language]
 
   const items = [
-    { id: 1, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona1.mp4' },
-    { id: 2, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia1.mp4' },
-    { id: 3, title: 'Agora', type: 'video', src: '/content-creator/Agora.mp4' },
-    { id: 4, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia2.mp4' },
+    { id: 1, title: 'Agora', type: 'video', src: '/content-creator/Agora.mp4' },
+    { id: 2, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona1.mp4' },
+    { id: 3, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia1.mp4' },
+    { id: 4, title: 'Agora', type: 'video', src: '/content-creator/Agora2.mp4' },
     { id: 5, title: 'Maika Spa', type: 'video', src: '/content-creator/MaikaSpa.mp4' },
-    { id: 6, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona2.mp4' }
+    { id: 6, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona2.mp4' },
+    { id: 7, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia2.mp4' },
+    { id: 8, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia3.mp4' }
   ]
 
   return (

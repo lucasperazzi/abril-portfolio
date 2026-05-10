@@ -6,7 +6,7 @@ function Contact() {
 
   const translations = {
     en: {
-      title: 'Contact',
+      title: 'Trabajemos juntos',
       description: 'Get in touch for collaborations, projects, or inquiries.',
       email: 'Email',
       instagram: 'Instagram',
@@ -14,7 +14,7 @@ function Contact() {
       linkedin: 'LinkedIn'
     },
     es: {
-      title: 'Contacto',
+      title: 'Trabajemos juntos',
       description: 'Ponte en contacto para colaboraciones, proyectos o consultas.',
       email: 'Correo',
       instagram: 'Instagram',
