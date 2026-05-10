@@ -48,12 +48,14 @@
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
+  box-shadow: 0 0 18px rgba(234, 167, 199, 0.22);
 }
 
 .actress-reel-button:hover {
   background: var(--site-pink);
   color: var(--site-bg);
   transform: scale(1.05);
+  box-shadow: 0 0 26px rgba(234, 167, 199, 0.38);
 }
 
 .page-description {
@@ -75,7 +77,7 @@
 .gallery-title {
   font-size: 1.5rem;
   font-weight: normal;
-  color: var(--site-text);
+  color: var(--site-pink);
   margin-bottom: 2rem;
   letter-spacing: 0.15rem;
   font-family: 'Coolvetica', sans-serif;
