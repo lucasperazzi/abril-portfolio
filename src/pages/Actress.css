@@ -48,7 +48,7 @@
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
-  box-shadow: none;
+  box-shadow: -4px 5px 0 rgba(143, 47, 90, 0.5), -8px 14px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 250, 242, 0.35);
 }
 
 .actress-reel-button:hover {
@@ -83,6 +83,7 @@
   letter-spacing: 0.15rem;
   font-family: 'Coolvetica', sans-serif;
   text-align: center;
+  text-shadow: -2px 2px 0 rgba(143, 47, 90, 0.5), -5px 7px 14px rgba(0, 0, 0, 0.26);
 }
 
 .content-gallery {
@@ -290,6 +291,10 @@
 }
 
 @media (min-width: 769px) {
+  .gallery-title {
+    font-size: 2.3rem;
+  }
+
   .content-gallery {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
