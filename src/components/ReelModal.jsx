@@ -25,19 +25,20 @@ function ReelModal({ isOpen, onClose, videoSrc = '/actress/reel_converted.mp4' }
       className="reel-modal-overlay"
       onClick={onClose} // cerrar al hacer click fuera
     >
-      {/* BOTÓN CERRAR */}
-      <button
-        onClick={onClose}
-        className="reel-modal-close"
-      >
-        ✕
-      </button>
-
       {/* CONTENEDOR VIDEO */}
       <div
         className="reel-modal-content"
         onClick={(e) => e.stopPropagation()} // evitar cerrar al clickear video
       >
+        {/* BOTÓN CERRAR */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="reel-modal-close"
+        >
+          ×
+        </button>
+
         {/* VIDEO */}
         <video
           controls

@@ -36,60 +36,59 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2147483647;
+  z-index: 2000;
+  padding: 2rem;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
-  padding: 2rem;
 }
 
 .reel-modal-content {
   position: relative;
-  width: 100%;
-  max-width: 900px;
-  max-height: calc(100vh - 4rem);
-  display: flex;
-  flex-direction: column;
-  z-index: 2147483648;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: var(--site-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  transform: scale(0.95);
+  animation: scaleIn 0.3s ease forwards;
 }
 
 .reel-modal-close {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: var(--site-bg);
   border: none;
   color: var(--site-text);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 2147483648;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 10;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  line-height: 1;
 }
 
 .reel-modal-close:hover {
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--site-menu-bg);
   transform: scale(1.1);
 }
 
 .reel-modal-video {
   width: 100%;
-  max-height: calc(100vh - 4rem);
-  border-radius: 0.5rem;
+  height: 100%;
+  max-height: 80vh;
   display: block;
   object-fit: contain;
-  position: relative;
-  z-index: 2147483649;
 }
 
 .hero-background {
@@ -281,22 +280,24 @@
   transition: opacity 0.4s ease;
 }
 
-.role-button:hover {
-  background: linear-gradient(135deg, #fffaf2 0%, #ffd6e8 100%);
-  color: var(--site-bg);
-  transform: scale(1.03) translateY(-2px);
-  box-shadow: 0 0 22px rgba(255, 250, 242, 0.38), 0 14px 48px rgba(234, 167, 199, 0.55);
+@media (hover: hover) {
+  .role-button:hover {
+    background: linear-gradient(135deg, #fffaf2 0%, #ffd6e8 100%);
+    color: var(--site-bg);
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 0 16px rgba(255, 250, 242, 0.28), 0 10px 34px rgba(234, 167, 199, 0.4);
+  }
+
+  .role-button:hover::before {
+    opacity: 1;
+  }
 }
 
 .role-button-pressed {
   background: linear-gradient(135deg, #fffaf2 0%, #ffd6e8 100%);
   color: var(--site-bg);
   transform: scale(1.03) translateY(-2px);
-  box-shadow: 0 0 22px rgba(255, 250, 242, 0.38), 0 14px 48px rgba(234, 167, 199, 0.55);
-}
-
-.role-button:hover::before {
-  opacity: 1;
+  box-shadow: 0 0 16px rgba(255, 250, 242, 0.28), 0 10px 34px rgba(234, 167, 199, 0.4);
 }
 
 .role-button-pressed::before {
@@ -918,10 +919,10 @@
   .reel-modal-close {
     top: 0.5rem;
     right: 0.5rem;
-    width: 32px;
-    height: 32px;
-    font-size: 1.2rem;
-    background: rgba(0, 0, 0, 0.7);
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+    background: var(--site-bg);
   }
 
   .reel-modal-video {

@@ -9,6 +9,7 @@ function FakeVideoHero({ isReelSection = false }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [showScrollIndicator, setShowScrollIndicator] = useState(true)
   const [pressedRole, setPressedRole] = useState(null)
+  const pressedResetTimeoutRef = useRef(null)
   const navigationTimeoutRef = useRef(null)
 
   const translations = {
@@ -52,15 +53,29 @@ function FakeVideoHero({ isReelSection = false }) {
     }
   }
 
-  const handleRoleClick = (path, role) => {
-    if (window.innerWidth <= 768) {
-      setPressedRole(role)
-      navigationTimeoutRef.current = window.setTimeout(() => {
-        navigate(path)
-      }, 160)
-    } else {
-      navigate(path)
+  const clearRoleTimeouts = () => {
+    if (pressedResetTimeoutRef.current) {
+      window.clearTimeout(pressedResetTimeoutRef.current)
     }
+    if (navigationTimeoutRef.current) {
+      window.clearTimeout(navigationTimeoutRef.current)
+    }
+  }
+
+  const handleRoleClick = (path, role) => {
+    if (window.innerWidth > 768) {
+      navigate(path)
+      return
+    }
+
+    clearRoleTimeouts()
+    setPressedRole(role)
+    pressedResetTimeoutRef.current = window.setTimeout(() => {
+      setPressedRole(null)
+    }, 140)
+    navigationTimeoutRef.current = window.setTimeout(() => {
+      navigate(path)
+    }, 180)
   }
 
   useEffect(() => {
@@ -78,9 +93,25 @@ function FakeVideoHero({ isReelSection = false }) {
 
   useEffect(() => {
     return () => {
-      if (navigationTimeoutRef.current) {
-        window.clearTimeout(navigationTimeoutRef.current)
+      clearRoleTimeouts()
+    }
+  }, [])
+
+  useEffect(() => {
+    const resetPressedRole = () => setPressedRole(null)
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        resetPressedRole()
       }
+    }
+
+    window.addEventListener('pageshow', resetPressedRole)
+    window.addEventListener('popstate', resetPressedRole)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    return () => {
+      window.removeEventListener('pageshow', resetPressedRole)
+      window.removeEventListener('popstate', resetPressedRole)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [])
 
