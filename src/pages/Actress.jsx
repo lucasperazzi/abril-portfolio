@@ -8,6 +8,7 @@ function Actress() {
   const [selectedItem, setSelectedItem] = useState(null)
   const [isClosing, setIsClosing] = useState(false)
   const [isReelOpen, setIsReelOpen] = useState(false)
+  const [isGalleryVisible, setIsGalleryVisible] = useState(false)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -39,6 +40,14 @@ function Actress() {
       document.body.style.overflow = 'unset'
     }
   }, [selectedItem, isClosing])
+
+  useEffect(() => {
+    const animationFrame = window.requestAnimationFrame(() => {
+      setIsGalleryVisible(true)
+    })
+
+    return () => window.cancelAnimationFrame(animationFrame)
+  }, [])
 
 
 
@@ -80,7 +89,7 @@ function Actress() {
         </div>
         <div className="page-content">
           <h2 className="gallery-title">{t.galleryTitle}</h2>
-          <div className="content-gallery">
+          <div className={`content-gallery content-gallery-animated ${isGalleryVisible ? 'content-gallery-visible' : ''}`}>
             {items.map((item) => (
               <div
                 key={item.id}

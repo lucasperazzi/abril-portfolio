@@ -1,8 +1,11 @@
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../LanguageContext'
 import './Contact.css'
 
 function Contact() {
   const { language } = useLanguage()
+  const [areContactCardsVisible, setAreContactCardsVisible] = useState(false)
+  const contactCardsRef = useRef(null)
 
   const translations = {
     en: {
@@ -23,6 +26,29 @@ function Contact() {
 
   const t = translations[language]
 
+  useEffect(() => {
+    const contactCards = contactCardsRef.current
+    if (!contactCards) return
+
+    if (!('IntersectionObserver' in window)) {
+      setAreContactCardsVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAreContactCardsVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -10% 0px' }
+    )
+
+    observer.observe(contactCards)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="page-container contact-page">
       <div className="page-header">
@@ -30,7 +56,7 @@ function Contact() {
       </div>
 
       <div className="page-content">
-        <div className="contact-info">
+        <div ref={contactCardsRef} className={`contact-info contact-info-animated ${areContactCardsVisible ? 'contact-info-visible' : ''}`}>
           <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="contact-item">
             <h3>{t.instagram}</h3>
             <p>@biancoabril_</p>

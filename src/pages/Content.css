@@ -67,6 +67,47 @@
   cursor: pointer;
 }
 
+.reel-gallery-animated .reel-card-wrapper {
+  opacity: 0;
+  translate: 0 24px;
+  filter: blur(4px);
+  transition: opacity 0.7s ease, translate 0.7s ease, filter 0.7s ease;
+}
+
+.reel-gallery-visible .reel-card-wrapper {
+  opacity: 1;
+  translate: 0 0;
+  filter: blur(0);
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(5) {
+  transition-delay: 0.24s;
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(7) {
+  transition-delay: 0.36s;
+}
+
+.reel-gallery-visible .reel-card-wrapper:nth-child(8) {
+  transition-delay: 0.42s;
+}
+
 .reel-card-title {
   margin: 0 0 1rem 0;
   font-family: 'Inter', sans-serif;
@@ -124,6 +165,15 @@
   font-weight: 300;
   letter-spacing: 0.1rem;
   font-family: 'Poppins', sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-gallery-animated .reel-card-wrapper {
+    opacity: 1;
+    translate: 0 0;
+    filter: none;
+    transition: none;
+  }
 }
 
 .modal-overlay {
@@ -367,6 +417,39 @@
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.services-list-animated .services-item {
+  opacity: 0;
+  translate: 0 24px;
+  filter: blur(4px);
+  transition: opacity 0.7s ease, translate 0.7s ease, filter 0.7s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.services-list-visible .services-item {
+  opacity: 1;
+  translate: 0 0;
+  filter: blur(0);
+}
+
+.services-list-visible .services-item:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.services-list-visible .services-item:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+.services-list-visible .services-item:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+.services-list-visible .services-item:nth-child(5) {
+  transition-delay: 0.24s;
+}
+
+.services-list-visible .services-item:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
 .services-item:hover {
   background-color: var(--site-bg);
   border-color: var(--site-pink);
@@ -380,6 +463,15 @@
   letter-spacing: 0.22rem;
   text-transform: uppercase;
   color: var(--site-text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-list-animated .services-item {
+    opacity: 1;
+    translate: 0 0;
+    filter: none;
+    transition: none;
+  }
 }
 
 .services-item-description {

@@ -53,6 +53,9 @@ function Content() {
   const [selectedItem, setSelectedItem] = useState(null)
   const [isClosing, setIsClosing] = useState(false)
   const [modalVideoLoaded, setModalVideoLoaded] = useState(false)
+  const [areReelCardsVisible, setAreReelCardsVisible] = useState(false)
+  const [areServicesVisible, setAreServicesVisible] = useState(false)
+  const servicesListRef = useRef(null)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -84,6 +87,37 @@ function Content() {
       document.body.style.overflow = 'unset'
     }
   }, [selectedItem, isClosing])
+
+  useEffect(() => {
+    const animationFrame = window.requestAnimationFrame(() => {
+      setAreReelCardsVisible(true)
+    })
+
+    return () => window.cancelAnimationFrame(animationFrame)
+  }, [])
+
+  useEffect(() => {
+    const servicesList = servicesListRef.current
+    if (!servicesList) return
+
+    if (!('IntersectionObserver' in window)) {
+      setAreServicesVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAreServicesVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.16, rootMargin: '0px 0px -10% 0px' }
+    )
+
+    observer.observe(servicesList)
+    return () => observer.disconnect()
+  }, [])
 
   const translations = {
     en: {
@@ -176,7 +210,7 @@ function Content() {
 
       <div className="page-content">
         <h2 className="gallery-title">{t.galleryTitle}</h2>
-        <div className="reel-gallery">
+        <div className={`reel-gallery reel-gallery-animated ${areReelCardsVisible ? 'reel-gallery-visible' : ''}`}>
           {items.map((item) => (
             <div
               key={item.id}
@@ -210,7 +244,7 @@ function Content() {
             <h2 className="services-title">{t.servicesTitle}</h2>
             <p className="services-subtitle">{t.servicesSubtitle}</p>
           </div>
-          <ul className="services-list">
+          <ul ref={servicesListRef} className={`services-list services-list-animated ${areServicesVisible ? 'services-list-visible' : ''}`}>
             {t.services.map((service) => (
               <li key={service.label} className="services-item">
                 <span className="services-item-label">{service.label}</span>

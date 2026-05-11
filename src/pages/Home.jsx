@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../LanguageContext'
 import { Link } from 'react-router-dom'
 import { FiInstagram, FiMail, FiLinkedin } from 'react-icons/fi'
@@ -6,6 +7,8 @@ import '../App.css'
 
 function Home() {
   const { language } = useLanguage()
+  const [isAboutImagesVisible, setIsAboutImagesVisible] = useState(false)
+  const aboutImagesRef = useRef(null)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -36,6 +39,29 @@ function Home() {
 
   const t = translations[language]
 
+  useEffect(() => {
+    const aboutImages = aboutImagesRef.current
+    if (!aboutImages) return
+
+    if (!('IntersectionObserver' in window)) {
+      setIsAboutImagesVisible(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsAboutImagesVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -10% 0px' }
+    )
+
+    observer.observe(aboutImages)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="portfolio">
       {/* Main hero with role selector */}
@@ -45,7 +71,7 @@ function Home() {
       <section className="about-section-with-images">
         <h2 className="section-title">{t.about}</h2>
         <p className="description">{t.description}</p>
-        <div className="about-images">
+        <div ref={aboutImagesRef} className={`about-images about-images-animated ${isAboutImagesVisible ? 'about-images-visible' : ''}`}>
           <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" onContextMenu={handleImageContextMenu} />
           <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" onContextMenu={handleImageContextMenu} />
           <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" onContextMenu={handleImageContextMenu} />
