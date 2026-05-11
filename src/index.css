@@ -10,6 +10,7 @@
   --site-menu-bg: #2A2A27;
   --site-border: rgba(255, 250, 242, 0.22);
   --site-pink: #EAA7C7;
+  color-scheme: dark;
 }
 
 html, body {
@@ -34,10 +35,25 @@ body {
   position: relative;
 }
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) * -1);
+  z-index: 0;
+  pointer-events: none;
+  background: var(--site-bg);
+}
+
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom, 0px) * -1);
   z-index: 0;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 0.980392 0 0 0 0 0.94902 0 0 0 0.32 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23noise)'/%3E%3C/svg%3E");
