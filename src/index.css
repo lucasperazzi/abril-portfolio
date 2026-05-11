@@ -17,6 +17,7 @@ html, body {
   padding: 0;
   border: none;
   background: var(--site-bg);
+  min-height: 100%;
 }
 
 body {
@@ -28,6 +29,8 @@ body {
   background: var(--site-bg);
   color: var(--site-text);
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   position: relative;
 }
 
@@ -45,6 +48,8 @@ body::after {
 
 #root {
   min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
   background: transparent;
   color: var(--site-text);
   position: relative;
