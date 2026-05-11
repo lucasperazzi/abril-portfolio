@@ -8,18 +8,32 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const isMenuActive = isMenuOpen || isClosing
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
   useEffect(() => {
-    if (isMenuOpen || isClosing) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
+    if (!isMenuActive) {
+      return
     }
-  }, [isMenuOpen, isClosing])
+
+    const originalOverflow = document.body.style.overflow
+    const originalPaddingRight = document.body.style.paddingRight
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+    const currentPaddingRight = parseFloat(window.getComputedStyle(document.body).paddingRight) || 0
+
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${currentPaddingRight + scrollbarWidth}px`
+    }
+    document.body.style.overflow = 'hidden'
+
+    return () => {
+      document.body.style.overflow = originalOverflow
+      document.body.style.paddingRight = originalPaddingRight
+    }
+  }, [isMenuActive])
 
   const closeMenu = () => {
     setIsClosing(true)

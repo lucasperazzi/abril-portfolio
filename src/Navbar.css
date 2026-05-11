@@ -9,7 +9,7 @@
 }
 
 .top-nav.visible {
-  border-bottom: 1px solid rgba(29, 29, 27, 0.18);
+  box-shadow: inset 0 -1px 0 rgba(29, 29, 27, 0.18);
 }
 
 .nav-content {
@@ -216,6 +216,7 @@
   font-size: 1.8rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
+  font-family: 'Coolvetica', sans-serif;
   padding: 1rem 2rem;
   text-align: center;
   text-transform: uppercase;
