@@ -10,6 +10,14 @@ function ReelVideo({ src, onContextMenu }) {
     const video = videoRef.current
     if (!video) return
 
+    setIsLoaded(false)
+    video.load()
+  }, [src])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -42,6 +50,7 @@ function ReelVideo({ src, onContextMenu }) {
         playsInline
         preload="auto"
         onLoadedData={() => setIsLoaded(true)}
+        onCanPlay={() => setIsLoaded(true)}
         onContextMenu={onContextMenu}
       />
     </>
@@ -121,6 +130,7 @@ function Content() {
         link.as = 'video'
         link.href = src
         link.type = 'video/mp4'
+        link.setAttribute('fetchpriority', 'high')
         document.head.appendChild(link)
       }
 

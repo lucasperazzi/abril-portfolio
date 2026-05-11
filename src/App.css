@@ -1,11 +1,4 @@
 @font-face {
-  font-family: 'Classy Vogue';
-  src: url('/fonts/Classyvogueregular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'Coolvetica';
   src: url('/fonts/Coolvetica.otf') format('opentype');
   font-weight: normal;
@@ -932,6 +925,8 @@
   /* Hero mobile styles */
   .fake-video-hero {
     height: 85vh;
+    height: 85svh;
+    height: 85dvh;
   }
 
   .hero-background-desktop {

@@ -48,12 +48,13 @@
   background: none;
   border: none;
   font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
+  font-weight: 300;
+  letter-spacing: 0.12rem;
   color: var(--site-bg);
   cursor: pointer;
   padding: 0;
   transition: opacity 0.3s ease;
+  font-family: 'Coolvetica', sans-serif;
   text-transform: uppercase;
 }
 
@@ -86,12 +87,13 @@
   background: none;
   border: none;
   font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
+  font-weight: 300;
+  letter-spacing: 0.12rem;
   color: var(--site-bg);
   cursor: pointer;
   padding: 0;
   transition: opacity 0.3s ease;
+  font-family: 'Coolvetica', sans-serif;
   text-transform: uppercase;
 }
 
