@@ -48,6 +48,17 @@ function ReelVideo({ src, onContextMenu }) {
   )
 }
 
+const contentItems = [
+  { id: 1, title: 'Agora', type: 'video', src: '/content-creator/Agora.mp4' },
+  { id: 2, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona1.mp4' },
+  { id: 3, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia1.mp4' },
+  { id: 4, title: 'Agora', type: 'video', src: '/content-creator/Agora2.mp4' },
+  { id: 5, title: 'Maika Spa', type: 'video', src: '/content-creator/MaikaSpa.mp4' },
+  { id: 6, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona2.mp4' },
+  { id: 7, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia2.mp4' },
+  { id: 8, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia3.mp4' }
+]
+
 function Content() {
   const { language } = useLanguage()
   const [selectedItem, setSelectedItem] = useState(null)
@@ -55,6 +66,7 @@ function Content() {
   const [modalVideoLoaded, setModalVideoLoaded] = useState(false)
   const [areReelCardsVisible, setAreReelCardsVisible] = useState(false)
   const [areServicesVisible, setAreServicesVisible] = useState(false)
+  const preloadedVideosRef = useRef([])
   const servicesListRef = useRef(null)
 
   const handleImageContextMenu = (e) => {
@@ -94,6 +106,41 @@ function Content() {
     })
 
     return () => window.cancelAnimationFrame(animationFrame)
+  }, [])
+
+  useEffect(() => {
+    const videoSources = contentItems.filter((item) => item.type === 'video').map((item) => item.src)
+
+    videoSources.forEach((src) => {
+      const href = new URL(src, window.location.origin).href
+      const existingPreload = Array.from(document.querySelectorAll('link[rel="preload"][as="video"]')).some((link) => link.href === href)
+
+      if (!existingPreload) {
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.as = 'video'
+        link.href = src
+        link.type = 'video/mp4'
+        document.head.appendChild(link)
+      }
+
+      const video = document.createElement('video')
+      video.preload = 'auto'
+      video.muted = true
+      video.playsInline = true
+      video.setAttribute('playsinline', '')
+      video.src = src
+      video.load()
+      preloadedVideosRef.current.push(video)
+    })
+
+    return () => {
+      preloadedVideosRef.current.forEach((video) => {
+        video.removeAttribute('src')
+        video.load()
+      })
+      preloadedVideosRef.current = []
+    }
   }, [])
 
   useEffect(() => {
@@ -190,17 +237,6 @@ function Content() {
 
   const t = translations[language]
 
-  const items = [
-    { id: 1, title: 'Agora', type: 'video', src: '/content-creator/Agora.mp4' },
-    { id: 2, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona1.mp4' },
-    { id: 3, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia1.mp4' },
-    { id: 4, title: 'Agora', type: 'video', src: '/content-creator/Agora2.mp4' },
-    { id: 5, title: 'Maika Spa', type: 'video', src: '/content-creator/MaikaSpa.mp4' },
-    { id: 6, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona2.mp4' },
-    { id: 7, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia2.mp4' },
-    { id: 8, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia3.mp4' }
-  ]
-
   return (
     <div className="page-container content-page">
       <div className="page-header">
@@ -211,7 +247,7 @@ function Content() {
       <div className="page-content">
         <h2 className="gallery-title">{t.galleryTitle}</h2>
         <div className={`reel-gallery reel-gallery-animated ${areReelCardsVisible ? 'reel-gallery-visible' : ''}`}>
-          {items.map((item) => (
+          {contentItems.map((item) => (
             <div
               key={item.id}
               className="reel-card-wrapper"
