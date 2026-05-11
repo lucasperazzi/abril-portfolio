@@ -48,7 +48,7 @@
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   margin-bottom: 2.5rem;
-  box-shadow: 0 8px 30px rgba(234, 167, 199, 0.3);
+  box-shadow: none;
 }
 
 .actress-reel-button:hover {
@@ -56,7 +56,7 @@
   color: var(--site-bg);
   transform: scale(1.03) translateY(-2px);
   border-color: #fffaf2;
-  box-shadow: 0 0 22px rgba(255, 250, 242, 0.38), 0 14px 48px rgba(234, 167, 199, 0.55);
+  box-shadow: 0 0 10px rgba(255, 250, 242, 0.18), 0 6px 18px rgba(234, 167, 199, 0.22);
 }
 
 .page-description {
