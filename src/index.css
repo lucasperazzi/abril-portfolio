@@ -10,6 +10,7 @@
   --site-menu-bg: #2A2A27;
   --site-border: rgba(255, 250, 242, 0.22);
   --site-pink: #EAA7C7;
+  color-scheme: dark;
 }
 
 html, body {
