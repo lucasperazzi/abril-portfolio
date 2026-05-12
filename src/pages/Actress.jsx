@@ -69,12 +69,12 @@ function Actress() {
   const t = translations[language]
 
   const items = [
-    { id: 1, title: 'Film Scene 1', image: '/actress/Abril1.jpeg' },
-    { id: 2, title: 'Film Scene 2', image: '/actress/Abril2.jpeg' },
-    { id: 3, title: 'Theater Performance 1', image: '/actress/Abril3.jpeg' },
-    { id: 4, title: 'Theater Performance 2', image: '/actress/Abril4.jpeg' },
-    { id: 5, title: 'TV Appearance 1', image: '/actress/Abril5.jpeg' },
-    { id: 6, title: 'TV Appearance 2', image: '/actress/Abril1.jpeg' }
+    { id: 1, title: 'Acting Reel', type: 'video', src: '/actress/reel_converted.mp4' },
+    { id: 2, title: 'Film Scene 1', type: 'image', src: '/actress/Abril1.jpeg' },
+    { id: 3, title: 'Film Scene 2', type: 'image', src: '/actress/Abril2.jpeg' },
+    { id: 4, title: 'Theater Performance 1', type: 'image', src: '/actress/Abril3.jpeg' },
+    { id: 5, title: 'Theater Performance 2', type: 'image', src: '/actress/Abril4.jpeg' },
+    { id: 6, title: 'TV Appearance 1', type: 'image', src: '/actress/Abril5.jpeg' }
   ]
 
   return (
@@ -96,7 +96,20 @@ function Actress() {
                 className="media-item"
                 onClick={() => setSelectedItem(item)}
               >
-                <img src={item.image} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
+                {item.type === 'video' ? (
+                  <video
+                    src={item.src}
+                    className="media-image"
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    preload="metadata"
+                    onContextMenu={handleImageContextMenu}
+                  />
+                ) : (
+                  <img src={item.src} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
+                )}
               </div>
             ))}
           </div>
@@ -107,7 +120,11 @@ function Actress() {
         <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
-            <img src={selectedItem.image} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+            {selectedItem.type === 'video' ? (
+              <video src={selectedItem.src} className="modal-image" controls autoPlay playsInline onContextMenu={handleImageContextMenu} />
+            ) : (
+              <img src={selectedItem.src} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+            )}
           </div>
         </div>
       )}
