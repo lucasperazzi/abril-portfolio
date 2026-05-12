@@ -257,7 +257,7 @@
 
 .scroll-label {
   color: var(--site-text);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Coolvetica', sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.11rem;
@@ -308,7 +308,7 @@
 }
 
 .role-button {
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   padding: 1rem 1.5rem;
   border-radius: 1rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -347,6 +347,7 @@
     background: linear-gradient(135deg, #fffaf2 0%, #ffd6e8 100%);
     color: var(--site-bg);
     transform: scale(1.03) translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.45);
     box-shadow: 0 0 10px rgba(255, 250, 242, 0.18), 0 6px 18px rgba(234, 167, 199, 0.22);
   }
 
@@ -359,6 +360,7 @@
   background: linear-gradient(135deg, #fffaf2 0%, #ffd6e8 100%);
   color: var(--site-bg);
   transform: scale(1.03) translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0 0 10px rgba(255, 250, 242, 0.18), 0 6px 18px rgba(234, 167, 199, 0.22);
 }
 
@@ -756,7 +758,7 @@
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--site-text);
-  letter-spacing: 0.15rem;
+  letter-spacing: 0;
   margin: 3rem 0 0;
 }
 

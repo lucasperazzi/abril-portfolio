@@ -138,7 +138,7 @@
 }
 
 .simple-menu-content {
-  background: var(--site-menu-bg);
+  background: rgba(42, 42, 39, 0.95);
   padding: 3rem;
   position: fixed;
   top: 0;
@@ -358,7 +358,7 @@
 
   .simple-menu-content {
     padding: 2rem;
-    background: var(--site-menu-bg);
+    background: rgba(42, 42, 39, 0.95);
   }
 
   .simple-menu-close {
