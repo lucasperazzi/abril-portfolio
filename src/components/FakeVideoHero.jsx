@@ -20,7 +20,8 @@ function FakeVideoHero({ isReelSection = false }) {
       actress: 'Actress',
       creator: 'Content Creator',
       actressDesc: 'Showreel & acting work',
-      creatorDesc: 'Content & collaborations'
+      creatorDesc: 'Content & collaborations',
+      scrollToAbout: 'About me'
     },
     es: {
       tagline: 'Actriz & Creadora de contenido',
@@ -29,7 +30,8 @@ function FakeVideoHero({ isReelSection = false }) {
       actress: 'Actriz',
       creator: 'Creadora de contenido',
       actressDesc: 'Showreel y trabajos actorales',
-      creatorDesc: 'Contenido y colaboraciones'
+      creatorDesc: 'Contenido y colaboraciones',
+      scrollToAbout: 'Sobre mí'
     }
   }
 
@@ -174,8 +176,9 @@ function FakeVideoHero({ isReelSection = false }) {
         <button
           className={`scroll-down-indicator ${!showScrollIndicator ? 'hidden' : ''}`}
           onClick={handleScrollDown}
-          aria-label="Scroll down"
+          aria-label={t.scrollToAbout}
         >
+          <span className="scroll-label">{t.scrollToAbout}</span>
           <span className="scroll-arrow">↓</span>
         </button>
       )}
