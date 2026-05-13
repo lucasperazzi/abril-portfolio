@@ -48,25 +48,26 @@
 
 .contact-item {
   padding: 2.5rem 2rem;
-  background-color: var(--site-bg);
+  background-color: var(--site-pink);
   border: 2px solid var(--site-pink);
   border-radius: 1rem;
   text-align: center;
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 180px;
   text-decoration: none;
-  color: inherit;
+  color: var(--site-bg);
+  box-shadow: -4px 5px 0 rgba(143, 47, 90, 0.5), -8px 14px 24px rgba(0, 0, 0, 0.22);
 }
 
 .contact-info-animated .contact-item {
   opacity: 0;
   translate: 0 24px;
   filter: blur(4px);
-  transition: opacity 0.7s ease, translate 0.7s ease, filter 0.7s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.1s ease;
+  transition: opacity 0.7s ease, translate 0.7s ease, filter 0.7s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
 }
 
 .contact-info-visible .contact-item {
@@ -88,9 +89,10 @@
 }
 
 .contact-item:hover {
-  background-color: var(--site-bg);
+  background-color: var(--site-pink);
   border-color: var(--site-pink);
-  box-shadow: 0 4px 18px rgba(234, 167, 199, 0.16);
+  box-shadow: -6px 8px 0 rgba(143, 47, 90, 0.5), -12px 20px 28px rgba(0, 0, 0, 0.26);
+  transform: translateY(-6px) rotateX(2deg);
 }
 
 .contact-item:active {
@@ -107,11 +109,11 @@
 
 .contact-item h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  color: var(--site-text);
+  color: var(--site-bg);
   margin: 0 0 0.75rem;
-  letter-spacing: 0.22rem;
+  letter-spacing: 0.08rem;
   text-transform: uppercase;
   position: relative;
   z-index: 1;
@@ -128,8 +130,8 @@
 
 .contact-item p {
   font-family: 'Poppins', sans-serif;
-  color: var(--site-text);
-  font-size: 1.05rem;
+  color: var(--site-bg);
+  font-size: 1.18rem;
   font-weight: 300;
   line-height: 1.7;
   margin: 0;
@@ -159,11 +161,11 @@
   }
 
   .contact-item h3 {
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 0.25rem;
   }
 
   .contact-item p {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 }

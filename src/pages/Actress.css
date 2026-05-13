@@ -319,6 +319,12 @@
 }
 
 @media (min-width: 769px) {
+  .actress-page .page-description {
+    font-size: 1.32rem;
+    line-height: 1.85;
+    max-width: 720px;
+  }
+
   .gallery-title {
     font-size: 2.3rem;
   }

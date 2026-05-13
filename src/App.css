@@ -761,6 +761,15 @@
   font-family: 'Poppins', sans-serif;
 }
 
+@media (min-width: 769px) {
+  .description,
+  .actriz-description {
+    font-size: 1.32rem;
+    line-height: 1.85;
+    max-width: 720px;
+  }
+}
+
 .social-links {
   display: flex;
   justify-content: center;
