@@ -1,10 +1,68 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { FiChevronDown, FiGlobe } from 'react-icons/fi'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
 
-function Navbar({ isVisible = true, isHomePage = false }) {
+function LanguageSelector() {
   const { language, setLanguage } = useLanguage()
+  const [isOpen, setIsOpen] = useState(false)
+  const selectorRef = useRef(null)
+  const languages = [
+    { code: 'es', label: 'Español' },
+    { code: 'en', label: 'English' }
+  ]
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (selectorRef.current && !selectorRef.current.contains(e.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const selectLanguage = (code) => {
+    setLanguage(code)
+    setIsOpen(false)
+  }
+
+  return (
+    <div className={`language-selector ${isOpen ? 'open' : ''}`} ref={selectorRef}>
+      <button
+        className="language-toggle"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+      >
+        <FiGlobe className="language-icon" />
+        <span>{language.toUpperCase()}</span>
+        <FiChevronDown className="language-chevron" />
+      </button>
+      {isOpen && (
+        <div className="language-menu" role="listbox">
+          {languages.map((item) => (
+            <button
+              key={item.code}
+              className={`language-option ${language === item.code ? 'active' : ''}`}
+              onClick={() => selectLanguage(item.code)}
+              role="option"
+              aria-selected={language === item.code}
+            >
+              <span className="language-option-code">{item.code.toUpperCase()}</span>
+              <span>{item.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function Navbar({ isVisible = true, isHomePage = false }) {
+  const { language } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
@@ -92,21 +150,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
             >
               {t.menu}
             </button>
-            <div className="language-selector">
-              <button
-                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
-                onClick={() => setLanguage('en')}
-              >
-                EN
-              </button>
-              <span className="lang-divider">/</span>
-              <button
-                className={`lang-btn ${language === 'es' ? 'active' : ''}`}
-                onClick={() => setLanguage('es')}
-              >
-                ES
-              </button>
-            </div>
+            <LanguageSelector />
           </div>
         </div>
       </nav>
@@ -120,21 +164,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
           >
             {t.menu}
           </button>
-          <div className="language-selector">
-            <button
-              className={`lang-btn ${language === 'en' ? 'active' : ''}`}
-              onClick={() => setLanguage('en')}
-            >
-              EN
-            </button>
-            <span className="lang-divider">/</span>
-            <button
-              className={`lang-btn ${language === 'es' ? 'active' : ''}`}
-              onClick={() => setLanguage('es')}
-            >
-              ES
-            </button>
-          </div>
+          <LanguageSelector />
         </div>
       )}
 
