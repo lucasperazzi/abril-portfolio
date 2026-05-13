@@ -37,6 +37,37 @@ function App() {
     }
   }, [isHomePage])
 
+  useEffect(() => {
+    let frameId = null
+
+    const updateAtmosphere = () => {
+      const scrollableHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1)
+      const scrollDepth = Math.min(window.scrollY / scrollableHeight, 1)
+      document.documentElement.style.setProperty('--ambient-shift', `${scrollDepth * -72}px`)
+      document.documentElement.style.setProperty('--ambient-opacity', (0.84 + scrollDepth * 0.12).toFixed(3))
+    }
+
+    const handleAtmosphereScroll = () => {
+      if (frameId) return
+      frameId = window.requestAnimationFrame(() => {
+        updateAtmosphere()
+        frameId = null
+      })
+    }
+
+    updateAtmosphere()
+    window.addEventListener('scroll', handleAtmosphereScroll, { passive: true })
+    window.addEventListener('resize', handleAtmosphereScroll)
+
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+      }
+      window.removeEventListener('scroll', handleAtmosphereScroll)
+      window.removeEventListener('resize', handleAtmosphereScroll)
+    }
+  }, [location.pathname])
+
   return (
     <>
       <ScrollToTop />
