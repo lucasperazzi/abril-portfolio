@@ -108,7 +108,7 @@ function Actress() {
                     onContextMenu={handleImageContextMenu}
                   />
                 ) : (
-                  <img src={item.src} alt={item.title} className="media-image" onContextMenu={handleImageContextMenu} />
+                  <img src={item.src} alt={item.title} className="media-image" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
                 )}
               </div>
             ))}
@@ -123,7 +123,7 @@ function Actress() {
             {selectedItem.type === 'video' ? (
               <video src={selectedItem.src} className="modal-image" controls autoPlay playsInline onContextMenu={handleImageContextMenu} />
             ) : (
-              <img src={selectedItem.src} alt={selectedItem.title} className="modal-image" onContextMenu={handleImageContextMenu} />
+              <img src={selectedItem.src} alt={selectedItem.title} className="modal-image" decoding="async" onContextMenu={handleImageContextMenu} />
             )}
           </div>
         </div>

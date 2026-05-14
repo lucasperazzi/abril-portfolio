@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { FiChevronDown, FiGlobe, FiMenu } from 'react-icons/fi'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
@@ -63,6 +63,7 @@ function LanguageSelector() {
 
 function Navbar({ isVisible = true, isHomePage = false }) {
   const { language } = useLanguage()
+  const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
@@ -130,6 +131,10 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   }
 
   const t = translations[language]
+  const getMenuItemProps = (path) => ({
+    className: `simple-menu-item ${location.pathname === path ? 'active' : ''}`,
+    'aria-current': location.pathname === path ? 'page' : undefined
+  })
 
   const handleLogoClick = (e) => {
     if (isHomePage) {
@@ -173,22 +178,22 @@ function Navbar({ isVisible = true, isHomePage = false }) {
       )}
 
       {(isMenuOpen || isClosing) && (
-        <div className={`simple-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMenu}>
+        <div className={`simple-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMenu} role="dialog" aria-modal="true" aria-label={t.menu}>
           <div className="simple-menu-content">
-            <button className="simple-menu-close" onClick={closeMenu}>×</button>
+            <button className="simple-menu-close" onClick={closeMenu} aria-label={t.menu}>×</button>
             <div className="simple-menu-items">
               {!isHomePage && (
-                <Link to="/" className="simple-menu-item" onClick={closeMenu}>
+                <Link to="/" {...getMenuItemProps('/')} onClick={closeMenu}>
                   <span>{t.home}</span>
                 </Link>
               )}
-              <Link to="/content" className="simple-menu-item" onClick={closeMenu}>
+              <Link to="/content" {...getMenuItemProps('/content')} onClick={closeMenu}>
                 <span>{t.content}</span>
               </Link>
-              <Link to="/actress" className="simple-menu-item" onClick={closeMenu}>
+              <Link to="/actress" {...getMenuItemProps('/actress')} onClick={closeMenu}>
                 <span>{t.actress}</span>
               </Link>
-              <Link to="/contact" className="simple-menu-item" onClick={closeMenu}>
+              <Link to="/contact" {...getMenuItemProps('/contact')} onClick={closeMenu}>
                 <span>{t.contact}</span>
               </Link>
             </div>

@@ -5,7 +5,40 @@ import Home from './pages/Home'
 import Content from './pages/Content'
 import Actress from './pages/Actress'
 import Contact from './pages/Contact'
+import { useLanguage } from './LanguageContext'
 import './App.css'
+
+const pageMeta = {
+  '/': {
+    title: 'Abril Bianco | Portfolio',
+    description: 'Portfolio oficial de Abril Bianco: actuación, contenido, colaboraciones y contacto.'
+  },
+  '/content': {
+    title: 'Content Creator | Abril Bianco',
+    description: 'Proyectos de contenido, colaboraciones y servicios creativos de Abril Bianco.'
+  },
+  '/actress': {
+    title: 'Actress | Abril Bianco',
+    description: 'Portfolio actoral, reel y material audiovisual de Abril Bianco.'
+  },
+  '/contact': {
+    title: 'Contact | Abril Bianco',
+    description: 'Canales de contacto oficiales para proyectos y colaboraciones con Abril Bianco.'
+  }
+}
+
+function setMetaTag(selector, attribute, value) {
+  let tag = document.head.querySelector(selector)
+  if (!tag) {
+    tag = document.createElement('meta')
+    const match = selector.match(/\[(name|property)="([^"]+)"\]/)
+    if (match) {
+      tag.setAttribute(match[1], match[2])
+    }
+    document.head.appendChild(tag)
+  }
+  tag.setAttribute(attribute, value)
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -17,8 +50,31 @@ function ScrollToTop() {
 
 function App() {
   const location = useLocation()
+  const { language } = useLanguage()
   const isHomePage = location.pathname === '/'
   const [isVisible, setIsVisible] = useState(false)
+
+  useEffect(() => {
+    const meta = pageMeta[location.pathname] || pageMeta['/']
+    const canonicalUrl = `${window.location.origin}${location.pathname}`
+    document.documentElement.lang = language
+    document.title = meta.title
+    setMetaTag('meta[name="description"]', 'content', meta.description)
+    setMetaTag('meta[property="og:title"]', 'content', meta.title)
+    setMetaTag('meta[property="og:description"]', 'content', meta.description)
+    setMetaTag('meta[property="og:type"]', 'content', 'website')
+    setMetaTag('meta[property="og:url"]', 'content', canonicalUrl)
+    setMetaTag('meta[property="og:image"]', 'content', `${window.location.origin}/home/Firefly.webp`)
+    setMetaTag('meta[name="twitter:card"]', 'content', 'summary_large_image')
+
+    let canonical = document.head.querySelector('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.rel = 'canonical'
+      document.head.appendChild(canonical)
+    }
+    canonical.href = canonicalUrl
+  }, [location.pathname, language])
 
   useEffect(() => {
     // Reset visibility when switching to home page

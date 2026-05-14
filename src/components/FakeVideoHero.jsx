@@ -120,18 +120,28 @@ function FakeVideoHero({ isReelSection = false }) {
   return (
     <section className="fake-video-hero">
       {/* Background image */}
-      <img
-        src="/home/Firefly.png"
-        alt="Abril Bianco"
-        className="hero-background hero-background-desktop"
-        onContextMenu={handleImageContextMenu}
-      />
-      <img
-        src="/home/backgroundmobile.png"
-        alt="Abril Bianco"
-        className="hero-background hero-background-mobile"
-        onContextMenu={handleImageContextMenu}
-      />
+      <picture className="hero-background-picture hero-background-desktop">
+        <source srcSet="/home/Firefly.webp" type="image/webp" />
+        <img
+          src="/home/Firefly.png"
+          alt="Abril Bianco"
+          className="hero-background"
+          fetchpriority="high"
+          decoding="async"
+          onContextMenu={handleImageContextMenu}
+        />
+      </picture>
+      <picture className="hero-background-picture hero-background-mobile">
+        <source srcSet="/home/backgroundmobile.webp" type="image/webp" />
+        <img
+          src="/home/backgroundmobile.png"
+          alt="Abril Bianco"
+          className="hero-background"
+          fetchpriority="high"
+          decoding="async"
+          onContextMenu={handleImageContextMenu}
+        />
+      </picture>
 
       {/* Dark overlay */}
       <div className="hero-overlay" />

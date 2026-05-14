@@ -22,6 +22,7 @@ function ReelVideo({ src, onContextMenu }) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            video.preload = 'auto'
             const playPromise = video.play()
             if (playPromise && typeof playPromise.catch === 'function') {
               playPromise.catch(() => {})
@@ -31,7 +32,7 @@ function ReelVideo({ src, onContextMenu }) {
           }
         })
       },
-      { threshold: 0.4 }
+      { threshold: 0.35, rootMargin: '160px 0px' }
     )
 
     observer.observe(video)
@@ -48,7 +49,7 @@ function ReelVideo({ src, onContextMenu }) {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         onLoadedData={() => setIsLoaded(true)}
         onCanPlay={() => setIsLoaded(true)}
         onContextMenu={onContextMenu}
@@ -75,7 +76,6 @@ function Content() {
   const [modalVideoLoaded, setModalVideoLoaded] = useState(false)
   const [areReelCardsVisible, setAreReelCardsVisible] = useState(false)
   const [areServicesVisible, setAreServicesVisible] = useState(false)
-  const preloadedVideosRef = useRef([])
   const servicesListRef = useRef(null)
 
   const handleImageContextMenu = (e) => {
@@ -115,42 +115,6 @@ function Content() {
     })
 
     return () => window.cancelAnimationFrame(animationFrame)
-  }, [])
-
-  useEffect(() => {
-    const videoSources = contentItems.filter((item) => item.type === 'video').map((item) => item.src)
-
-    videoSources.forEach((src) => {
-      const href = new URL(src, window.location.origin).href
-      const existingPreload = Array.from(document.querySelectorAll('link[rel="preload"][as="video"]')).some((link) => link.href === href)
-
-      if (!existingPreload) {
-        const link = document.createElement('link')
-        link.rel = 'preload'
-        link.as = 'video'
-        link.href = src
-        link.type = 'video/mp4'
-        link.setAttribute('fetchpriority', 'high')
-        document.head.appendChild(link)
-      }
-
-      const video = document.createElement('video')
-      video.preload = 'auto'
-      video.muted = true
-      video.playsInline = true
-      video.setAttribute('playsinline', '')
-      video.src = src
-      video.load()
-      preloadedVideosRef.current.push(video)
-    })
-
-    return () => {
-      preloadedVideosRef.current.forEach((video) => {
-        video.removeAttribute('src')
-        video.load()
-      })
-      preloadedVideosRef.current = []
-    }
   }, [])
 
   useEffect(() => {
@@ -275,6 +239,8 @@ function Content() {
                     src={item.src}
                     alt={item.title}
                     className="reel-card-media"
+                    loading="lazy"
+                    decoding="async"
                     onContextMenu={handleImageContextMenu}
                   />
                 )}
@@ -323,6 +289,7 @@ function Content() {
                 src={selectedItem.src}
                 alt={selectedItem.title}
                 className="modal-image"
+                decoding="async"
                 onContextMenu={handleImageContextMenu}
               />
             )}
