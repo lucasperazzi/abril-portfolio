@@ -986,7 +986,7 @@
   .fake-video-hero {
     height: 100vh;
     height: 100svh;
-    height: 100dvh;
+    min-height: 100svh;
   }
 
   .hero-background-desktop {

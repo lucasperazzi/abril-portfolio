@@ -134,6 +134,7 @@ body {
 }
 
 @media (max-width: 768px) {
+  html,
   body,
   #root {
     min-height: 100svh;
@@ -146,19 +147,7 @@ body {
 
   #root::before,
   #root::after {
-    position: absolute;
-    animation: none;
-  }
-
-  #root::before {
-    inset: 0;
-    transform: none;
-    filter: blur(28px) saturate(0.86);
-    opacity: 0.68;
-  }
-
-  #root::after {
-    opacity: 0.45;
+    display: none;
   }
 }
 
