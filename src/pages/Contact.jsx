@@ -9,7 +9,7 @@ function Contact() {
 
   const translations = {
     en: {
-      title: 'Trabajemos juntos',
+      title: "Let's work together",
       email: 'Email',
       instagram: 'Instagram',
       tiktok: 'TikTok',
