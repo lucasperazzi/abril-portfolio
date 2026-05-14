@@ -39,8 +39,15 @@ function App() {
 
   useEffect(() => {
     let frameId = null
+    const staticAtmosphereQuery = window.matchMedia('(max-width: 768px), (prefers-reduced-motion: reduce)')
 
     const updateAtmosphere = () => {
+      if (staticAtmosphereQuery.matches) {
+        document.documentElement.style.setProperty('--ambient-shift', '0px')
+        document.documentElement.style.setProperty('--ambient-opacity', '0.86')
+        return
+      }
+
       const scrollableHeight = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1)
       const scrollDepth = Math.min(window.scrollY / scrollableHeight, 1)
       document.documentElement.style.setProperty('--ambient-shift', `${scrollDepth * -72}px`)
@@ -48,6 +55,7 @@ function App() {
     }
 
     const handleAtmosphereScroll = () => {
+      if (staticAtmosphereQuery.matches) return
       if (frameId) return
       frameId = window.requestAnimationFrame(() => {
         updateAtmosphere()

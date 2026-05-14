@@ -133,6 +133,35 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  body,
+  #root {
+    min-height: 100svh;
+  }
+
+  #root {
+    background-attachment: scroll;
+    overflow-x: hidden;
+  }
+
+  #root::before,
+  #root::after {
+    position: absolute;
+    animation: none;
+  }
+
+  #root::before {
+    inset: 0;
+    transform: none;
+    filter: blur(28px) saturate(0.86);
+    opacity: 0.68;
+  }
+
+  #root::after {
+    opacity: 0.45;
+  }
+}
+
 /* Prevent image downloads */
 img {
   -webkit-user-select: none;
