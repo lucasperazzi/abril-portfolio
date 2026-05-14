@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { FiChevronDown, FiGlobe } from 'react-icons/fi'
+import { FiChevronDown, FiGlobe, FiMenu } from 'react-icons/fi'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
 
@@ -147,8 +147,10 @@ function Navbar({ isVisible = true, isHomePage = false }) {
             <button
               className="menu-button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={t.menu}
+              aria-expanded={isMenuOpen}
             >
-              {t.menu}
+              <FiMenu className="menu-icon" aria-hidden="true" />
             </button>
             <LanguageSelector />
           </div>
@@ -161,8 +163,10 @@ function Navbar({ isVisible = true, isHomePage = false }) {
           <button
             className="menu-button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={t.menu}
+            aria-expanded={isMenuOpen}
           >
-            {t.menu}
+            <FiMenu className="menu-icon" aria-hidden="true" />
           </button>
           <LanguageSelector />
         </div>

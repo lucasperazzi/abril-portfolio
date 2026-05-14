@@ -45,21 +45,29 @@
 }
 
 .menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
   background: none;
   border: none;
-  font-size: 0.85rem;
-  font-weight: 300;
-  letter-spacing: 0.12rem;
   color: var(--site-bg);
   cursor: pointer;
   padding: 0;
-  transition: opacity 0.3s ease;
-  font-family: 'Coolvetica', sans-serif;
-  text-transform: uppercase;
+  border-radius: 50%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .menu-button:hover {
   opacity: 0.7;
+  transform: translateY(-1px);
+}
+
+.menu-icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  stroke-width: 2;
 }
 
 .floating-nav {
@@ -84,21 +92,12 @@
 }
 
 .floating-nav .menu-button {
-  background: none;
-  border: none;
-  font-size: 0.85rem;
-  font-weight: 300;
-  letter-spacing: 0.12rem;
-  color: var(--site-bg);
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.3s ease;
-  font-family: 'Coolvetica', sans-serif;
-  text-transform: uppercase;
+  display: inline-flex;
 }
 
 .floating-nav .menu-button:hover {
   opacity: 0.7;
+  transform: translateY(-1px);
 }
 
 .simple-menu-overlay {
@@ -400,7 +399,8 @@
   }
 
   .menu-button {
-    font-size: 0.75rem;
+    width: 30px;
+    height: 30px;
   }
 
   .floating-nav {
@@ -416,7 +416,13 @@
   }
 
   .floating-nav .menu-button {
-    font-size: 0.75rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  .menu-icon {
+    width: 1.55rem;
+    height: 1.55rem;
   }
 
   .language-toggle {
