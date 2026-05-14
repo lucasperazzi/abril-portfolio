@@ -199,6 +199,8 @@ function FakeVideoHero({ isReelSection = false }) {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         videoSrc="/actress/reel_converted.mp4"
+        mobileVideoSrc="/actress/reel_converted-mobile.mp4"
+        poster="/actress/reel_converted-poster.jpg"
       />
     </section>
   )

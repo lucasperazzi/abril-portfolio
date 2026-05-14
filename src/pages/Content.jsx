@@ -1,72 +1,76 @@
 import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../LanguageContext'
+import LazyPreviewVideo from '../components/LazyPreviewVideo'
+import { useResponsiveVideoSrc } from '../hooks/useResponsiveVideoSrc'
 import './Content.css'
 
-function ReelVideo({ src, onContextMenu }) {
-  const videoRef = useRef(null)
-  const [isLoaded, setIsLoaded] = useState(false)
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    setIsLoaded(false)
-    video.load()
-  }, [src])
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.preload = 'auto'
-            const playPromise = video.play()
-            if (playPromise && typeof playPromise.catch === 'function') {
-              playPromise.catch(() => {})
-            }
-          } else {
-            video.pause()
-          }
-        })
-      },
-      { threshold: 0.35, rootMargin: '160px 0px' }
-    )
-
-    observer.observe(video)
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <>
-      {!isLoaded && <div className="reel-card-skeleton" />}
-      <video
-        ref={videoRef}
-        src={src}
-        className="reel-card-media"
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        onLoadedData={() => setIsLoaded(true)}
-        onCanPlay={() => setIsLoaded(true)}
-        onContextMenu={onContextMenu}
-      />
-    </>
-  )
-}
-
 const contentItems = [
-  { id: 1, title: 'Agora', type: 'video', src: '/content-creator/Agora.mp4' },
-  { id: 2, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona1.mp4' },
-  { id: 3, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia1.mp4' },
-  { id: 4, title: 'Agora', type: 'video', src: '/content-creator/Agora2.mp4' },
-  { id: 5, title: 'Maika Spa', type: 'video', src: '/content-creator/MaikaSpa.mp4' },
-  { id: 6, title: 'Santa Patrona', type: 'video', src: '/content-creator/SantaPatrona2.mp4' },
-  { id: 7, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia2.mp4' },
-  { id: 8, title: 'Toia de Kiev', type: 'video', src: '/content-creator/Toia3.mp4' }
+  {
+    id: 1,
+    title: 'Agora',
+    type: 'video',
+    src: '/content-creator/Agora.mp4',
+    mobileSrc: '/content-creator/Agora-mobile.mp4',
+    previewSrc: '/content-creator/Agora-preview.mp4',
+    poster: '/content-creator/Agora-poster.jpg'
+  },
+  {
+    id: 2,
+    title: 'Santa Patrona',
+    type: 'video',
+    src: '/content-creator/SantaPatrona1.mp4',
+    previewSrc: '/content-creator/SantaPatrona1-preview.mp4',
+    poster: '/content-creator/SantaPatrona1-poster.jpg'
+  },
+  {
+    id: 3,
+    title: 'Toia de Kiev',
+    type: 'video',
+    src: '/content-creator/Toia1.mp4',
+    previewSrc: '/content-creator/Toia1-preview.mp4',
+    poster: '/content-creator/Toia1-poster.jpg'
+  },
+  {
+    id: 4,
+    title: 'Agora',
+    type: 'video',
+    src: '/content-creator/Agora2.mp4',
+    mobileSrc: '/content-creator/Agora2-mobile.mp4',
+    previewSrc: '/content-creator/Agora2-preview.mp4',
+    poster: '/content-creator/Agora2-poster.jpg'
+  },
+  {
+    id: 5,
+    title: 'Maika Spa',
+    type: 'video',
+    src: '/content-creator/MaikaSpa.mp4',
+    previewSrc: '/content-creator/MaikaSpa-preview.mp4',
+    poster: '/content-creator/MaikaSpa-poster.jpg'
+  },
+  {
+    id: 6,
+    title: 'Santa Patrona',
+    type: 'video',
+    src: '/content-creator/SantaPatrona2.mp4',
+    previewSrc: '/content-creator/SantaPatrona2-preview.mp4',
+    poster: '/content-creator/SantaPatrona2-poster.jpg'
+  },
+  {
+    id: 7,
+    title: 'Toia de Kiev',
+    type: 'video',
+    src: '/content-creator/Toia2.mp4',
+    previewSrc: '/content-creator/Toia2-preview.mp4',
+    poster: '/content-creator/Toia2-poster.jpg'
+  },
+  {
+    id: 8,
+    title: 'Toia de Kiev',
+    type: 'video',
+    src: '/content-creator/Toia3.mp4',
+    previewSrc: '/content-creator/Toia3-preview.mp4',
+    poster: '/content-creator/Toia3-poster.jpg'
+  }
 ]
 
 function Content() {
@@ -77,6 +81,7 @@ function Content() {
   const [areReelCardsVisible, setAreReelCardsVisible] = useState(false)
   const [areServicesVisible, setAreServicesVisible] = useState(false)
   const servicesListRef = useRef(null)
+  const selectedVideoSrc = useResponsiveVideoSrc(selectedItem?.src, selectedItem?.mobileSrc)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -108,6 +113,10 @@ function Content() {
       document.body.style.overflow = 'unset'
     }
   }, [selectedItem, isClosing])
+
+  useEffect(() => {
+    setModalVideoLoaded(false)
+  }, [selectedVideoSrc])
 
   useEffect(() => {
     const animationFrame = window.requestAnimationFrame(() => {
@@ -230,8 +239,11 @@ function Content() {
               <h3 className="reel-card-title">{item.title}</h3>
               <div className="reel-card">
                 {item.type === 'video' ? (
-                  <ReelVideo
-                    src={item.src}
+                  <LazyPreviewVideo
+                    src={item.previewSrc || item.src}
+                    poster={item.poster}
+                    className="reel-card-media"
+                    skeletonClassName="reel-card-skeleton"
                     onContextMenu={handleImageContextMenu}
                   />
                 ) : (
@@ -273,13 +285,17 @@ function Content() {
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedItem.type === 'video' ? (
               <>
-                {!modalVideoLoaded && <div className="modal-video-skeleton" />}
+                {!modalVideoLoaded && !selectedItem.poster && <div className="modal-video-skeleton" />}
                 <video
-                  src={selectedItem.src}
+                  key={selectedVideoSrc}
+                  src={selectedVideoSrc}
                   className="modal-image"
                   controls
                   autoPlay
                   playsInline
+                  preload="metadata"
+                  poster={selectedItem.poster}
+                  onLoadedData={() => setModalVideoLoaded(true)}
                   onCanPlay={() => setModalVideoLoaded(true)}
                   onContextMenu={handleImageContextMenu}
                 />

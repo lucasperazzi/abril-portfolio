@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import ReelModal from '../components/ReelModal'
+import LazyPreviewVideo from '../components/LazyPreviewVideo'
+import { useResponsiveVideoSrc } from '../hooks/useResponsiveVideoSrc'
 import './Actress.css'
 
 function Actress() {
@@ -9,6 +11,7 @@ function Actress() {
   const [isClosing, setIsClosing] = useState(false)
   const [isReelOpen, setIsReelOpen] = useState(false)
   const [isGalleryVisible, setIsGalleryVisible] = useState(false)
+  const selectedVideoSrc = useResponsiveVideoSrc(selectedItem?.src, selectedItem?.mobileSrc)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -69,7 +72,15 @@ function Actress() {
   const t = translations[language]
 
   const items = [
-    { id: 1, title: 'Acting Reel', type: 'video', src: '/actress/reel_converted.mp4' },
+    {
+      id: 1,
+      title: 'Acting Reel',
+      type: 'video',
+      src: '/actress/reel_converted.mp4',
+      mobileSrc: '/actress/reel_converted-mobile.mp4',
+      previewSrc: '/actress/reel_converted-preview.mp4',
+      poster: '/actress/reel_converted-poster.jpg'
+    },
     { id: 2, title: 'Film Scene 1', type: 'image', src: '/actress/Abril1.jpeg' },
     { id: 3, title: 'Film Scene 2', type: 'image', src: '/actress/Abril2.jpeg' },
     { id: 4, title: 'Theater Performance 1', type: 'image', src: '/actress/Abril3.jpeg' },
@@ -97,14 +108,10 @@ function Actress() {
                 onClick={() => setSelectedItem(item)}
               >
                 {item.type === 'video' ? (
-                  <video
-                    src={item.src}
+                  <LazyPreviewVideo
+                    src={item.previewSrc || item.src}
+                    poster={item.poster}
                     className="media-image"
-                    muted
-                    loop
-                    autoPlay
-                    playsInline
-                    preload="metadata"
                     onContextMenu={handleImageContextMenu}
                   />
                 ) : (
@@ -121,7 +128,7 @@ function Actress() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedItem.type === 'video' ? (
-              <video src={selectedItem.src} className="modal-image" controls autoPlay playsInline onContextMenu={handleImageContextMenu} />
+              <video key={selectedVideoSrc} src={selectedVideoSrc} className="modal-image" controls autoPlay playsInline preload="metadata" poster={selectedItem.poster} onContextMenu={handleImageContextMenu} />
             ) : (
               <img src={selectedItem.src} alt={selectedItem.title} className="modal-image" decoding="async" onContextMenu={handleImageContextMenu} />
             )}
@@ -133,6 +140,8 @@ function Actress() {
         isOpen={isReelOpen}
         onClose={() => setIsReelOpen(false)}
         videoSrc="/actress/reel_converted.mp4"
+        mobileVideoSrc="/actress/reel_converted-mobile.mp4"
+        poster="/actress/reel_converted-poster.jpg"
       />
     </div>
   )
