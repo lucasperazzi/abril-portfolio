@@ -3,6 +3,33 @@ import { useLanguage } from '../LanguageContext'
 import { useNavigate } from 'react-router-dom'
 import ReelModal from './ReelModal'
 
+const ArrowIcon = () => (
+  <svg 
+    width="22" 
+    height="22" 
+    viewBox="0 0 22 22" 
+    fill="none" 
+    className="role-arrow"
+  >
+    <path d="M9 13L18 4" stroke="currentColor" strokeWidth="1.9"/>
+    <path d="M10 4H18V12" stroke="currentColor" strokeWidth="1.9"/>
+  </svg>
+)
+
+const DownArrowIcon = () => (
+  <svg 
+    width="22" 
+    height="22" 
+    viewBox="0 0 22 22" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg"
+    className="scroll-arrow-icon"
+  >
+    <path d="M11 4V16" stroke="currentColor" strokeWidth="1.9"/>
+    <path d="M5 10L11 16L17 10" stroke="currentColor" strokeWidth="1.9"/>
+  </svg>
+)
+
 function FakeVideoHero({ isReelSection = false }) {
   const { language } = useLanguage()
   const navigate = useNavigate()
@@ -158,15 +185,13 @@ function FakeVideoHero({ isReelSection = false }) {
               onClick={() => handleRoleClick('/actress', 'actress')}
               className={`role-button ${pressedRole === 'actress' ? 'role-button-pressed' : ''}`}
             >
-              <span className="role-title">{t.actress}</span>
-              <span className="role-desc">{t.actressDesc}</span>
+              <span className="role-title"><ArrowIcon /> {t.actress}</span>
             </button>
             <button
               onClick={() => handleRoleClick('/content', 'content')}
               className={`role-button ${pressedRole === 'content' ? 'role-button-pressed' : ''}`}
             >
-              <span className="role-title">{t.creator}</span>
-              <span className="role-desc">{t.creatorDesc}</span>
+              <span className="role-title"><ArrowIcon /> {t.creator}</span>
             </button>
           </div>
         ) : (
@@ -189,7 +214,7 @@ function FakeVideoHero({ isReelSection = false }) {
           aria-label={t.scrollToAbout}
         >
           <span className="scroll-label">{t.scrollToAbout}</span>
-          <span className="scroll-arrow">↓</span>
+          <DownArrowIcon />
         </button>
       )}
 
@@ -199,7 +224,6 @@ function FakeVideoHero({ isReelSection = false }) {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         videoSrc="/actress/reel_converted.mp4"
-        mobileVideoSrc="/actress/reel_converted-mobile.mp4"
         poster="/actress/reel_converted-poster.jpg"
       />
     </section>

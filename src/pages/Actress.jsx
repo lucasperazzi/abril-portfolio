@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import ReelModal from '../components/ReelModal'
 import LazyPreviewVideo from '../components/LazyPreviewVideo'
-import { useResponsiveVideoSrc } from '../hooks/useResponsiveVideoSrc'
 import './Actress.css'
 
 function Actress() {
@@ -11,7 +10,6 @@ function Actress() {
   const [isClosing, setIsClosing] = useState(false)
   const [isReelOpen, setIsReelOpen] = useState(false)
   const [isGalleryVisible, setIsGalleryVisible] = useState(false)
-  const selectedVideoSrc = useResponsiveVideoSrc(selectedItem?.src, selectedItem?.mobileSrc)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -77,7 +75,6 @@ function Actress() {
       title: 'Acting Reel',
       type: 'video',
       src: '/actress/reel_converted.mp4',
-      mobileSrc: '/actress/reel_converted-mobile.mp4',
       previewSrc: '/actress/reel_converted-preview.mp4',
       poster: '/actress/reel_converted-poster.jpg'
     },
@@ -128,7 +125,7 @@ function Actress() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={closeModal}>×</button>
             {selectedItem.type === 'video' ? (
-              <video key={selectedVideoSrc} src={selectedVideoSrc} className="modal-image" controls autoPlay playsInline preload="metadata" poster={selectedItem.poster} onContextMenu={handleImageContextMenu} />
+              <video key={selectedItem.src} src={selectedItem.src} className="modal-image" controls autoPlay playsInline preload="metadata" poster={selectedItem.poster} onContextMenu={handleImageContextMenu} />
             ) : (
               <img src={selectedItem.src} alt={selectedItem.title} className="modal-image" decoding="async" onContextMenu={handleImageContextMenu} />
             )}
@@ -140,7 +137,6 @@ function Actress() {
         isOpen={isReelOpen}
         onClose={() => setIsReelOpen(false)}
         videoSrc="/actress/reel_converted.mp4"
-        mobileVideoSrc="/actress/reel_converted-mobile.mp4"
         poster="/actress/reel_converted-poster.jpg"
       />
     </div>

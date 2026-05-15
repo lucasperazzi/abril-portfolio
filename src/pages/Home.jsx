@@ -71,7 +71,7 @@ function Home() {
       <section className="about-section-with-images">
         <h2 className="section-title">{t.about}</h2>
         <p className="description">{t.description}</p>
-        <div ref={aboutImagesRef} className={`about-images about-images-animated ${isAboutImagesVisible ? 'about-images-visible' : ''}`}>
+        <div className="about-images">
           <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
           <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
           <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />

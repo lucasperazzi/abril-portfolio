@@ -51,19 +51,18 @@
   width: 34px;
   height: 28px;
   background: var(--site-text);
-  border: 2px solid var(--site-bg);
+  border: none;
   color: var(--site-bg);
   cursor: pointer;
   padding: 0;
   border-radius: 9999px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .menu-button:hover {
-  background: var(--site-bg);
-  color: var(--site-text);
+  background: #000;
+  color: #fff;
   transform: translateY(-1px);
-  box-shadow: -3px 4px 0 rgba(143, 47, 90, 0.35), -6px 10px 18px rgba(0, 0, 0, 0.18);
 }
 
 .menu-icon {
@@ -208,8 +207,11 @@
 .simple-menu-items {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .simple-menu-item {
@@ -218,24 +220,21 @@
   justify-content: center;
   color: var(--site-text);
   text-decoration: none;
-  font-size: 1.8rem;
-  font-weight: 400;
-  letter-spacing: 0.1rem;
-  font-family: 'Coolvetica', sans-serif;
-  padding: 1rem 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+  padding: 0.5rem 1rem;
   text-align: center;
-  text-transform: uppercase;
-  border-radius: 50px;
+  text-transform: none;
   opacity: 0;
   animation: slideUp 0.3s ease forwards;
-  border: 2px solid transparent;
-  align-self: center;
-  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  width: auto;
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .simple-menu-item span {
   display: inline-block;
-  transition: transform 0.3s ease;
 }
 
 .simple-menu-item:nth-child(1) {
@@ -265,19 +264,21 @@
   }
 }
 
-.simple-menu-item:hover span {
-  transform: scale(1.05);
-}
-
 .simple-menu-item:hover,
 .simple-menu-item.active {
-  background: rgba(234, 167, 199, 0.16);
-  border-color: rgba(234, 167, 199, 0.55);
-  box-shadow: -3px 4px 0 rgba(143, 47, 90, 0.35);
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--site-pink);
+  font-weight: 700;
 }
 
 .simple-menu-item.active span {
   color: var(--site-pink);
+}
+
+.simple-menu-item:hover {
+  transform: translateX(4px);
 }
 
 .language-selector {
@@ -297,7 +298,7 @@
   height: 28px;
   padding: 0.25rem 0.42rem;
   background: var(--site-text);
-  border: 2px solid var(--site-bg);
+  border: none;
   border-radius: 9999px;
   color: var(--site-bg);
   cursor: pointer;
@@ -306,7 +307,7 @@
   font-weight: 700;
   letter-spacing: 0.08rem;
   line-height: 1;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
 }
 
 .language-toggle span,
@@ -321,10 +322,9 @@
 
 .language-toggle:hover,
 .language-selector.open .language-toggle {
-  background: var(--site-bg);
-  color: var(--site-text);
+  background: #000;
+  color: #fff;
   transform: translateY(-1px);
-  box-shadow: -3px 4px 0 rgba(143, 47, 90, 0.35), -6px 10px 18px rgba(0, 0, 0, 0.18);
 }
 
 .language-icon {
@@ -349,11 +349,11 @@
   top: calc(100% + 0.55rem);
   right: 0;
   min-width: 164px;
-  padding: 0.45rem;
+  padding: 0.25rem;
   background: var(--site-text);
-  border: 2px solid var(--site-bg);
-  border-radius: 1rem;
-  box-shadow: -4px 5px 0 rgba(143, 47, 90, 0.35), -8px 14px 24px rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--site-bg);
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   animation: languageMenuIn 0.18s ease forwards;
 }
 
@@ -365,20 +365,21 @@
   padding: 0.7rem 0.75rem;
   background: transparent;
   border: none;
-  border-radius: 0.7rem;
+  border-radius: 0;
   color: var(--site-bg);
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--site-secondary-text);
   font-size: 0.9rem;
   font-weight: 500;
   text-align: left;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .language-option:hover,
 .language-option.active {
-  background: rgba(234, 167, 199, 0.35);
-  transform: translateX(2px);
+  background: transparent;
+  color: var(--site-pink);
+  font-weight: 700;
 }
 
 .language-option-code {

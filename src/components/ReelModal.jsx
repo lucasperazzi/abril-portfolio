@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useResponsiveVideoSrc } from '../hooks/useResponsiveVideoSrc'
 
-function ReelModal({ isOpen, onClose, videoSrc = '/actress/reel_converted.mp4', mobileVideoSrc, poster }) {
+function ReelModal({ isOpen, onClose, videoSrc = '/actress/reel_converted.mp4', poster }) {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-  const resolvedVideoSrc = useResponsiveVideoSrc(videoSrc, mobileVideoSrc)
 
   useEffect(() => {
     if (isOpen) {
       setIsVideoLoaded(false)
     }
-  }, [isOpen, resolvedVideoSrc])
+  }, [isOpen, videoSrc])
 
   // Cerrar con ESC
   useEffect(() => {
@@ -51,8 +49,8 @@ function ReelModal({ isOpen, onClose, videoSrc = '/actress/reel_converted.mp4', 
 
         {!isVideoLoaded && !poster && <div className="reel-modal-skeleton" />}
         <video
-          key={resolvedVideoSrc}
-          src={resolvedVideoSrc}
+          key={videoSrc}
+          src={videoSrc}
           controls
           autoPlay
           playsInline

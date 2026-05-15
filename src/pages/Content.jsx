@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../LanguageContext'
 import LazyPreviewVideo from '../components/LazyPreviewVideo'
-import { useResponsiveVideoSrc } from '../hooks/useResponsiveVideoSrc'
 import './Content.css'
 
 const contentItems = [
@@ -10,7 +9,6 @@ const contentItems = [
     title: 'Agora',
     type: 'video',
     src: '/content-creator/Agora.mp4',
-    mobileSrc: '/content-creator/Agora-mobile.mp4',
     previewSrc: '/content-creator/Agora-preview.mp4',
     poster: '/content-creator/Agora-poster.jpg'
   },
@@ -35,7 +33,6 @@ const contentItems = [
     title: 'Agora',
     type: 'video',
     src: '/content-creator/Agora2.mp4',
-    mobileSrc: '/content-creator/Agora2-mobile.mp4',
     previewSrc: '/content-creator/Agora2-preview.mp4',
     poster: '/content-creator/Agora2-poster.jpg'
   },
@@ -81,7 +78,6 @@ function Content() {
   const [areReelCardsVisible, setAreReelCardsVisible] = useState(false)
   const [areServicesVisible, setAreServicesVisible] = useState(false)
   const servicesListRef = useRef(null)
-  const selectedVideoSrc = useResponsiveVideoSrc(selectedItem?.src, selectedItem?.mobileSrc)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -113,10 +109,6 @@ function Content() {
       document.body.style.overflow = 'unset'
     }
   }, [selectedItem, isClosing])
-
-  useEffect(() => {
-    setModalVideoLoaded(false)
-  }, [selectedVideoSrc])
 
   useEffect(() => {
     const animationFrame = window.requestAnimationFrame(() => {
@@ -287,8 +279,8 @@ function Content() {
               <>
                 {!modalVideoLoaded && !selectedItem.poster && <div className="modal-video-skeleton" />}
                 <video
-                  key={selectedVideoSrc}
-                  src={selectedVideoSrc}
+                  key={selectedItem.src}
+                  src={selectedItem.src}
                   className="modal-image"
                   controls
                   autoPlay
