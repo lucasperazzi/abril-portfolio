@@ -220,9 +220,9 @@
   justify-content: center;
   color: var(--site-text);
   text-decoration: none;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 3.5rem;
+  font-weight: 500;
+  letter-spacing: -0.05em;
   font-family: 'Inter', sans-serif;
   padding: 0.5rem 1rem;
   text-align: center;
@@ -270,7 +270,7 @@
   border-color: transparent;
   box-shadow: none;
   color: var(--site-pink);
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .simple-menu-item.active span {
@@ -488,9 +488,11 @@
   }
 
   .simple-menu-item {
-    font-size: 1.4rem;
+    font-size: 2.5rem;
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: -0.05em;
   }
 
   .simple-menu-items {

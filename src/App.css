@@ -259,7 +259,7 @@
 /* Scroll Down Indicator */
 .scroll-down-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 3.5rem;
   left: 50%;
   transform: translateX(-50%);
   background: transparent;
@@ -270,7 +270,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 0.15rem;
   cursor: pointer;
   transition: opacity 0.5s ease, transform 0.3s ease, background 0.3s ease;
   z-index: 20;
@@ -306,14 +306,17 @@
   line-height: 1;
   text-transform: none;
   white-space: nowrap;
+  margin-right: 0;
 }
 
 .scroll-arrow-icon {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   color: var(--site-text);
   stroke: var(--site-text);
   animation: arrowMove 2s infinite;
+  flex-shrink: 0;
+  display: block;
 }
 
 @keyframes bounce {
@@ -1034,10 +1037,10 @@
 
   /* Scroll down indicator mobile */
   .scroll-down-indicator {
-    bottom: calc(2.25rem + env(safe-area-inset-bottom, 0px));
+    bottom: calc(3.5rem + env(safe-area-inset-bottom, 0px));
     min-width: 108px;
     padding: 0.65rem 0.85rem;
-    gap: 0.45rem;
+    gap: 0.1rem;
   }
 
   .scroll-label {
@@ -1046,8 +1049,17 @@
   }
 
   .scroll-arrow-icon {
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Safari/iOS specific fix for gap */
+  .scroll-down-indicator {
+    gap: 0;
+  }
+
+  .scroll-label {
+    margin-right: 0.1rem;
   }
 
   .role-button {
