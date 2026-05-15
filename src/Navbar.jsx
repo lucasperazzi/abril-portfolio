@@ -67,11 +67,16 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const [activePath, setActivePath] = useState(location.pathname)
   const isMenuActive = isMenuOpen || isClosing
 
   useEffect(() => {
     setIsMounted(true)
   }, [])
+
+  useEffect(() => {
+    setActivePath(location.pathname)
+  }, [location.pathname])
 
   useEffect(() => {
     if (!isMenuActive) {
@@ -132,8 +137,8 @@ function Navbar({ isVisible = true, isHomePage = false }) {
 
   const t = translations[language]
   const getMenuItemProps = (path) => ({
-    className: `simple-menu-item ${location.pathname === path ? 'active' : ''}`,
-    'aria-current': location.pathname === path ? 'page' : undefined
+    className: `simple-menu-item ${activePath === path ? 'active' : ''}`,
+    'aria-current': activePath === path ? 'page' : undefined
   })
 
   const handleLogoClick = (e) => {
@@ -143,28 +148,20 @@ function Navbar({ isVisible = true, isHomePage = false }) {
     }
   }
 
+  const handleMenuItemClick = (path) => {
+    setIsMenuOpen(false)
+    setIsClosing(false)
+    setActivePath(path)
+  }
+
   return (
     <>
       <nav className={`top-nav ${isVisible ? 'visible' : ''}`}>
         <div className="nav-content">
           <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>
-          <div className="nav-right">
-            <button
-              className="menu-button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={t.menu}
-              aria-expanded={isMenuOpen}
-            >
-              <FiMenu className="menu-icon" aria-hidden="true" />
-            </button>
-            <LanguageSelector />
-          </div>
         </div>
-      </nav>
-
-      {/* Always visible menu button and language selector for main page */}
-      {isMounted && (
-        <div className={`floating-nav ${isVisible ? 'hide' : 'show'}`}>
+        <div className="nav-right">
+          <LanguageSelector />
           <button
             className="menu-button"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -173,7 +170,21 @@ function Navbar({ isVisible = true, isHomePage = false }) {
           >
             <FiMenu className="menu-icon" aria-hidden="true" />
           </button>
+        </div>
+      </nav>
+
+      {/* Always visible menu button and language selector for main page */}
+      {isMounted && (
+        <div className={`floating-nav ${isVisible ? 'hide' : 'show'}`}>
           <LanguageSelector />
+          <button
+            className="menu-button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={t.menu}
+            aria-expanded={isMenuOpen}
+          >
+            <FiMenu className="menu-icon" aria-hidden="true" />
+          </button>
         </div>
       )}
 
@@ -183,17 +194,17 @@ function Navbar({ isVisible = true, isHomePage = false }) {
             <button className="simple-menu-close" onClick={closeMenu} aria-label={t.menu}>×</button>
             <div className="simple-menu-items">
               {!isHomePage && (
-                <Link to="/" {...getMenuItemProps('/')} onClick={closeMenu}>
+                <Link to="/" {...getMenuItemProps('/')} onClick={() => handleMenuItemClick('/')}>
                   <span>{t.home}</span>
                 </Link>
               )}
-              <Link to="/content" {...getMenuItemProps('/content')} onClick={closeMenu}>
+              <Link to="/content" {...getMenuItemProps('/content')} onClick={() => handleMenuItemClick('/content')}>
                 <span>{t.content}</span>
               </Link>
-              <Link to="/actress" {...getMenuItemProps('/actress')} onClick={closeMenu}>
+              <Link to="/actress" {...getMenuItemProps('/actress')} onClick={() => handleMenuItemClick('/actress')}>
                 <span>{t.actress}</span>
               </Link>
-              <Link to="/contact" {...getMenuItemProps('/contact')} onClick={closeMenu}>
+              <Link to="/contact" {...getMenuItemProps('/contact')} onClick={() => handleMenuItemClick('/contact')}>
                 <span>{t.contact}</span>
               </Link>
             </div>

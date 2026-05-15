@@ -6,6 +6,9 @@
   background: var(--site-text);
   z-index: 1000;
   height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .top-nav.visible {
@@ -17,7 +20,7 @@
   margin: 0 auto;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -25,13 +28,17 @@
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
+  justify-content: flex-end;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  right: 0;
+  padding-right: 2rem;
 }
 
 .nav-logo {
   font-size: 1.2rem;
-  font-weight: normal;
+  font-weight: 800;
   letter-spacing: 0.1rem;
   color: var(--site-bg);
   font-family: 'Coolvetica', sans-serif;
@@ -48,26 +55,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 28px;
+  width: 40px;
+  height: 32px;
   background: var(--site-text);
   border: none;
   color: var(--site-bg);
   cursor: pointer;
   padding: 0;
   border-radius: 9999px;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .menu-button:hover {
-  background: #000;
-  color: #fff;
-  transform: translateY(-1px);
+  transform: scale(1.15);
 }
 
 .menu-icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.4rem;
+  height: 1.4rem;
   stroke-width: 2;
 }
 
@@ -81,7 +86,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
   z-index: 999;
   height: 64px;
   transition: opacity 0.3s ease;
@@ -94,13 +99,12 @@
 
 .floating-nav .menu-button {
   display: inline-flex;
+  width: 40px;
+  height: 32px;
 }
 
 .floating-nav .menu-button:hover {
-  background: var(--site-bg);
-  color: var(--site-text);
-  transform: translateY(-1px);
-  box-shadow: -3px 4px 0 rgba(143, 47, 90, 0.35), -6px 10px 18px rgba(0, 0, 0, 0.18);
+  transform: scale(1.15);
 }
 
 .simple-menu-overlay {
@@ -294,20 +298,20 @@
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  min-width: 64px;
-  height: 28px;
-  padding: 0.25rem 0.42rem;
+  min-width: 72px;
+  height: 32px;
+  padding: 0.3rem 0.5rem;
   background: var(--site-text);
   border: none;
   border-radius: 9999px;
   color: var(--site-bg);
   cursor: pointer;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08rem;
   line-height: 1;
-  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .language-toggle span,
@@ -320,22 +324,23 @@
   transform: translateY(0.5px);
 }
 
-.language-toggle:hover,
+.language-toggle:hover {
+  transform: scale(1.08);
+}
+
 .language-selector.open .language-toggle {
-  background: #000;
-  color: #fff;
-  transform: translateY(-1px);
+  transform: scale(1.08);
 }
 
 .language-icon {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 1.1rem;
+  height: 1.1rem;
   flex: 0 0 auto;
 }
 
 .language-chevron {
-  width: 0.72rem;
-  height: 0.72rem;
+  width: 0.8rem;
+  height: 0.8rem;
   flex: 0 0 auto;
   transition: transform 0.25s ease;
 }
@@ -417,6 +422,8 @@
   .nav-right {
     gap: 0.75rem;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    right: 0;
+    padding-right: 1rem;
   }
 
   .menu-button {
