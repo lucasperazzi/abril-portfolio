@@ -270,9 +270,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
+  gap: 0.3rem;
   cursor: pointer;
-  transition: opacity 0.5s ease, transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  transition: opacity 0.5s ease, transform 0.3s ease, background 0.3s ease;
   z-index: 20;
   animation: bounce 2s infinite;
   opacity: 1;
@@ -286,12 +286,19 @@
 
 .scroll-down-indicator:hover {
   background: var(--site-text);
-  color: var(--site-bg);
   transform: translateX(-50%) scale(1.02);
 }
 
+.scroll-down-indicator:hover .scroll-label,
+.scroll-down-indicator:hover .scroll-arrow-icon {
+  color: var(--site-bg);
+  -webkit-text-fill-color: var(--site-bg);
+  stroke: var(--site-bg);
+}
+
 .scroll-label {
-  color: inherit;
+  color: var(--site-text);
+  -webkit-text-fill-color: var(--site-text);
   font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
@@ -304,7 +311,8 @@
 .scroll-arrow-icon {
   width: 16px;
   height: 16px;
-  color: inherit;
+  color: var(--site-text);
+  stroke: var(--site-text);
   animation: arrowMove 2s infinite;
 }
 
