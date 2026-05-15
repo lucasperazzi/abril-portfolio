@@ -367,23 +367,23 @@
 .role-arrow {
   width: 1em;
   height: 1em;
-  margin-right: 0.2em;
-  display: inline-block;
-  transform: translateY(0.2em);
+  margin-right: 0.15em;
+  flex-shrink: 0;
 }
 
 .role-title {
   font-size: 3rem;
   font-weight: 500;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: center;
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.05em;
-  line-height: 0.9;
+  line-height: 1;
   transition: color 0.3s ease;
   text-align: center;
   width: 100%;
+  gap: 0;
 }
 
 .role-desc {
@@ -1055,6 +1055,13 @@
     font-size: 2.5rem;
     line-height: 1;
     letter-spacing: -0.05em;
+    align-items: center;
+  }
+
+  .role-arrow {
+    width: 0.9em;
+    height: 0.9em;
+    margin-right: 0.1em;
   }
 
   .role-desc {
