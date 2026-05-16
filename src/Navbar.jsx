@@ -79,7 +79,13 @@ function Navbar({ isVisible = true, isHomePage = false }) {
     if (!isHomePage) {
       setIsScrolled(true)
     } else {
-      setIsScrolled(window.scrollY > 50)
+      const aboutSection = document.querySelector('.about-section-with-images')
+      if (aboutSection) {
+        const aboutSectionTop = aboutSection.getBoundingClientRect().top + window.pageYOffset
+        setIsScrolled(window.scrollY > aboutSectionTop)
+      } else {
+        setIsScrolled(window.scrollY > 50)
+      }
     }
   }, [isHomePage])
 
@@ -91,7 +97,13 @@ function Navbar({ isVisible = true, isHomePage = false }) {
     if (!isHomePage) return
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+      const aboutSection = document.querySelector('.about-section-with-images')
+      if (aboutSection) {
+        const aboutSectionTop = aboutSection.getBoundingClientRect().top + window.pageYOffset
+        setIsScrolled(window.scrollY > aboutSectionTop)
+      } else {
+        setIsScrolled(window.scrollY > 50)
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -180,7 +192,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
     <>
       <nav className={`top-nav ${isVisible ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-content">
-          {!isHomePage && (
+          {(!isHomePage || isScrolled) && (
             <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>
           )}
         </div>
