@@ -4,7 +4,7 @@ import { FiChevronDown, FiGlobe, FiMenu } from 'react-icons/fi'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
 
-function LanguageSelector() {
+function LanguageSelector({ isScrolled = false }) {
   const { language, setLanguage } = useLanguage()
   const [isOpen, setIsOpen] = useState(false)
   const selectorRef = useRef(null)
@@ -32,7 +32,7 @@ function LanguageSelector() {
   return (
     <div className={`language-selector ${isOpen ? 'open' : ''}`} ref={selectorRef}>
       <button
-        className="language-toggle"
+        className={`language-toggle ${isScrolled ? 'scrolled' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
@@ -68,6 +68,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   const [isMounted, setIsMounted] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
   const [activePath, setActivePath] = useState(location.pathname)
+  const [isScrolled, setIsScrolled] = useState(!isHomePage)
   const isMenuActive = isMenuOpen || isClosing
 
   useEffect(() => {
@@ -75,8 +76,29 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   }, [])
 
   useEffect(() => {
+    if (!isHomePage) {
+      setIsScrolled(true)
+    } else {
+      setIsScrolled(window.scrollY > 50)
+    }
+  }, [isHomePage])
+
+  useEffect(() => {
     setActivePath(location.pathname)
   }, [location.pathname])
+
+  useEffect(() => {
+    if (!isHomePage) return
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial scroll position
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [isHomePage])
 
   useEffect(() => {
     if (!isMenuActive) {
@@ -156,14 +178,16 @@ function Navbar({ isVisible = true, isHomePage = false }) {
 
   return (
     <>
-      <nav className={`top-nav ${isVisible ? 'visible' : ''}`}>
+      <nav className={`top-nav ${isVisible ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-content">
-          <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>
+          {!isHomePage && (
+            <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>
+          )}
         </div>
         <div className="nav-right">
-          <LanguageSelector />
+          <LanguageSelector isScrolled={isScrolled} />
           <button
-            className="menu-button"
+            className={`menu-button ${isScrolled ? 'scrolled' : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={t.menu}
             aria-expanded={isMenuOpen}
@@ -175,10 +199,10 @@ function Navbar({ isVisible = true, isHomePage = false }) {
 
       {/* Always visible menu button and language selector for main page */}
       {isMounted && (
-        <div className={`floating-nav ${isVisible ? 'hide' : 'show'}`}>
-          <LanguageSelector />
+        <div className={`floating-nav ${isVisible ? 'hide' : 'show'} ${isScrolled ? 'scrolled' : ''}`}>
+          <LanguageSelector isScrolled={isScrolled} />
           <button
-            className="menu-button"
+            className={`menu-button ${isScrolled ? 'scrolled' : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={t.menu}
             aria-expanded={isMenuOpen}
