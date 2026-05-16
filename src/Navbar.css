@@ -387,44 +387,56 @@
   position: absolute;
   top: calc(100% + 0.55rem);
   right: 0;
-  min-width: 164px;
-  padding: 0.25rem;
-  background: var(--site-text);
-  border: 1px solid var(--site-bg);
+  min-width: 120px;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: 1px solid white;
   border-radius: 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: none;
   animation: languageMenuIn 0.18s ease forwards;
+}
+
+.language-selector.scrolled .language-menu {
+  background: rgb(255, 250, 242);
+  border-color: var(--site-bg);
 }
 
 .language-option {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.55rem;
-  padding: 0.7rem 0.75rem;
+  padding: 0.5rem 0;
   background: transparent;
   border: none;
   border-radius: 0;
-  color: var(--site-bg);
+  color: white;
   cursor: pointer;
-  font-family: var(--site-secondary-text);
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
-  text-align: left;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.language-selector.scrolled .language-option {
+  color: var(--site-bg);
 }
 
 .language-option:hover,
 .language-option.active {
   background: transparent;
-  color: var(--site-pink);
+  color: var(--site-pink) !important;
   font-weight: 700;
 }
 
 .language-option-code {
   min-width: 26px;
-  font-weight: 800;
-  letter-spacing: 0.06rem;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 @keyframes languageMenuIn {
@@ -508,13 +520,24 @@
   }
 
   .language-menu {
-    min-width: 142px;
-    border-width: 1.5px;
+    min-width: 100px;
+    padding: 0.4rem 0;
+    border: 1px solid white;
+  }
+
+  .language-selector.scrolled .language-menu {
+    background: rgb(255, 250, 242);
+    border-color: var(--site-bg);
   }
 
   .language-option {
-    padding: 0.65rem;
+    padding: 0.4rem 0;
     font-size: 0.82rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0;
+    line-height: 1.1;
+    justify-content: center;
+    text-align: center;
   }
 
   .simple-menu-content {

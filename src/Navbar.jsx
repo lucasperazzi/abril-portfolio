@@ -30,7 +30,7 @@ function LanguageSelector({ isScrolled = false }) {
   }
 
   return (
-    <div className={`language-selector ${isOpen ? 'open' : ''}`} ref={selectorRef}>
+    <div className={`language-selector ${isOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`} ref={selectorRef}>
       <button
         className={`language-toggle ${isScrolled ? 'scrolled' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
