@@ -135,6 +135,12 @@ function Navbar({ isVisible = true, isHomePage = false }) {
       return
     }
 
+    // Only block body scroll on mobile/tablet
+    const isMobile = window.innerWidth <= 768
+    if (!isMobile) {
+      return
+    }
+
     const originalOverflow = document.body.style.overflow
     const originalPaddingRight = document.body.style.paddingRight
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth

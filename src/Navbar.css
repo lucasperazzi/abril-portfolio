@@ -457,7 +457,64 @@
   }
 }
 
+/* Desktop partial-width menu behavior */
+@media (min-width: 769px) {
+  .simple-menu-overlay {
+    justify-content: flex-end;
+    background: rgba(29, 29, 27, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 
+  .simple-menu-content {
+    width: 35vw;
+    min-width: 400px;
+    max-width: 600px;
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+    animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .simple-menu-overlay.closing .simple-menu-content {
+    animation: slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+
+  .simple-menu-items {
+    align-items: flex-start;
+    padding-left: 2rem;
+    width: 100%;
+  }
+
+  .simple-menu-item {
+    font-size: 2.5rem;
+    align-self: flex-start;
+    text-align: left;
+    width: auto;
+  }
+}
 
 @media (max-width: 768px) {
   .top-nav {
