@@ -108,13 +108,14 @@
 }
 
 .contact-item h3 {
-  font-family: var(--site-secondary-text);
-  font-size: 0.9rem;
-  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--site-pink);
   margin: 0 0 0.75rem;
-  letter-spacing: 0.2rem;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
   position: relative;
   z-index: 1;
 }

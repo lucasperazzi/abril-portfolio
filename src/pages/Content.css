@@ -117,10 +117,11 @@
 .reel-card-title {
   margin: 0 0 1rem 0;
   font-family: 'Inter', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.25rem;
-  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
   color: var(--site-text);
   text-align: center;
 }
@@ -433,13 +434,16 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
-  padding: 1.75rem 1.5rem;
+  padding: 2.5rem 2rem;
   background-color: rgba(234, 167, 199, 0.18);
   border: 2px solid var(--site-pink);
-  border-radius: 1rem;
-  align-items: baseline;
+  border-radius: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
   box-shadow: -4px 5px 0 rgba(143, 47, 90, 0.5), -8px 14px 24px rgba(0, 0, 0, 0.22);
+  min-height: 180px;
 }
 
 .services-list-animated .services-item {
@@ -483,11 +487,12 @@
 }
 
 .services-item-label {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 800;
-  font-size: 1.1rem;
-  letter-spacing: 0.22rem;
-  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: none;
   color: var(--site-pink);
 }
 
@@ -503,7 +508,7 @@
 .services-item-description {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 1.18rem;
+  font-size: 1rem;
   line-height: 1.7;
   color: var(--site-pink);
 }
@@ -518,25 +523,31 @@
   }
 
   .services-list {
-    gap: 1.25rem;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .services-item {
-    grid-template-columns: 260px 1fr;
-    gap: 3rem;
-    padding: 2.25rem 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 2.5rem 2rem;
   }
 
   .services-item-label {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
   }
 
   .services-item-description {
-    font-size: 1.22rem;
+    font-size: 1.18rem;
   }
 }
 
 @media (max-width: 768px) {
+  .services-item {
+    padding: 1.5rem 1.25rem;
+    min-height: 160px;
+  }
+
   .services-item-label,
   .services-item-description {
     text-align: center;

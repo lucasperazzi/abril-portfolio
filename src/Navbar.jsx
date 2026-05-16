@@ -100,7 +100,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
       const aboutSection = document.querySelector('.about-section-with-images')
       if (aboutSection) {
         const aboutSectionTop = aboutSection.getBoundingClientRect().top + window.pageYOffset
-        setIsScrolled(window.scrollY > aboutSectionTop)
+        setIsScrolled(window.scrollY >= aboutSectionTop)
       } else {
         setIsScrolled(window.scrollY > 50)
       }
@@ -109,7 +109,25 @@ function Navbar({ isVisible = true, isHomePage = false }) {
     window.addEventListener('scroll', handleScroll)
     handleScroll() // Check initial scroll position
 
-    return () => window.removeEventListener('scroll', handleScroll)
+    // Use IntersectionObserver to detect when about section is visible
+    const aboutSection = document.querySelector('.about-section-with-images')
+    if (aboutSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsScrolled(!entry.isIntersecting)
+        },
+        { threshold: 0, rootMargin: '0px 0px 0px 0px' } // Trigger when section is at top
+      )
+      observer.observe(aboutSection)
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+        observer.disconnect()
+      }
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [isHomePage])
 
   useEffect(() => {

@@ -69,12 +69,10 @@ function FakeVideoHero({ isReelSection = false }) {
   const handleScrollDown = () => {
     const aboutSection = document.querySelector('.about-section-with-images')
     if (aboutSection) {
-      const navbarHeight = window.innerWidth >= 769 ? 64 : 56
       const elementPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset
-      const offsetPosition = elementPosition - navbarHeight
 
       window.scrollTo({
-        top: offsetPosition,
+        top: elementPosition,
         behavior: 'smooth'
       })
     }
