@@ -982,6 +982,10 @@
     font-size: 1.2rem;
   }
 
+  .social-heading {
+    font-size: 2rem;
+  }
+
   .tiktok-icon {
     width: 1.2rem;
     height: 1.2rem;
@@ -1152,7 +1156,7 @@
   }
 
   .social-heading {
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1;
     margin: 2rem 0 1rem;
   }
