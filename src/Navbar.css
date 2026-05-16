@@ -126,12 +126,12 @@
 }
 
 .burger-button.open {
-  background: rgba(255, 250, 242, 0.1);
+  background: transparent;
   color: white;
 }
 
 .burger-button.open.scrolled {
-  background: rgba(42, 42, 39, 0.1);
+  background: transparent;
   color: white;
 }
 
