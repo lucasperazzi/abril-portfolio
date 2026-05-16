@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { FiChevronDown, FiGlobe, FiMenu } from 'react-icons/fi'
+import { FiChevronDown, FiGlobe } from 'react-icons/fi'
 import { useLanguage } from './LanguageContext'
 import './Navbar.css'
 
@@ -216,36 +216,35 @@ function Navbar({ isVisible = true, isHomePage = false }) {
         </div>
         <div className="nav-right">
           <LanguageSelector isScrolled={isScrolled} />
-          <button
-            className={`menu-button ${isScrolled ? 'scrolled' : ''}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={t.menu}
-            aria-expanded={isMenuOpen}
-          >
-            <FiMenu className="menu-icon" aria-hidden="true" />
-          </button>
+          <div className="burger-button-placeholder"></div>
         </div>
       </nav>
 
-      {/* Always visible menu button and language selector for main page */}
+      {/* Always visible language selector for main page */}
       {isMounted && (
         <div className={`floating-nav ${isVisible ? 'hide' : 'show'} ${isScrolled ? 'scrolled' : ''}`}>
           <LanguageSelector isScrolled={isScrolled} />
-          <button
-            className={`menu-button ${isScrolled ? 'scrolled' : ''}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={t.menu}
-            aria-expanded={isMenuOpen}
-          >
-            <FiMenu className="menu-icon" aria-hidden="true" />
-          </button>
+          <div className="burger-button-placeholder"></div>
         </div>
+      )}
+
+      {/* Standalone burger button at top level for proper stacking */}
+      {isMounted && (
+        <button
+          className={`burger-button ${isMenuOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? 'Close menu' : t.menu}
+          aria-expanded={isMenuOpen}
+        >
+          <span className="burger-line burger-line-1"></span>
+          <span className="burger-line burger-line-2"></span>
+          <span className="burger-line burger-line-3"></span>
+        </button>
       )}
 
       {(isMenuOpen || isClosing) && (
         <div className={`simple-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMenu} role="dialog" aria-modal="true" aria-label={t.menu}>
           <div className="simple-menu-content">
-            <button className="simple-menu-close" onClick={closeMenu} aria-label={t.menu}>×</button>
             <div className="simple-menu-items">
               {!isHomePage && (
                 <Link to="/" {...getMenuItemProps('/')} onClick={() => handleMenuItemClick('/')}>
