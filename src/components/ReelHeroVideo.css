@@ -61,7 +61,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,10 +95,10 @@
 
 .reel-modal__content {
   position: relative;
-  max-width: 95vw;
+  max-width: 90vw;
   max-height: 90vh;
   background: var(--site-bg);
-  border: 1px solid var(--site-border);
+  border-radius: 8px;
   overflow: hidden;
   transform: scale(0.95);
   animation: scaleIn 0.3s ease forwards;
@@ -132,29 +132,27 @@
 
 .reel-modal__close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: var(--site-bg);
   color: var(--site-text);
-  border: 1px solid var(--site-border);
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
+  border: none;
+  font-size: 1.25rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.3s ease;
   z-index: 10;
   line-height: 1;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
 }
 
 .reel-modal__close:hover {
-  background: var(--site-pink);
-  color: var(--site-bg);
-  border-color: var(--site-pink);
+  background: var(--site-menu-bg);
   transform: scale(1.1);
 }
 
@@ -187,14 +185,13 @@
   .reel-modal__close {
     top: 0.5rem;
     right: 0.5rem;
-    width: 36px;
-    height: 36px;
-    font-size: 1.25rem;
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
   }
 
   .reel-modal__content {
     max-width: 100%;
-    border: none;
   }
 }
 

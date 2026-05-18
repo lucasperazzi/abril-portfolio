@@ -85,7 +85,7 @@ function ReelHeroVideo({
           muted
           loop
           playsInline
-          preload="metadata"
+          preload={shouldPlay ? "metadata" : "none"}
           poster={poster}
           onContextMenu={onContextMenu}
         >
