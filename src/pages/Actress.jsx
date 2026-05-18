@@ -99,9 +99,8 @@ function Actress() {
           />
         </div>
         <div className="page-content">
-          <h2 className="gallery-title">{t.galleryTitle}</h2>
           <div className={`content-gallery content-gallery-animated ${isGalleryVisible ? 'content-gallery-visible' : ''}`}>
-            {items.map((item) => (
+            {items.map((item, index) => (
               <div
                 key={item.id}
                 className="media-item"
@@ -117,6 +116,9 @@ function Actress() {
                 ) : (
                   <img src={item.src} alt={item.title} className="media-image" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
                 )}
+                <div className="media-item-label">
+                  {item.type === 'video' ? `Video ${index + 1}` : `Image ${index + 1}`}
+                </div>
               </div>
             ))}
           </div>
