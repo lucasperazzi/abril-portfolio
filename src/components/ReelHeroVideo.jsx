@@ -88,11 +88,14 @@ function ReelHeroVideo({
           preload={shouldPlay ? "metadata" : "none"}
           poster={poster}
           onContextMenu={onContextMenu}
+          style={{ pointerEvents: 'none' }}
         >
           {shouldPlay && <source src={previewSrc} type="video/mp4" />}
         </video>
-        <div className="reel-hero__overlay">
-          <span className="reel-hero__play-icon">▶</span>
+        <div className="reel-hero__overlay" onClick={(e) => { e.stopPropagation(); openModal(); }}>
+          <svg className="reel-hero__play-icon" viewBox="0 0 24 24" fill="white">
+            <polygon points="5,3 19,12 5,21" />
+          </svg>
         </div>
       </div>
 
