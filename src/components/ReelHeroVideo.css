@@ -28,11 +28,11 @@
 .reel-hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.3s ease;
   pointer-events: none;
 }
@@ -52,6 +52,18 @@
 
 .reel-hero:hover .reel-hero__play-icon {
   transform: scale(1);
+}
+
+/* Show play button on mobile */
+@media (max-width: 768px) {
+  .reel-hero__overlay {
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 1;
+  }
+
+  .reel-hero__play-icon {
+    transform: scale(1);
+  }
 }
 
 /* Modal */
