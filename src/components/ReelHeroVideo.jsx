@@ -5,6 +5,7 @@ function ReelHeroVideo({
   previewSrc, 
   fullSrc, 
   poster,
+  title,
   onContextMenu 
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -92,6 +93,11 @@ function ReelHeroVideo({
         >
           {shouldPlay && <source src={previewSrc} type="video/mp4" />}
         </video>
+        {title && (
+          <div className="reel-hero__title-container">
+            <h2 className="reel-hero__title">{title}</h2>
+          </div>
+        )}
         <div className="reel-hero__overlay" onClick={(e) => { e.stopPropagation(); openModal(); }}>
           <svg className="reel-hero__play-icon" viewBox="0 0 24 24" fill="white">
             <polygon points="5,3 19,12 5,21" />

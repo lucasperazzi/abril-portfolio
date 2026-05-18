@@ -90,11 +90,11 @@ function Actress() {
         <div className="page-header">
           <h1 className="page-title">{t.title}</h1>
           <p className="page-description">{t.description}</p>
-          <h2 className="reel-section-title">{t.reelTitle}</h2>
           <ReelHeroVideo
             previewSrc="/videos/MIX LALALAND OK-720p.mp4"
             fullSrc="/videos/MIX LALALAND OK-1080p.mp4"
             poster="/videos/MIX LALALAND OK-poster.webp"
+            title={t.reelTitle}
             onContextMenu={handleImageContextMenu}
           />
         </div>

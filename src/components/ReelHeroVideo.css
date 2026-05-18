@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   max-width: 95vw;
-  margin: 0 auto 0;
+  margin: 3rem auto 0;
   cursor: pointer;
   overflow: hidden;
   background: var(--site-bg);
@@ -42,9 +42,32 @@
   opacity: 1;
 }
 
+.reel-hero__title-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.reel-hero__title {
+  font-family: 'Coolvetica', sans-serif;
+  font-size: 2.2rem;
+  font-weight: normal;
+  color: white;
+  margin: 0;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
 .reel-hero__play-icon {
-  width: 68px;
-  height: 68px;
+  width: 48px;
+  height: 48px;
   fill: white;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
   transform: scale(0.8);
@@ -58,9 +81,17 @@
     opacity: 1;
   }
 
+  .reel-hero__title-container {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .reel-hero__title {
+    font-size: 1.4rem;
+  }
+
   .reel-hero__play-icon {
-    width: 52px;
-    height: 52px;
+    width: 40px;
+    height: 40px;
     transform: scale(1);
   }
 }
@@ -182,11 +213,11 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .reel-hero {
-    max-width: 100vw;
-    width: 100vw;
-    margin: 0 -1rem 0 -1rem;
-    border-left: none;
-    border-right: none;
+    max-width: 90vw;
+    width: 90vw;
+    margin: 3rem auto 0;
+    border-left: 1px solid var(--site-border);
+    border-right: 1px solid var(--site-border);
   }
 
   .reel-hero__play-icon {
