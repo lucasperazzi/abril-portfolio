@@ -229,7 +229,6 @@ function Navbar({ isVisible = true, isHomePage = false }) {
       {/* Always visible language selector for main page */}
       {isMounted && (
         <div className={`floating-nav ${isVisible ? 'hide' : 'show'} ${isScrolled ? 'scrolled' : ''}`}>
-          <LanguageSelector isScrolled={isScrolled} />
           <div className="burger-button-placeholder"></div>
         </div>
       )}

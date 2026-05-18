@@ -1,0 +1,212 @@
+/* Reel Hero Video - Brutalist/Minimalist Style */
+
+.reel-hero {
+  position: relative;
+  width: 100%;
+  max-width: 95vw;
+  margin: 0 auto 0;
+  cursor: pointer;
+  overflow: hidden;
+  background: var(--site-bg);
+  border: 1px solid var(--site-border);
+  transition: border-color 0.3s ease;
+}
+
+.reel-hero:hover {
+  border-color: var(--site-pink);
+}
+
+.reel-hero__preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+.reel-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.reel-hero:hover .reel-hero__overlay {
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.reel-hero__play-icon {
+  font-size: 4rem;
+  color: var(--site-text);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.reel-hero:hover .reel-hero__play-icon {
+  transform: scale(1);
+}
+
+/* Modal */
+.reel-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 2rem;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.reel-modal.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.reel-modal__content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  background: var(--site-bg);
+  border: 1px solid var(--site-border);
+  overflow: hidden;
+  transform: scale(0.95);
+  animation: scaleIn 0.3s ease forwards;
+}
+
+.reel-modal.closing .reel-modal__content {
+  animation: scaleOut 0.3s ease forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+.reel-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--site-bg);
+  color: var(--site-text);
+  border: 1px solid var(--site-border);
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  line-height: 1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+
+.reel-modal__close:hover {
+  background: var(--site-pink);
+  color: var(--site-bg);
+  border-color: var(--site-pink);
+  transform: scale(1.1);
+}
+
+.reel-modal__video {
+  width: 100%;
+  height: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+  display: block;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .reel-hero {
+    max-width: 100vw;
+    width: 100vw;
+    margin: 0 -1rem 0 -1rem;
+    border-left: none;
+    border-right: none;
+  }
+
+  .reel-hero__play-icon {
+    font-size: 3rem;
+  }
+
+  .reel-modal {
+    padding: 1rem;
+  }
+
+  .reel-modal__close {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+
+  .reel-modal__content {
+    max-width: 100%;
+    border: none;
+  }
+}
+
+/* Desktop - wider video */
+@media (min-width: 1024px) {
+  .reel-hero {
+    max-width: 88vw;
+  }
+}
+
+@media (min-width: 1440px) {
+  .reel-hero {
+    max-width: 1400px;
+  }
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
-import ReelModal from '../components/ReelModal'
+import ReelHeroVideo from '../components/ReelHeroVideo'
 import LazyPreviewVideo from '../components/LazyPreviewVideo'
 import './Actress.css'
 
@@ -8,7 +8,6 @@ function Actress() {
   const { language } = useLanguage()
   const [selectedItem, setSelectedItem] = useState(null)
   const [isClosing, setIsClosing] = useState(false)
-  const [isReelOpen, setIsReelOpen] = useState(false)
   const [isGalleryVisible, setIsGalleryVisible] = useState(false)
 
   const handleImageContextMenu = (e) => {
@@ -55,13 +54,13 @@ function Actress() {
   const translations = {
     en: {
       title: 'Actress',
-      watchReel: 'Watch Reel',
+      reelTitle: 'My Acting Reel',
       description: 'Bringing characters to life through the art of performance, with dedication to authentic storytelling and emotional depth in every role.',
       galleryTitle: 'Acting Portfolio'
     },
     es: {
       title: 'Actriz',
-      watchReel: 'Ver Reel',
+      reelTitle: 'Mi Reel Actoral',
       description: 'Dando vida a los personajes a través del arte de la actuación, con dedicación a la narración auténtica y profundidad emocional en cada papel.',
       galleryTitle: 'Portafolio de Actuación'
     }
@@ -90,10 +89,14 @@ function Actress() {
       <div className="page-container">
         <div className="page-header">
           <h1 className="page-title">{t.title}</h1>
-          <button className="actress-reel-button" onClick={() => setIsReelOpen(true)}>
-            {t.watchReel}
-          </button>
           <p className="page-description">{t.description}</p>
+          <h2 className="reel-section-title">{t.reelTitle}</h2>
+          <ReelHeroVideo
+            previewSrc="/videos/MIX LALALAND OK-720p.mp4"
+            fullSrc="/videos/MIX LALALAND OK-1080p.mp4"
+            poster="/videos/MIX LALALAND OK-poster.webp"
+            onContextMenu={handleImageContextMenu}
+          />
         </div>
         <div className="page-content">
           <h2 className="gallery-title">{t.galleryTitle}</h2>
@@ -132,13 +135,6 @@ function Actress() {
           </div>
         </div>
       )}
-
-      <ReelModal
-        isOpen={isReelOpen}
-        onClose={() => setIsReelOpen(false)}
-        videoSrc="/actress/reel_converted.mp4"
-        poster="/actress/reel_converted-poster.jpg"
-      />
     </div>
   )
 }

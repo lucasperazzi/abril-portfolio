@@ -5,3 +5,6 @@ dist/
 .env.local
 .vite/
 *.log
+
+# Video source files (original, unoptimized)
+video-source/

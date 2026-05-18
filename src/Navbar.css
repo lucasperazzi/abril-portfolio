@@ -334,9 +334,9 @@
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  min-width: 72px;
+  width: 72px;
   height: 32px;
-  padding: 0.3rem 0.5rem;
+  padding: 0;
   background: transparent;
   border: none;
   border-radius: 9999px;
@@ -345,7 +345,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.08rem;
+  letter-spacing: 0;
   line-height: 1;
   transition: transform 0.25s ease, color 0.1s ease;
 }
@@ -362,7 +362,6 @@
 
 .language-toggle span {
   line-height: 1;
-  transform: translateY(0.5px);
 }
 
 .language-toggle:hover {
@@ -394,8 +393,8 @@
   position: absolute;
   top: calc(100% + 0.55rem);
   right: 0;
-  min-width: 120px;
-  padding: 0.5rem 0;
+  min-width: 140px;
+  padding: 0;
   background: transparent;
   border: 1px solid white;
   border-radius: 0;
@@ -413,10 +412,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  padding: 0.5rem 0;
+  padding: 0.75rem 1.25rem;
   background: transparent;
   border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 0;
   color: white;
   cursor: pointer;
@@ -424,26 +423,37 @@
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0;
-  line-height: 1.1;
+  line-height: 1;
   text-align: center;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background 0.15s ease;
+}
+
+.language-option:last-child {
+  border-bottom: none;
 }
 
 .language-selector.scrolled .language-option {
   color: var(--site-bg);
+  border-bottom-color: rgba(17, 17, 16, 0.1);
 }
 
-.language-option:hover,
+.language-selector.scrolled .language-option:last-child {
+  border-bottom: none;
+}
+
+.language-option:hover {
+  background: var(--site-pink);
+  color: var(--site-bg) !important;
+}
+
 .language-option.active {
   background: transparent;
   color: var(--site-pink) !important;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .language-option-code {
-  min-width: 26px;
-  font-weight: 500;
-  letter-spacing: 0;
+  display: none;
 }
 
 @keyframes languageMenuIn {
@@ -593,24 +603,13 @@
   }
 
   .language-menu {
-    min-width: 100px;
-    padding: 0.4rem 0;
-    border: 1px solid white;
-  }
-
-  .language-selector.scrolled .language-menu {
-    background: rgb(255, 250, 242);
-    border-color: var(--site-bg);
+    min-width: 120px;
+    padding: 0;
   }
 
   .language-option {
-    padding: 0.4rem 0;
-    font-size: 0.82rem;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0;
-    line-height: 1.1;
-    justify-content: center;
-    text-align: center;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
   }
 
   .simple-menu-content {
