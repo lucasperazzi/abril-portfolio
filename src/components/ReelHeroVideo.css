@@ -25,6 +25,23 @@
   filter: saturate(0.95) contrast(1.05);
 }
 
+/* Hide native video player UI across all browsers */
+.reel-hero__preview::-webkit-media-controls {
+  display: none !important;
+}
+
+.reel-hero__preview::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.reel-hero__preview::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+.reel-hero__preview::-moz-media-controls {
+  display: none !important;
+}
+
 .reel-hero__overlay {
   position: absolute;
   inset: 0;
