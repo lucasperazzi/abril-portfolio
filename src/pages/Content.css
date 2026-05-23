@@ -6,7 +6,7 @@
   z-index: 1;
 }
 
-.page-header {
+.content-page .page-header {
   text-align: center;
   padding: 4rem 1rem 2rem;
 }
@@ -31,8 +31,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.page-content {
-  padding: 2rem 1rem;
+.content-page .page-content {
+  padding-top: 0.75rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -371,7 +374,11 @@
     line-height: 1.1;
   }
 
-  .page-description {
+  .content-page .page-header {
+    padding: 2rem 1rem 2rem;
+  }
+
+  .content-page .page-description {
     font-size: 1rem;
   }
 

@@ -19,9 +19,9 @@
   z-index: 1;
 }
 
-.page-header {
+.actress-page .page-header {
   text-align: center;
-  padding: 4rem 1rem 1rem;
+  padding: 4rem 1rem 0;
 }
 
 .actress-page .page-title {
@@ -71,8 +71,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.page-content {
-  padding: 1.5rem 2rem 2rem;
+.actress-page .page-content {
+  padding-top: 0.75rem;
+  padding-right: 1.5rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -423,16 +426,14 @@
     line-height: 1.1;
   }
 
-
-
   .actress-reel-button {
     padding: 0.875rem 2rem;
     font-size: 1rem;
     margin-bottom: 2rem;
   }
 
-  .page-header {
-    padding: 2rem 1rem 1.5rem;
+  .actress-page .page-header {
+    padding: 2rem 1rem 0;
   }
 
   .page-description {
@@ -442,10 +443,6 @@
 
   .content-gallery {
     padding: 0;
-  }
-
-  .page-content {
-    padding: 1rem 1rem 2rem;
   }
 
   .media-item-label {

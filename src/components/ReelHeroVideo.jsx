@@ -91,7 +91,7 @@ function ReelHeroVideo({
           onContextMenu={onContextMenu}
           style={{ pointerEvents: 'none' }}
         >
-          {shouldPlay && <source src={previewSrc} type="video/mp4" />}
+          <source src={previewSrc} type="video/mp4" />
         </video>
         {title && (
           <div className="reel-hero__title-container">

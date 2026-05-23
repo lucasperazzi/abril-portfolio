@@ -3,13 +3,14 @@
 .reel-hero {
   position: relative;
   width: 100%;
-  max-width: 95vw;
-  margin: 3rem auto 0;
+  max-width: min(95vw, calc(1400px - 4rem));
+  margin: 3rem auto 0.75rem;
   cursor: pointer;
   overflow: hidden;
   background: var(--site-bg);
   border: 1px solid var(--site-border);
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 .reel-hero:hover {
@@ -226,11 +227,10 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .reel-hero {
+    width: 100%;
     max-width: 90vw;
-    width: 90vw;
-    margin: 3rem auto 0;
-    border-left: 1px solid var(--site-border);
-    border-right: 1px solid var(--site-border);
+    margin: 3rem auto 0.75rem;
+    border: none;
   }
 
   .reel-hero__play-icon {
@@ -254,15 +254,4 @@
   }
 }
 
-/* Desktop - wider video */
-@media (min-width: 1024px) {
-  .reel-hero {
-    max-width: 88vw;
-  }
-}
 
-@media (min-width: 1440px) {
-  .reel-hero {
-    max-width: 1400px;
-  }
-}

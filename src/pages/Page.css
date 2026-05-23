@@ -29,7 +29,10 @@
 }
 
 .page-content {
-  padding: 2rem 1rem;
+  padding-top: 0.75rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
   max-width: 1400px;
   margin: 0 auto;
 }

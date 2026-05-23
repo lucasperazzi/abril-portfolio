@@ -6,12 +6,12 @@
   z-index: 1;
 }
 
-.page-header {
+.contact-page .page-header {
   text-align: center;
   padding: 4rem 1rem 2rem;
 }
 
-.page-title {
+.contact-page .page-title {
   font-size: 4rem;
   font-weight: normal;
   color: var(--site-text);
@@ -21,7 +21,7 @@
   line-height: 1.2;
 }
 
-.page-description {
+.contact-page .page-description {
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--site-text);
@@ -31,8 +31,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.page-content {
-  padding: 2rem 1rem;
+.contact-page .page-content {
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -146,7 +145,11 @@
     letter-spacing: 0.1rem;
   }
 
-  .page-description {
+  .contact-page .page-header {
+    padding: 2rem 1rem 2rem;
+  }
+
+  .contact-page .page-description {
     font-size: 1rem;
   }
 
