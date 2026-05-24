@@ -11,8 +11,8 @@ const ArrowIcon = () => (
     fill="none" 
     className="role-arrow"
   >
-    <path d="M9 13L18 4" stroke="currentColor" strokeWidth="1.9"/>
-    <path d="M10 4H18V12" stroke="currentColor" strokeWidth="1.9"/>
+    <path d="M5 17L18 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <path d="M9 4H18V13" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )
 
