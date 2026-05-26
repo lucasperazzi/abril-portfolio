@@ -54,15 +54,11 @@ function Actress() {
   const translations = {
     en: {
       title: 'Actress',
-      reelTitle: 'My Acting Reel',
-      description: 'Bringing characters to life through the art of performance, with dedication to authentic storytelling and emotional depth in every role.',
-      galleryTitle: 'Acting Portfolio'
+      reelTitle: 'My Acting Reel'
     },
     es: {
       title: 'Actriz',
-      reelTitle: 'Mi Reel Actoral',
-      description: 'Dando vida a los personajes a través del arte de la actuación, con dedicación a la narración auténtica y profundidad emocional en cada papel.',
-      galleryTitle: 'Portafolio de Actuación'
+      reelTitle: 'Mi Reel Actoral'
     }
   }
 
@@ -89,7 +85,6 @@ function Actress() {
       <div className="page-container">
         <div className="page-header">
           <h1 className="page-title">{t.title}</h1>
-          <p className="page-description">{t.description}</p>
           <ReelHeroVideo
             previewSrc="/videos/MIX LALALAND OK-720p.mp4"
             fullSrc="/videos/MIX LALALAND OK-1080p.mp4"
@@ -99,27 +94,34 @@ function Actress() {
           />
         </div>
         <div className="page-content">
-          <div className={`content-gallery content-gallery-animated ${isGalleryVisible ? 'content-gallery-visible' : ''}`}>
+          <div className={`actress-gallery actress-gallery-animated ${isGalleryVisible ? 'actress-gallery-visible' : ''}`}>
             {items.map((item, index) => (
-              <div
+              <figure
                 key={item.id}
-                className="media-item"
+                className={`actress-item actress-item--${index + 1}`}
                 onClick={() => setSelectedItem(item)}
               >
                 {item.type === 'video' ? (
                   <LazyPreviewVideo
                     src={item.previewSrc || item.src}
                     poster={item.poster}
-                    className="media-image"
+                    className="actress-item__media"
                     onContextMenu={handleImageContextMenu}
                   />
                 ) : (
-                  <img src={item.src} alt={item.title} className="media-image" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="actress-item__media"
+                    loading="lazy"
+                    decoding="async"
+                    onContextMenu={handleImageContextMenu}
+                  />
                 )}
-                <div className="media-item-label">
-                  {item.type === 'video' ? `Video ${index + 1}` : `Image ${index + 1}`}
-                </div>
-              </div>
+                <figcaption className="actress-item__caption">
+                  <span className="actress-item__caption-num">{String(index + 1).padStart(2, '0')}</span>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>

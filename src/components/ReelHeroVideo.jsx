@@ -10,6 +10,7 @@ function ReelHeroVideo({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const [shouldLoad, setShouldLoad] = useState(false)
   const [shouldPlay, setShouldPlay] = useState(false)
   const videoRef = useRef(null)
 
@@ -18,9 +19,16 @@ function ReelHeroVideo({
     const video = videoRef.current
     if (!video) return
 
+    if (!('IntersectionObserver' in window)) {
+      setShouldLoad(true)
+      setShouldPlay(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          setShouldLoad(true)
           setShouldPlay(true)
         } else {
           setShouldPlay(false)
@@ -36,21 +44,30 @@ function ReelHeroVideo({
 
   useEffect(() => {
     const video = videoRef.current
-    if (!video || !shouldPlay) return
+    if (!video || !shouldLoad) return
+
+    video.load()
+  }, [shouldLoad])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video || !shouldLoad || !shouldPlay) return
 
     const play = () => {
       const playPromise = video.play()
-      if (playPromise) {
+      if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(() => {})
       }
     }
 
     if (video.readyState >= 2) {
       play()
-    } else {
-      video.addEventListener('canplay', play, { once: true })
+      return
     }
-  }, [shouldPlay])
+
+    video.addEventListener('canplay', play, { once: true })
+    return () => video.removeEventListener('canplay', play)
+  }, [shouldLoad, shouldPlay])
 
   const openModal = () => {
     setIsModalOpen(true)
@@ -86,12 +103,12 @@ function ReelHeroVideo({
           muted
           loop
           playsInline
-          preload={shouldPlay ? "metadata" : "none"}
+          preload={shouldLoad ? 'metadata' : 'none'}
           poster={poster}
           onContextMenu={onContextMenu}
           style={{ pointerEvents: 'none' }}
         >
-          <source src={previewSrc} type="video/mp4" />
+          {shouldLoad && <source src={previewSrc} type="video/mp4" />}
         </video>
         {title && (
           <div className="reel-hero__title-container">

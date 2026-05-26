@@ -5,14 +5,22 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'NB International';
+  src: url('/fonts/NB-International-Pro-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Fake Video Hero Styles */
 .fake-video-hero {
   position: relative;
   width: 100%;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
   overflow: hidden;
   background: transparent;
   z-index: 1;
@@ -147,11 +155,12 @@
   z-index: 10;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
   color: var(--site-text);
-  padding: 0.5rem 1rem;
+  padding: clamp(7rem, 15vh, 11rem) clamp(1rem, 4vw, 3.5rem) 4rem;
+  width: 100%;
 }
 
 @keyframes heroMediaFadeIn {
@@ -196,7 +205,7 @@
 }
 
 .hero-title {
-  font-size: 6rem;
+  font-size: 7.5rem;
   font-weight: 800;
   letter-spacing: -0.05em;
   font-family: 'Inter', sans-serif;
@@ -205,8 +214,8 @@
   transform: translateY(16px);
   animation: heroContentFadeIn 0.9s ease 0.08s forwards;
   line-height: 0.85;
-  text-align: center;
-  width: 100%;
+  text-align: left;
+  width: auto;
 }
 
 .hero-tagline {
@@ -349,11 +358,11 @@
 
 /* Role Selector Styles */
 .role-selector {
-  margin-top: 0;
+  margin-top: clamp(8rem, 22vh, 16rem);
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -389,14 +398,14 @@
 
 .role-title {
   font-size: 3rem;
-  font-weight: 500;
   display: block;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: -0.05em;
+  font-family: 'NB International', 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   line-height: 1;
   transition: color 0.3s ease;
-  text-align: center;
-  width: 100%;
+  text-align: left;
+  width: auto;
   white-space: nowrap;
 }
 
@@ -420,14 +429,14 @@
 
 /* About Section with Images */
 .about-section-with-images {
-  padding: 10rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  padding: 10rem clamp(1rem, 4vw, 3.5rem);
+  max-width: none;
+  margin: 0;
 }
 
 @media (min-width: 769px) {
   .about-section-with-images {
-    padding: 10rem 2rem;
+    padding: 10rem clamp(1rem, 4vw, 3.5rem);
   }
 }
 
@@ -758,7 +767,7 @@
   line-height: 1;
   letter-spacing: -0.06em;
   text-shadow: none;
-  text-align: center;
+  text-align: left;
 }
 
 .description {
@@ -767,9 +776,9 @@
   color: var(--site-text);
   font-weight: 400;
   max-width: 1000px;
-  margin: 0 auto 6rem;
+  margin: 0 0 6rem;
   font-family: 'Inter', sans-serif;
-  text-align: center;
+  text-align: left;
   letter-spacing: -0.02em;
 }
 
@@ -800,13 +809,13 @@
 
 .social-heading {
   font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
   color: var(--site-text);
   text-align: center;
   margin: 3rem 0 1rem;
   line-height: 1;
-  font-family: 'Inter', sans-serif;
+  font-family: 'NB International', 'Inter', sans-serif;
 }
 
 .social-icon:hover {
@@ -880,9 +889,14 @@
   /* Role selector desktop styles */
   .role-selector {
     flex-direction: column;
-    justify-content: center;
-    margin-top: 4rem;
-    gap: 2.5rem;
+    justify-content: flex-start;
+    margin-top: clamp(14rem, 32vh, 22rem);
+    gap: 1.25rem;
+    align-items: flex-start;
+  }
+
+  .role-title {
+    font-size: 3.5rem;
   }
 
   .role-button {
@@ -1013,7 +1027,7 @@
   }
 
   .hero-content {
-    padding: 0.5rem 1rem;
+    padding: clamp(6rem, 13vh, 9rem) 1rem 3rem;
   }
 
   .hero-title {
@@ -1039,8 +1053,9 @@
 
   /* Role selector mobile styles */
   .role-selector {
-    margin-top: 1.5rem;
-    gap: 2rem;
+    margin-top: clamp(14rem, 38vh, 22rem);
+    gap: 1rem;
+    align-items: flex-start;
   }
 
   /* Scroll down indicator mobile */
