@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../LanguageContext'
-import { Link } from 'react-router-dom'
-import { FiInstagram, FiMail, FiLinkedin } from 'react-icons/fi'
 import FakeVideoHero from '../components/FakeVideoHero'
 import '../App.css'
 
@@ -36,6 +34,13 @@ function Home() {
       letsWork: 'Trabajemos juntos'
     }
   }
+
+  const contactLinks = [
+    { label: 'Instagram', href: 'https://www.instagram.com/biancoabril_' },
+    { label: 'TikTok', href: 'https://www.tiktok.com/@abrilbiancotav' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/abril-bianco-tavagnacco' },
+    { label: 'Email', href: 'mailto:abrilbiancotav@gmail.com' }
+  ]
 
   const t = translations[language]
 
@@ -81,26 +86,29 @@ function Home() {
         </div>
       </section>
 
-      {/* Keep existing sections below */}
-      <main className="content">
-        <h2 className="social-heading">{t.letsWork}</h2>
-        <section className="social-links">
-          <a href="https://www.instagram.com/biancoabril_" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <FiInstagram />
-          </a>
-          <a href="https://www.tiktok.com/@abrilbiancotav" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="tiktok-icon">
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/abril-bianco-tavagnacco" target="_blank" rel="noopener noreferrer" className="social-icon">
-            <FiLinkedin />
-          </a>
-          <a href="mailto:abrilbiancotav@gmail.com" className="social-icon">
-            <FiMail />
-          </a>
-        </section>
-      </main>
+      {/* Contact section */}
+      <section className="contact-section">
+        <span className="contact-divider" aria-hidden="true" />
+        <div className="contact-row">
+          <h2 className="contact-heading">
+            <span>{t.letsWork}</span>
+          </h2>
+          <ul className="contact-list">
+            {contactLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="contact-link"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <footer className="footer">
         <p>&copy; 2026 Abril. All rights reserved.</p>

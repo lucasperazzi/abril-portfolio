@@ -17,14 +17,16 @@ const ArrowIcon = () => (
 )
 
 const DownArrowIcon = () => (
-  <svg 
-    viewBox="0 0 22 22" 
-    fill="none" 
+  <svg
+    width="22"
+    height="22"
+    viewBox="0 0 22 22"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className="scroll-arrow-icon"
   >
-    <path d="M11 4V16" stroke="currentColor" strokeWidth="1.9"/>
-    <path d="M5 10L11 16L17 10" stroke="currentColor" strokeWidth="1.9"/>
+    <path d="M11 3V19" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+    <path d="M4 12L11 19L18 12" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )
 
@@ -204,14 +206,18 @@ function FakeVideoHero({ isReelSection = false }) {
 
       {/* Scroll down indicator - only on main hero */}
       {!isReelSection && (
-        <button
-          className={`scroll-down-indicator ${!showScrollIndicator ? 'hidden' : ''}`}
-          onClick={handleScrollDown}
-          aria-label={t.scrollToAbout}
-        >
-          <span className="scroll-label">{t.scrollToAbout}</span>
-          <DownArrowIcon />
-        </button>
+        <div className={`scroll-divider ${!showScrollIndicator ? 'hidden' : ''}`}>
+          <span className="scroll-divider-line" aria-hidden="true" />
+          <button
+            type="button"
+            className="scroll-divider-button"
+            onClick={handleScrollDown}
+            aria-label={t.scrollToAbout}
+          >
+            <span className="scroll-label">{t.scrollToAbout}</span>
+            <DownArrowIcon />
+          </button>
+        </div>
       )}
 
       {/* FUTURE: replace Image with <video> */}

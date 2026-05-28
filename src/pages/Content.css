@@ -7,24 +7,30 @@
 }
 
 .content-page .page-header {
-  text-align: center;
-  padding: 4rem 1rem 2rem;
+  text-align: left;
+  padding: 4rem clamp(1.25rem, 4vw, 3rem) 2rem;
+  max-width: 1480px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .page-title {
-  font-size: 6rem;
-  font-weight: 700;
+  font-size: 4.5rem;
+  font-weight: 800;
   color: var(--site-text);
-  margin-bottom: 2rem;
-  letter-spacing: -0.04em;
-  font-family: 'NB International', 'Inter', sans-serif;
-  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.05em;
+  font-family: 'Inter', sans-serif;
+  line-height: 0.85;
 }
 
 .content-page .page-description {
   font-family: 'NB International', 'Inter', sans-serif;
   font-weight: 600;
   letter-spacing: 0.02em;
+  max-width: none;
+  margin: 0;
+  text-align: left;
 }
 
 .page-description {
@@ -38,11 +44,8 @@
 }
 
 .content-page .page-content {
-  padding-top: 0.75rem;
-  padding-right: 1rem;
-  padding-bottom: 2rem;
-  padding-left: 1rem;
-  max-width: 1400px;
+  padding: 0.75rem clamp(1.25rem, 4vw, 3rem) 2rem;
+  max-width: 1480px;
   margin: 0 auto;
 }
 
@@ -52,14 +55,14 @@
   color: var(--site-pink);
   margin-bottom: 2rem;
   font-family: 'Inter', sans-serif;
-  text-align: center;
+  text-align: left;
   line-height: 1;
   letter-spacing: -0.06em;
   text-shadow: none;
 }
 
 .content-page .page-title {
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .reel-gallery {
@@ -384,13 +387,14 @@
     margin-bottom: 1.5rem;
   }
   .content-page .page-title {
-    font-size: 4rem;
+    font-size: 3rem;
     letter-spacing: -0.02em;
     line-height: 1.1;
+    margin-bottom: 0.5rem;
   }
 
   .content-page .page-header {
-    padding: 2rem 1rem 2rem;
+    padding: 2rem 1.5rem 2rem;
   }
 
   .content-page .page-description {
