@@ -400,7 +400,7 @@
 @media (max-width: 768px) {
   .actress-page .page-title {
     font-size: 4rem;
-    letter-spacing: 0.02em;
+    letter-spacing: -0.02em;
     margin-bottom: 1rem;
     line-height: 1.1;
   }
