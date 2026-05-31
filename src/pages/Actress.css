@@ -9,9 +9,9 @@
    child (title, reel hero, gallery). Anything inside aligns to the same
    left/right edges. */
 .actress-wrapper {
-  max-width: 80rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: calc(80px + 4rem) clamp(1.25rem, 4vw, 3rem) 8rem;
+  padding: calc(80px + 4rem) var(--content-padding-x) 8rem;
   width: 100%;
   box-sizing: border-box;
   text-align: left;
@@ -32,9 +32,27 @@
    built-in max-width / auto-margins, and match the gallery items' hover. */
 .actress-page .reel-hero {
   max-width: 100%;
-  margin: 2rem 0 0.75rem;
+  margin: 2rem 0 0;
   border: none;
   transition: none;
+}
+
+.reel-hero-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0.4rem 0 0.75rem;
+  padding-bottom: 0.6rem;
+}
+
+.reel-hero-caption__title {
+  font-family: 'NB International', 'Inter', sans-serif;
+  font-size: clamp(1.15rem, 1.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--site-text);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
 }
 
 .actress-page .reel-hero:hover {
@@ -111,6 +129,37 @@
 .actress-item:hover .actress-item__media {
   transform: scale(1.018);
   filter: saturate(0.92) contrast(1.08);
+}
+
+.video-play-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 4;
+  color: white;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.video-play-badge svg {
+  width: 56px;
+  height: 56px;
+  transform: scale(0.85);
+  transition: transform 0.3s ease;
+}
+
+.actress-item:hover .video-play-badge svg {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .video-play-badge svg {
+    width: 30px;
+    height: 30px;
+    transform: scale(1);
+  }
 }
 
 .actress-item__caption {
@@ -405,7 +454,7 @@
 
 @media (max-width: 768px) {
   .actress-wrapper {
-    padding: calc(80px + 2rem) 1.25rem 5rem;
+    padding: calc(80px + 2rem) var(--content-padding-x) 5rem;
   }
 
   .actress-page .page-title {

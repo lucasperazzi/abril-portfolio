@@ -3,19 +3,6 @@ import { useLanguage } from '../LanguageContext'
 import { useNavigate } from 'react-router-dom'
 import ReelModal from './ReelModal'
 
-const ArrowIcon = () => (
-  <svg 
-    width="22" 
-    height="22" 
-    viewBox="0 0 22 22" 
-    fill="none" 
-    className="role-arrow"
-  >
-    <path d="M5 17L18 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-    <path d="M9 4H18V13" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-)
-
 const DownArrowIcon = () => (
   <svg
     width="22"
@@ -183,13 +170,13 @@ function FakeVideoHero({ isReelSection = false }) {
               onClick={() => handleRoleClick('/actress', 'actress')}
               className={`role-button ${pressedRole === 'actress' ? 'role-button-pressed' : ''}`}
             >
-              <span className="role-title"><ArrowIcon /> {t.actress}</span>
+              <span className="role-title">{t.actress}</span>
             </button>
             <button
               onClick={() => handleRoleClick('/content', 'content')}
               className={`role-button ${pressedRole === 'content' ? 'role-button-pressed' : ''}`}
             >
-              <span className="role-title"><ArrowIcon /> {t.creator}</span>
+              <span className="role-title">{t.creator}</span>
             </button>
           </div>
         ) : (

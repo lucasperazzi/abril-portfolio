@@ -90,6 +90,9 @@ function Actress() {
           poster="/videos/MIX LALALAND OK-poster.webp"
           onContextMenu={handleImageContextMenu}
         />
+        <div className="reel-hero-caption">
+          <span className="reel-hero-caption__title">{t.reelTitle}</span>
+        </div>
         <div className={`actress-gallery actress-gallery-animated ${isGalleryVisible ? 'actress-gallery-visible' : ''}`}>
           {items.map((item, index) => (
             <figure
@@ -113,6 +116,13 @@ function Actress() {
                   decoding="async"
                   onContextMenu={handleImageContextMenu}
                 />
+              )}
+              {item.type === 'video' && (
+                <div className="video-play-badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5,3 19,12 5,21" />
+                  </svg>
+                </div>
               )}
               <figcaption className="actress-item__caption">
                 <span className="actress-item__caption-num">{String(index + 1).padStart(2, '0')}</span>

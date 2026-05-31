@@ -14,6 +14,9 @@
   --ambient-shift: 0px;
   --ambient-opacity: 0.86;
   --cinematic-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --content-max-width: 102rem;
+  --content-padding-x: clamp(1.25rem, 2.75vw, 2.5rem);
+  --content-edge-offset: calc(var(--content-padding-x) + max(0px, (100vw - var(--content-max-width)) / 2));
   color-scheme: dark;
 }
 

@@ -7,9 +7,9 @@
 
 /* Single layout container — same idea as .actress-wrapper */
 .content-wrapper {
-  max-width: 80rem;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: calc(80px + 4rem) clamp(1.25rem, 4vw, 3rem) 6rem;
+  padding: calc(80px + 4rem) var(--content-padding-x) 6rem;
   width: 100%;
   box-sizing: border-box;
   text-align: left;
@@ -162,6 +162,37 @@
   object-position: center;
   display: block;
   filter: saturate(0.95) contrast(1.03);
+}
+
+.video-play-badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3;
+  color: white;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.video-play-badge svg {
+  width: 56px;
+  height: 56px;
+  transform: scale(0.85);
+  transition: transform 0.3s ease;
+}
+
+.reel-card-wrapper:hover .video-play-badge svg {
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .video-play-badge svg {
+    width: 30px;
+    height: 30px;
+    transform: scale(1);
+  }
 }
 
 
@@ -363,7 +394,7 @@
 
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: calc(80px + 2rem) 1.25rem 4rem;
+    padding: calc(80px + 2rem) var(--content-padding-x) 4rem;
   }
 
   .content-page .gallery-title {

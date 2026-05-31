@@ -246,6 +246,13 @@ function Content() {
                     onContextMenu={handleImageContextMenu}
                   />
                 )}
+                {item.type === 'video' && (
+                  <div className="video-play-badge" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <polygon points="5,3 19,12 5,21" />
+                    </svg>
+                  </div>
+                )}
               </div>
             </div>
           ))}

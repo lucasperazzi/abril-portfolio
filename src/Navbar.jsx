@@ -188,7 +188,6 @@ function Navbar({ isVisible = true, isHomePage = false }) {
           <span className="burger-icon">
             <span className="burger-line burger-line-1"></span>
             <span className="burger-line burger-line-2"></span>
-            <span className="burger-line burger-line-3"></span>
           </span>
         </button>
       )}
@@ -197,20 +196,24 @@ function Navbar({ isVisible = true, isHomePage = false }) {
         <div className={`simple-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMenu} role="dialog" aria-modal="true" aria-label={t.menu}>
           <div className="simple-menu-content">
             <div className="simple-menu-items">
-              {!isHomePage && (
-                <Link to="/" {...getMenuItemProps('/')} onClick={() => handleMenuItemClick('/')}>
-                  <span>{t.home}</span>
-                </Link>
-              )}
-              <Link to="/content" {...getMenuItemProps('/content')} onClick={() => handleMenuItemClick('/content')}>
-                <span>{t.content}</span>
-              </Link>
-              <Link to="/actress" {...getMenuItemProps('/actress')} onClick={() => handleMenuItemClick('/actress')}>
-                <span>{t.actress}</span>
-              </Link>
-              <Link to="/contact" {...getMenuItemProps('/contact')} onClick={() => handleMenuItemClick('/contact')}>
-                <span>{t.contact}</span>
-              </Link>
+              {(() => {
+                const menuItems = [
+                  ...(!isHomePage ? [{ path: '/', label: t.home }] : []),
+                  { path: '/content', label: t.content },
+                  { path: '/actress', label: t.actress },
+                  { path: '/contact', label: t.contact }
+                ]
+                return menuItems.map((item) => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    {...getMenuItemProps(item.path)}
+                    onClick={() => handleMenuItemClick(item.path)}
+                  >
+                    <span className="simple-menu-item-label">{item.label}</span>
+                  </Link>
+                ))
+              })()}
             </div>
             <button
               type="button"
