@@ -7,8 +7,9 @@
   z-index: 1000;
   height: 64px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 2rem;
   transition: background 0.1s ease;
 }
 
@@ -21,12 +22,8 @@
   /* box-shadow removed - now only applied when scrolled */
 }
 
-.nav-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+.nav-left {
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 100%;
 }
@@ -36,10 +33,7 @@
   align-items: center;
   gap: 2.5rem;
   justify-content: flex-end;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  right: 0;
-  padding-right: 2rem;
+  height: 100%;
 }
 
 .nav-logo {
@@ -70,7 +64,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
+  gap: 0.65rem;
   height: 32px;
   background: transparent;
   border: none;
@@ -88,7 +82,28 @@
 }
 
 .burger-button:hover {
-  transform: scale(1.08);
+  transform: scale(1.04);
+}
+
+.burger-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: currentColor;
+  line-height: 1;
+  user-select: none;
+}
+
+.burger-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 32px;
+  flex-shrink: 0;
 }
 
 .burger-line {
@@ -552,9 +567,6 @@
 @media (max-width: 768px) {
   .top-nav {
     height: 56px;
-  }
-
-  .nav-content {
     padding: 0 1rem;
   }
 
@@ -564,16 +576,22 @@
 
   .nav-right {
     gap: 0.75rem;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    right: 0;
-    padding-right: 1rem;
   }
 
   .burger-button {
-    width: 32px;
-    height: 26px;
     right: 1rem;
     top: 15px;
+    height: 26px;
+    gap: 0.4rem;
+  }
+
+  .burger-icon {
+    width: 32px;
+    height: 26px;
+  }
+
+  .burger-label {
+    font-size: 0.68rem;
   }
 
   .burger-button-placeholder {

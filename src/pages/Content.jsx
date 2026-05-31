@@ -213,13 +213,11 @@ function Content() {
   const t = translations[language]
 
   return (
-    <div className="page-container content-page">
-      <div className="page-header">
+    <div className="content-page">
+      <div className="content-wrapper">
         <h1 className="page-title">{t.title}</h1>
         <p className="page-description">{t.description}</p>
-      </div>
 
-      <div className="page-content">
         <h2 className="gallery-title">{t.galleryTitle}</h2>
         <div className={`reel-gallery reel-gallery-animated ${areReelCardsVisible ? 'reel-gallery-visible' : ''}`}>
           {contentItems.map((item) => (
@@ -252,24 +250,28 @@ function Content() {
             </div>
           ))}
         </div>
-      </div>
 
-      <section className="services-section">
-        <div className="services-inner">
-          <div className="services-header">
-            <h2 className="services-title">{t.servicesTitle}</h2>
-            <p className="services-subtitle">{t.servicesSubtitle}</p>
-          </div>
-          <ul ref={servicesListRef} className={`services-list services-list-animated ${areServicesVisible ? 'services-list-visible' : ''}`}>
-            {t.services.map((service) => (
+        <div className="services-header">
+          <h2 className="services-title">{t.servicesTitle}</h2>
+          <p className="services-subtitle">{t.servicesSubtitle}</p>
+        </div>
+        <ul ref={servicesListRef} className={`services-list services-list-animated ${areServicesVisible ? 'services-list-visible' : ''}`}>
+          {t.services.map((service, index) => {
+            const indexLabel = String(index + 1).padStart(2, '0')
+            const totalLabel = String(t.services.length).padStart(2, '0')
+            return (
               <li key={service.label} className="services-item">
+                <span className="services-item-index" aria-hidden="true">
+                  {indexLabel}
+                  <span className="services-item-index-total">/{totalLabel}</span>
+                </span>
                 <span className="services-item-label">{service.label}</span>
                 <span className="services-item-description">{service.description}</span>
               </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+            )
+          })}
+        </ul>
+      </div>
 
       {(selectedItem || isClosing) && (
         <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>

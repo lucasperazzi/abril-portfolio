@@ -1,43 +1,55 @@
 .actress-page {
   background-color: transparent;
   min-height: 100vh;
-}
-
-.actress-page .page-container {
-  background-color: transparent !important;
-  padding-top: 80px;
-}
-
-.actress-page .page-content {
-  background-color: transparent !important;
-}
-
-.page-container {
-  min-height: 100vh;
-  padding-top: 80px;
   position: relative;
   z-index: 1;
 }
 
-.actress-page .page-header {
-  text-align: left;
-  padding: 4rem clamp(1.25rem, 4vw, 3rem) 0;
-  max-width: 1480px;
+/* Single layout container — defines the shared horizontal "rail" for every
+   child (title, reel hero, gallery). Anything inside aligns to the same
+   left/right edges. */
+.actress-wrapper {
+  max-width: 80rem;
   margin: 0 auto;
+  padding: calc(80px + 4rem) clamp(1.25rem, 4vw, 3rem) 8rem;
   width: 100%;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .actress-page .page-title {
   font-size: 4.5rem;
   font-weight: 800;
   color: var(--site-text);
-  margin-bottom: 1.25rem;
+  margin: 0 0 1.25rem;
   letter-spacing: -0.05em;
   font-family: 'Inter', sans-serif;
   line-height: 0.85;
+  text-align: left;
 }
 
+/* Make the reel hero respect the wrapper's edges instead of its own
+   built-in max-width / auto-margins, and match the gallery items' hover. */
+.actress-page .reel-hero {
+  max-width: 100%;
+  margin: 2rem 0 0.75rem;
+  border: none;
+  transition: none;
+}
 
+.actress-page .reel-hero:hover {
+  border-color: transparent;
+}
+
+.actress-page .reel-hero__preview {
+  filter: saturate(0.82) contrast(1.06);
+  transition: transform 1.1s var(--cinematic-ease), filter 1.1s var(--cinematic-ease);
+}
+
+.actress-page .reel-hero:hover .reel-hero__preview {
+  transform: scale(1.018);
+  filter: saturate(0.92) contrast(1.08);
+}
 
 .actress-reel-button {
   border: 2px solid var(--site-pink);
@@ -64,26 +76,17 @@
   box-shadow: 0 0 10px rgba(255, 250, 242, 0.18), 0 6px 18px rgba(234, 167, 199, 0.22);
 }
 
-.actress-page .page-content {
-  padding: 4rem 0 8rem;
-  max-width: none;
-  margin: 0;
-}
-
 /* ───────────────────────────────────────────────
    Editorial gallery — asymmetric, brutalist, cinematic
    ─────────────────────────────────────────────── */
 
 .actress-gallery {
-  --gutter: clamp(1.25rem, 4vw, 3rem);
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: clamp(0.4rem, 0.8vw, 0.9rem);
   row-gap: clamp(1.5rem, 3.5vw, 3rem);
   width: 100%;
-  max-width: 1480px;
-  margin: 0 auto;
-  padding: 0 var(--gutter);
+  margin-top: 4rem;
   position: relative;
 }
 
@@ -401,11 +404,19 @@
 }
 
 @media (max-width: 768px) {
+  .actress-wrapper {
+    padding: calc(80px + 2rem) 1.25rem 5rem;
+  }
+
   .actress-page .page-title {
     font-size: 3rem;
     letter-spacing: -0.02em;
     margin-bottom: 1rem;
     line-height: 1.1;
+  }
+
+  .actress-page .reel-hero {
+    margin: 1.5rem 0 0.75rem;
   }
 
   .actress-reel-button {
@@ -414,16 +425,8 @@
     margin-bottom: 2rem;
   }
 
-  .actress-page .page-header {
-    padding: 2rem 1.5rem 0;
-  }
-
-  .actress-page .page-content {
-    padding: 0.5rem 0 5rem;
-  }
-
   .actress-gallery {
-    --gutter: 1.25rem;
+    margin-top: 2.5rem;
     row-gap: clamp(1.25rem, 4vw, 2rem);
   }
 

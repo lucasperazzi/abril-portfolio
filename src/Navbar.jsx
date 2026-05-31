@@ -121,6 +121,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   const translations = {
     en: {
       menu: 'Menu',
+      close: 'Close',
       home: 'Home',
       contact: 'Contact',
       actress: 'Actress',
@@ -128,6 +129,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
     },
     es: {
       menu: 'Menú',
+      close: 'Cerrar',
       home: 'Inicio',
       contact: 'Contacto',
       actress: 'Actriz',
@@ -157,7 +159,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
   return (
     <>
       <nav className={`top-nav ${isVisible ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="nav-content">
+        <div className="nav-left">
           {(!isHomePage || isScrolled) && (
             <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>
           )}
@@ -179,12 +181,15 @@ function Navbar({ isVisible = true, isHomePage = false }) {
         <button
           className={`burger-button ${isMenuOpen ? 'open' : ''} ${isScrolled ? 'scrolled' : ''}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close menu' : t.menu}
+          aria-label={isMenuOpen ? t.close : t.menu}
           aria-expanded={isMenuOpen}
         >
-          <span className="burger-line burger-line-1"></span>
-          <span className="burger-line burger-line-2"></span>
-          <span className="burger-line burger-line-3"></span>
+          <span className="burger-label">{isMenuOpen ? t.close : t.menu}</span>
+          <span className="burger-icon">
+            <span className="burger-line burger-line-1"></span>
+            <span className="burger-line burger-line-2"></span>
+            <span className="burger-line burger-line-3"></span>
+          </span>
         </button>
       )}
 

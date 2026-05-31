@@ -82,48 +82,43 @@ function Actress() {
 
   return (
     <div className="actress-page">
-      <div className="page-container">
-        <div className="page-header">
-          <h1 className="page-title">{t.title}</h1>
-          <ReelHeroVideo
-            previewSrc="/videos/MIX LALALAND OK-720p.mp4"
-            fullSrc="/videos/MIX LALALAND OK-1080p.mp4"
-            poster="/videos/MIX LALALAND OK-poster.webp"
-            title={t.reelTitle}
-            onContextMenu={handleImageContextMenu}
-          />
-        </div>
-        <div className="page-content">
-          <div className={`actress-gallery actress-gallery-animated ${isGalleryVisible ? 'actress-gallery-visible' : ''}`}>
-            {items.map((item, index) => (
-              <figure
-                key={item.id}
-                className={`actress-item actress-item--${index + 1}`}
-                onClick={() => setSelectedItem(item)}
-              >
-                {item.type === 'video' ? (
-                  <LazyPreviewVideo
-                    src={item.previewSrc || item.src}
-                    poster={item.poster}
-                    className="actress-item__media"
-                    onContextMenu={handleImageContextMenu}
-                  />
-                ) : (
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="actress-item__media"
-                    loading="lazy"
-                    decoding="async"
-                    onContextMenu={handleImageContextMenu}
-                  />
-                )}
-                <figcaption className="actress-item__caption">
-                  <span className="actress-item__caption-num">{String(index + 1).padStart(2, '0')}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+      <div className="actress-wrapper">
+        <h1 className="page-title">{t.title}</h1>
+        <ReelHeroVideo
+          previewSrc="/videos/MIX LALALAND OK-720p.mp4"
+          fullSrc="/videos/MIX LALALAND OK-1080p.mp4"
+          poster="/videos/MIX LALALAND OK-poster.webp"
+          onContextMenu={handleImageContextMenu}
+        />
+        <div className={`actress-gallery actress-gallery-animated ${isGalleryVisible ? 'actress-gallery-visible' : ''}`}>
+          {items.map((item, index) => (
+            <figure
+              key={item.id}
+              className={`actress-item actress-item--${index + 1}`}
+              onClick={() => setSelectedItem(item)}
+            >
+              {item.type === 'video' ? (
+                <LazyPreviewVideo
+                  src={item.previewSrc || item.src}
+                  poster={item.poster}
+                  className="actress-item__media"
+                  onContextMenu={handleImageContextMenu}
+                />
+              ) : (
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="actress-item__media"
+                  loading="lazy"
+                  decoding="async"
+                  onContextMenu={handleImageContextMenu}
+                />
+              )}
+              <figcaption className="actress-item__caption">
+                <span className="actress-item__caption-num">{String(index + 1).padStart(2, '0')}</span>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
 
