@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useLayoutEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Home from './pages/Home'
@@ -42,8 +42,16 @@ function setMetaTag(selector, attribute, value) {
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  useLayoutEffect(() => {
+    // Avoid the browser restoring the previous scroll position (iOS Safari)
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+    // Smooth scrolling is unreliable on iOS during route changes, so jump instantly
+    // and reset every possible scroll container.
+    window.scrollTo(0, 0)
+    document.documentElement.scrollTop = 0
+    document.body.scrollTop = 0
   }, [pathname])
   return null
 }
