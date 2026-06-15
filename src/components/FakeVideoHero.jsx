@@ -17,30 +17,6 @@ const DownArrowIcon = () => (
   </svg>
 )
 
-const RoleArrowIcon = () => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 128 128"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    className="role-arrow-icon"
-  >
-    <path d="
-      M48 96
-      L32 80
-      L72 40
-      L40 40
-      L40 16
-      L112 16
-      L112 88
-      L88 88
-      L88 56
-      Z"
-      fill="currentColor"/>
-  </svg>
-)
-
 function FakeVideoHero({ isReelSection = false }) {
   const { language } = useLanguage()
   const navigate = useNavigate()
@@ -194,14 +170,12 @@ function FakeVideoHero({ isReelSection = false }) {
               onClick={() => handleRoleClick('/actress', 'actress')}
               className={`role-button ${pressedRole === 'actress' ? 'role-button-pressed' : ''}`}
             >
-              <RoleArrowIcon />
               <span className="role-title">{t.actress}</span>
             </button>
             <button
               onClick={() => handleRoleClick('/content', 'content')}
               className={`role-button ${pressedRole === 'content' ? 'role-button-pressed' : ''}`}
             >
-              <RoleArrowIcon />
               <span className="role-title">{t.creator}</span>
             </button>
           </div>
