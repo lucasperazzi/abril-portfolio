@@ -124,9 +124,6 @@ function Actress() {
                   </svg>
                 </div>
               )}
-              <figcaption className="actress-item__caption">
-                <span className="actress-item__caption-num">{String(index + 1).padStart(2, '0')}</span>
-              </figcaption>
             </figure>
           ))}
         </div>

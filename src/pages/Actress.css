@@ -47,12 +47,24 @@
 }
 
 .reel-hero-caption__title {
-  font-family: 'NB International', 'Inter', sans-serif;
-  font-size: clamp(1.15rem, 1.5vw, 1.6rem);
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.2rem, 1.4vw, 1.32rem);
+  font-weight: 400;
   color: var(--site-text);
-  letter-spacing: 0.01em;
+  letter-spacing: -0.02em;
+  text-transform: none;
   line-height: 1.2;
+}
+
+.reel-hero-caption__title::before {
+  content: '';
+  width: clamp(1.4rem, 2.5vw, 2.2rem);
+  height: 2px;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .actress-page .reel-hero:hover {
@@ -160,27 +172,6 @@
     height: 30px;
     transform: scale(1);
   }
-}
-
-.actress-item__caption {
-  position: absolute;
-  bottom: clamp(0.75rem, 1.4vw, 1.25rem);
-  left: clamp(0.75rem, 1.4vw, 1.25rem);
-  font-family: 'Coolvetica', sans-serif;
-  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
-  font-weight: normal;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(255, 250, 242, 0.78);
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
-  z-index: 5;
-  pointer-events: none;
-  margin: 0;
-  line-height: 1;
-}
-
-.actress-item__caption-num {
-  display: inline-block;
 }
 
 /* Editorial layout — base = mobile composition (≤768px).
@@ -477,11 +468,6 @@
   .actress-gallery {
     margin-top: 2.5rem;
     row-gap: clamp(1.25rem, 4vw, 2rem);
-  }
-
-  .actress-item__caption {
-    font-size: 0.7rem;
-    letter-spacing: 0.28em;
   }
 
   .modal-close {

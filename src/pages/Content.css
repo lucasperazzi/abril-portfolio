@@ -42,7 +42,7 @@
   font-size: 5rem;
   font-weight: 800;
   color: var(--site-pink);
-  margin: 3rem 0 2rem;
+  margin: 3rem 0 2.75rem;
   font-family: 'Inter', sans-serif;
   text-align: left;
   line-height: 1;
@@ -111,15 +111,27 @@
 }
 
 .reel-card-title {
-  margin: 0 0 1rem 0;
-  font-family: 'NB International', 'Inter', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 0.85rem 0;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.2rem, 1.4vw, 1.32rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   text-transform: none;
   color: var(--site-text);
-  text-align: center;
+  text-align: left;
+}
+
+.reel-card-title::before {
+  content: '';
+  width: clamp(1.4rem, 2.5vw, 2.2rem);
+  height: 2px;
+  background: currentColor;
+  flex-shrink: 0;
 }
 
 .reel-card {
@@ -399,7 +411,7 @@
 
   .content-page .gallery-title {
     font-size: 2rem;
-    margin: 2rem 0 1.5rem;
+    margin: 2rem 0 2.25rem;
   }
 
   .content-page .page-title {
@@ -411,6 +423,10 @@
 
   .content-page .page-description {
     font-size: 1rem;
+  }
+
+  .reel-card-wrapper {
+    max-width: 440px;
   }
 
   .modal-close {
