@@ -13,9 +13,26 @@
   transition: background 0.1s ease;
 }
 
+/* On the main page the bar slides down from the top instead of popping in */
+.top-nav.is-home {
+  transform: translateY(-100%);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+}
+
+.top-nav.is-home.scrolled {
+  transform: translateY(0);
+}
+
 .top-nav.scrolled {
   background: rgb(255, 250, 242);
   box-shadow: inset 0 -1px 0 rgba(29, 29, 27, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-nav.is-home {
+    transform: translateY(0);
+    transition: background 0.1s ease;
+  }
 }
 
 .top-nav.visible {

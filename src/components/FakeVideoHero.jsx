@@ -170,12 +170,14 @@ function FakeVideoHero({ isReelSection = false }) {
               onClick={() => handleRoleClick('/actress', 'actress')}
               className={`role-button ${pressedRole === 'actress' ? 'role-button-pressed' : ''}`}
             >
+              <span className="role-index">01</span>
               <span className="role-title">{t.actress}</span>
             </button>
             <button
               onClick={() => handleRoleClick('/content', 'content')}
               className={`role-button ${pressedRole === 'content' ? 'role-button-pressed' : ''}`}
             >
+              <span className="role-index">02</span>
               <span className="role-title">{t.creator}</span>
             </button>
           </div>

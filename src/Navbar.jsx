@@ -158,7 +158,7 @@ function Navbar({ isVisible = true, isHomePage = false }) {
 
   return (
     <>
-      <nav className={`top-nav ${isVisible ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
+      <nav className={`top-nav ${isHomePage ? 'is-home' : ''} ${isVisible ? 'visible' : ''} ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-left">
           {(!isHomePage || isScrolled) && (
             <Link to="/" className="nav-logo" onClick={handleLogoClick}>Abril Bianco</Link>

@@ -399,6 +399,18 @@
   flex-shrink: 0;
 }
 
+.role-index {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 0.5;
+  align-self: flex-start;
+  margin-top: 0.35em;
+  line-height: 1;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
 .role-title {
   font-size: 2.75rem;
   display: block;
@@ -417,7 +429,8 @@
 }
 
 @media (hover: hover) {
-  .role-button:hover .role-title {
+  .role-button:hover .role-title,
+  .role-button:hover .role-index {
     color: rgba(255, 255, 255, 0.4);
   }
 
@@ -427,8 +440,10 @@
   }
 }
 
-.role-button-pressed .role-title {
+.role-button-pressed .role-title,
+.role-button-pressed .role-index {
   color: var(--site-pink);
+  opacity: 1;
 }
 
 .role-button-pressed .role-arrow-icon {
