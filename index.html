@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Run as early as possible so iOS Safari never restores the previous
+      // scroll position on reload / pull-to-refresh. Must be set before the
+      // browser attempts to restore scroll, i.e. before the app bundle loads.
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      // Safari can fire this on bfcache restores where load events don't run.
+      window.addEventListener('pageshow', function () {
+        window.scrollTo(0, 0);
+      });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
     <title>Abril - Portfolio</title>
