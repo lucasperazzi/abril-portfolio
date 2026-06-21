@@ -20,7 +20,7 @@
 .actress-page .page-title {
   font-size: 4.5rem;
   font-weight: 800;
-  color: var(--site-text);
+  color: var(--site-pink);
   margin: 0 0 1.25rem;
   letter-spacing: -0.05em;
   font-family: 'Inter', sans-serif;
@@ -60,11 +60,7 @@
 }
 
 .reel-hero-caption__title::before {
-  content: '';
-  width: clamp(1.4rem, 2.5vw, 2.2rem);
-  height: 2px;
-  background: currentColor;
-  flex-shrink: 0;
+  content: none;
 }
 
 .actress-page .reel-hero:hover {

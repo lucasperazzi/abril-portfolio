@@ -18,7 +18,7 @@
 .content-page .page-title {
   font-size: 4.5rem;
   font-weight: 800;
-  color: var(--site-text);
+  color: var(--site-pink);
   margin: 0 0 1.5rem;
   letter-spacing: -0.05em;
   font-family: 'Inter', sans-serif;
@@ -55,7 +55,7 @@
   grid-template-columns: 1fr;
   gap: 2rem 1rem;
   width: 100%;
-  margin: 0;
+  margin: 2.5rem 0 0;
   padding: 0;
   justify-items: center;
 }
@@ -116,22 +116,22 @@
   align-items: center;
   gap: 0.7rem;
   margin: 0 0 0.85rem 0;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1.2rem, 1.4vw, 1.32rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+  font-family: 'NB International', 'Inter', sans-serif;
+  font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
   text-transform: none;
   color: var(--site-text);
   text-align: left;
+  /* NB International only ships a Light weight, so thicken the glyphs with a
+     stroke to get a genuinely bold/brutalist look. paint-order keeps it clean. */
+  -webkit-text-stroke: 0.6px currentColor;
+  paint-order: stroke fill;
 }
 
 .reel-card-title::before {
-  content: '';
-  width: clamp(1.4rem, 2.5vw, 2.2rem);
-  height: 2px;
-  background: currentColor;
-  flex-shrink: 0;
+  content: none;
 }
 
 .reel-card {
@@ -381,6 +381,7 @@
   .reel-gallery {
     gap: 3rem 2rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 4.5rem;
   }
 
   .content-page .page-description {
@@ -427,6 +428,16 @@
 
   .reel-card-wrapper {
     max-width: 440px;
+  }
+
+  /* On mobile, replace the leading dash with a line that extends right to
+     the edge of the video card, acting as a full-width separator. */
+  .reel-card-title::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: currentColor;
+    flex-shrink: 0;
   }
 
   .modal-close {

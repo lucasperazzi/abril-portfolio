@@ -218,7 +218,6 @@ function Content() {
         <h1 className="page-title">{t.title}</h1>
         <p className="page-description">{t.description}</p>
 
-        <h2 className="gallery-title">{t.galleryTitle}</h2>
         <div className={`reel-gallery reel-gallery-animated ${areReelCardsVisible ? 'reel-gallery-visible' : ''}`}>
           {contentItems.map((item) => (
             <div
