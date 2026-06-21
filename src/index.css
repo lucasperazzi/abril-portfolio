@@ -144,7 +144,9 @@ body {
 
   #root {
     background-attachment: scroll;
-    overflow-x: hidden;
+    /* Use clip (not hidden) so #root doesn't become a scroll container,
+       which would break the sticky/pinned hero (cover effect) on mobile. */
+    overflow-x: clip;
   }
 
   #root::before,

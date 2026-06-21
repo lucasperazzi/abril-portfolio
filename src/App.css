@@ -15,7 +15,9 @@
 
 /* Fake Video Hero Styles */
 .fake-video-hero {
-  position: relative;
+  /* Pinned to the top so the content below scrolls up and covers it */
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -23,7 +25,26 @@
   justify-content: flex-start;
   overflow: hidden;
   background: transparent;
+  z-index: 0;
+}
+
+/* Content that slides up over the pinned hero (curtain/cover effect).
+   Mirrors the #root textured background so the covered content keeps the same
+   grain/gradient look while staying opaque enough to hide the pinned hero. */
+.home-reveal {
+  position: relative;
   z-index: 1;
+  background-color: var(--site-bg);
+  background-image:
+    radial-gradient(circle at 16% 10%, rgba(255, 250, 242, 0.11), transparent 28rem),
+    radial-gradient(circle at 88% 0%, rgba(20, 20, 18, 0.7), transparent 24rem),
+    linear-gradient(180deg, rgba(255, 250, 242, 0.04) 0%, rgba(5, 5, 4, 0) 30%, rgba(20, 20, 18, 0.65) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 0.980392 0 0 0 0 0.94902 0 0 0 0.13 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 180px 180px;
+  background-blend-mode: screen, normal, normal, screen;
+  background-attachment: fixed;
+  /* Soft shadow cast onto the hero where the content covers it */
+  box-shadow: 0 -2.5rem 4rem rgba(0, 0, 0, 0.55);
 }
 
 .fake-video-hero::after {
@@ -1110,6 +1131,12 @@
     height: 100vh;
     height: 100svh;
     min-height: 100svh;
+  }
+
+  /* Match #root on mobile: fixed attachment is janky there, so let the
+     textured background scroll with the cover content instead. */
+  .home-reveal {
+    background-attachment: scroll;
   }
 
   .hero-background-desktop {

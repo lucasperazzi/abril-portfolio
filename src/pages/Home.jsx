@@ -69,50 +69,53 @@ function Home() {
 
   return (
     <div className="portfolio">
-      {/* Main hero with role selector */}
+      {/* Main hero with role selector (pinned behind the content) */}
       <FakeVideoHero />
 
-      {/* About section with images */}
-      <section className="about-section-with-images">
-        <h2 className="section-title">{t.about}</h2>
-        <p className="description">{t.description}</p>
-        <div className="about-images">
-          <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-          <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-          <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-          <img src="/home/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-          <img src="/home/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image-medium desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-          <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-        </div>
-      </section>
+      {/* Everything below slides up over the pinned hero like a curtain */}
+      <div className="home-reveal">
+        {/* About section with images */}
+        <section className="about-section-with-images">
+          <h2 className="section-title">{t.about}</h2>
+          <p className="description">{t.description}</p>
+          <div className="about-images">
+            <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image-medium desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+          </div>
+        </section>
 
-      {/* Contact section */}
-      <section className="contact-section">
-        <span className="contact-divider" aria-hidden="true" />
-        <div className="contact-row">
-          <h2 className="contact-heading">
-            <span>{t.letsWork}</span>
-          </h2>
-          <ul className="contact-list">
-            {contactLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  target={link.href.startsWith('http') ? '_blank' : undefined}
-                  rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="contact-link"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        {/* Contact section */}
+        <section className="contact-section">
+          <span className="contact-divider" aria-hidden="true" />
+          <div className="contact-row">
+            <h2 className="contact-heading">
+              <span>{t.letsWork}</span>
+            </h2>
+            <ul className="contact-list">
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="contact-link"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-      <footer className="footer">
-        <p>&copy; 2026 Abril. All rights reserved.</p>
-      </footer>
+        <footer className="footer">
+          <p>&copy; 2026 Abril. All rights reserved.</p>
+        </footer>
+      </div>
     </div>
   )
 }
