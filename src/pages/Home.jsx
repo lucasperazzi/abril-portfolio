@@ -78,13 +78,21 @@ function Home() {
         <section className="about-section-with-images">
           <h2 className="section-title">{t.about}</h2>
           <p className="description">{t.description}</p>
-          <div className="about-images">
-            <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-large" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-            <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image-small" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-            <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image-medium" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-            <img src="/home/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-            <img src="/home/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image-medium desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
-            <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image-small desktop-only" loading="lazy" decoding="async" onContextMenu={handleImageContextMenu} />
+          <div
+            ref={aboutImagesRef}
+            className={`about-images ${isAboutImagesVisible ? 'about-images-visible' : 'about-images-animated'}`}
+          >
+            {/* Slots 1-3: always visible */}
+            <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image--1" loading="lazy" decoding="async" style={{ transitionDelay: '0s' }} onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image--2" loading="lazy" decoding="async" style={{ transitionDelay: '0.06s' }} onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril4.jpeg" alt="Abril Bianco" className="about-image about-image--3" loading="lazy" decoding="async" style={{ transitionDelay: '0.12s' }} onContextMenu={handleImageContextMenu} />
+            {/* Slots 4-5: mobile-only (adds 2 more images on mobile) */}
+            <img src="/home/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image--4 mobile-only" loading="lazy" decoding="async" style={{ transitionDelay: '0.18s' }} onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image--5 mobile-only" loading="lazy" decoding="async" style={{ transitionDelay: '0.24s' }} onContextMenu={handleImageContextMenu} />
+            {/* Slots 6-8: desktop-only */}
+            <img src="/home/Abril1.jpeg" alt="Abril Bianco" className="about-image about-image--6 desktop-only" loading="lazy" decoding="async" style={{ transitionDelay: '0.18s' }} onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril5.jpeg" alt="Abril Bianco" className="about-image about-image--7 desktop-only" loading="lazy" decoding="async" style={{ transitionDelay: '0.24s' }} onContextMenu={handleImageContextMenu} />
+            <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image--8 desktop-only" loading="lazy" decoding="async" style={{ transitionDelay: '0.30s' }} onContextMenu={handleImageContextMenu} />
           </div>
         </section>
 
