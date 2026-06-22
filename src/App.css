@@ -212,7 +212,8 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-background,
   .hero-title,
-  .hero-tagline {
+  .hero-tagline,
+  .role-selector .role-button {
     opacity: 1;
     transform: none;
     filter: none;
@@ -376,6 +377,30 @@
   gap: 0.85rem;
   align-items: flex-start;
   width: 100%;
+}
+
+@keyframes roleButtonEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.role-selector .role-button {
+  opacity: 0;
+  animation: roleButtonEnter 1.1s var(--cinematic-ease) forwards;
+}
+
+.role-selector .role-button:nth-child(1) {
+  animation-delay: 0.38s;
+}
+
+.role-selector .role-button:nth-child(2) {
+  animation-delay: 0.54s;
 }
 
 .role-button {
