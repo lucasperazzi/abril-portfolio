@@ -50,13 +50,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.7rem;
-  font-family: 'Inter', sans-serif;
-  font-size: clamp(1.2rem, 1.4vw, 1.32rem);
-  font-weight: 400;
+  font-family: 'NB International', 'Inter', sans-serif;
+  font-size: clamp(1.4rem, 1.8vw, 1.7rem);
+  font-weight: 700;
   color: var(--site-text);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.005em;
   text-transform: none;
-  line-height: 1.2;
+  line-height: 1.05;
+  -webkit-text-stroke: 0.6px currentColor;
+  paint-order: stroke fill;
 }
 
 .reel-hero-caption__title::before {

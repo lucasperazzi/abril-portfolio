@@ -1,13 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import FakeVideoHero from '../components/FakeVideoHero'
 import '../App.css'
 
 function Home() {
   const { language } = useLanguage()
-  const [isAboutImagesVisible, setIsAboutImagesVisible] = useState(false)
-  const aboutImagesRef = useRef(null)
-
   const handleImageContextMenu = (e) => {
     e.preventDefault()
   }
@@ -44,29 +41,6 @@ function Home() {
 
   const t = translations[language]
 
-  useEffect(() => {
-    const aboutImages = aboutImagesRef.current
-    if (!aboutImages) return
-
-    if (!('IntersectionObserver' in window)) {
-      setIsAboutImagesVisible(true)
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsAboutImagesVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.18, rootMargin: '0px 0px -10% 0px' }
-    )
-
-    observer.observe(aboutImages)
-    return () => observer.disconnect()
-  }, [])
-
   return (
     <div className="portfolio">
       {/* Main hero with role selector (pinned behind the content) */}
@@ -78,10 +52,7 @@ function Home() {
         <section className="about-section-with-images">
           <h2 className="section-title">{t.about}</h2>
           <p className="description">{t.description}</p>
-          <div
-            ref={aboutImagesRef}
-            className={`about-images ${isAboutImagesVisible ? 'about-images-visible' : 'about-images-animated'}`}
-          >
+          <div className="about-images">
             {/* Slots 1-3: always visible */}
             <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image--1" loading="lazy" decoding="async" style={{ transitionDelay: '0s' }} onContextMenu={handleImageContextMenu} />
             <img src="/home/Abril3.jpeg" alt="Abril Bianco" className="about-image about-image--2" loading="lazy" decoding="async" style={{ transitionDelay: '0.06s' }} onContextMenu={handleImageContextMenu} />
