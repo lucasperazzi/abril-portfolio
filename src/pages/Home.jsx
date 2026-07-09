@@ -9,12 +9,27 @@ function Home() {
     e.preventDefault()
   }
 
+  const highlightBuenosAires = (text) => {
+    const parts = text.split('Buenos Aires')
+    if (parts.length === 1) return text
+    return parts.flatMap((part, i) =>
+      i < parts.length - 1
+        ? [part, <span key={i} className="highlight-pink">Buenos Aires</span>]
+        : [part]
+    )
+  }
+
   const translations = {
     en: {
       name: 'Abril Bianco',
       tagline: 'Content Creator and Actress',
       about: 'About Me',
-      description: 'Passionate about bringing characters to life through acting and creating compelling content. Dedicated to continuous growth and creative excellence in the entertainment industry.',
+      paragraphs: [
+        "Actress and content creator, with experience in creative direction and project management for brands.",
+        "For over 4 years I've worked in digital marketing, while pursuing my other great passion: acting, between theatre and advertising. Two paths I learned to make coexist — and that today strengthen each other.",
+        "I studied acting and marketing, and that combination is what sets me apart: I approach every project with a strategic eye and execute it with creative sensitivity.",
+        "Based in Buenos Aires, working with brands that seek content with identity, strategy, and results."
+      ],
       contact: 'Contact',
       actress: 'Actress',
       content: 'Content',
@@ -24,7 +39,12 @@ function Home() {
       name: 'Abril Bianco',
       tagline: 'Creadora de Contenido y Actriz',
       about: 'Sobre Mí',
-      description: 'Apasionada por dar vida a los personajes a través de la actuación y crear contenido convincente. Dedicada al crecimiento continuo y la excelencia creativa en la industria del entretenimiento.',
+      paragraphs: [
+        'Soy actriz y creadora de contenido, con experiencia en dirección creativa y project management de distintos equipos para marcas.',
+        'Hace más de 4 años trabajo en el mundo del marketing digital, y en paralelo persigo y trabajo de mi otro gran sueño: la actuación, entre teatro y publicidad. Dos caminos que aprendí a hacer convivir, y que hoy se potencian entre sí.',
+        'Estudié actuación y marketing, y esa combinación es lo que me distingue: pienso cada proyecto con ojo estratégico y lo ejecuto con sensibilidad creativa.',
+        'Vivo en Buenos Aires y trabajo con marcas que buscan contenido con identidad, estrategia y resultado.'
+      ],
       contact: 'Contacto',
       actress: 'Actriz',
       content: 'Contenido',
@@ -51,7 +71,11 @@ function Home() {
         {/* About section with images */}
         <section className="about-section-with-images">
           <h2 className="section-title">{t.about}</h2>
-          <p className="description">{t.description}</p>
+          <div className="description">
+            {t.paragraphs.map((para, i) => (
+              <p key={i} className="description-para">{highlightBuenosAires(para)}</p>
+            ))}
+          </div>
           <div className="about-images">
             {/* Slots 1-3: always visible */}
             <img src="/home/Abril2.jpeg" alt="Abril Bianco" className="about-image about-image--1" loading="lazy" decoding="async" style={{ transitionDelay: '0s' }} onContextMenu={handleImageContextMenu} />

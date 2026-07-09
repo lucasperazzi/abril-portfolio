@@ -449,164 +449,31 @@
   }
 }
 
-/* ----- Services section ----- */
+/* ----- Closing line ----- */
 
-.services-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 6rem auto 4rem;
-}
-
-.services-title {
-  font-family: 'Coolvetica', sans-serif;
-  font-size: 2.75rem;
-  font-weight: normal;
-  letter-spacing: 0.1rem;
-  line-height: 1.2;
+.services-closing {
+  font-family: 'NB International', 'Inter', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1.8;
   color: var(--site-text);
-  margin: 0 0 1rem;
-}
-
-.services-subtitle {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.05rem;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--site-text);
-  margin: 0;
-}
-
-.services-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 1.5rem 0 0;
   display: flex;
-  flex-direction: column;
-  border-top: 1px solid var(--site-pink);
-  border-bottom: 1px solid var(--site-pink);
+  align-items: baseline;
+  gap: 0.6rem;
 }
 
-.services-item {
-  display: grid;
-  grid-template-columns: auto minmax(180px, 1fr) 1.6fr;
-  align-items: center;
-  column-gap: clamp(1.25rem, 3vw, 2.5rem);
-  padding: clamp(1.5rem, 3vw, 2.75rem) clamp(0.5rem, 1.5vw, 1.25rem);
-  border-top: 1px solid var(--site-pink);
-  background-color: transparent;
-}
-
-.services-item:first-child {
-  border-top: none;
-}
-
-.services-list-animated .services-item {
-  opacity: 0;
-  transition: opacity 0.45s ease;
-}
-
-.services-list-visible .services-item {
-  opacity: 1;
-}
-
-.services-list-visible .services-item:nth-child(2) {
-  transition-delay: 0.05s;
-}
-
-.services-list-visible .services-item:nth-child(3) {
-  transition-delay: 0.1s;
-}
-
-.services-list-visible .services-item:nth-child(4) {
-  transition-delay: 0.15s;
-}
-
-.services-list-visible .services-item:nth-child(5) {
-  transition-delay: 0.2s;
-}
-
-.services-list-visible .services-item:nth-child(6) {
-  transition-delay: 0.25s;
-}
-
-.services-item-index {
-  font-family: 'NB International', 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1;
+.services-closing::before {
+  content: '→';
   color: var(--site-pink);
-  align-self: center;
-  min-width: 3.5ch;
-}
-
-.services-item-index-total {
-  opacity: 0.55;
-  margin-left: 0.1em;
-  font-weight: 400;
-}
-
-.services-item-label {
-  font-family: 'NB International', 'Inter', sans-serif;
-  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  line-height: 1;
-  text-transform: none;
-  color: var(--site-pink);
-}
-
-.services-item-description {
-  font-family: 'NB International', 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: clamp(0.9rem, 1.05vw, 1rem);
-  line-height: 1.55;
-  letter-spacing: 0.01em;
-  color: var(--site-text);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .services-list-animated .services-item {
-    opacity: 1;
-    transition: none;
-  }
+  font-style: normal;
+  flex-shrink: 0;
 }
 
 @media (min-width: 769px) {
-  .services-title {
-    font-size: 3.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-item {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 1rem;
-    row-gap: 0.5rem;
-    padding: 1.75rem 0.25rem;
-    align-items: center;
-  }
-
-  .services-item-index {
-    grid-row: 1;
-    grid-column: 1;
-    font-size: 0.75rem;
-    align-self: start;
-    margin-top: 0.4rem;
-  }
-
-  .services-item-label {
-    grid-row: 1;
-    grid-column: 2;
-    font-size: 1.5rem;
-    line-height: 1.05;
-  }
-
-  .services-item-description {
-    grid-row: 2;
-    grid-column: 2;
-    font-size: 0.9rem;
-    line-height: 1.5;
+  .services-closing {
+    font-size: 1.55rem;
   }
 }

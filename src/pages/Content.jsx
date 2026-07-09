@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useLanguage } from '../LanguageContext'
 import LazyPreviewVideo from '../components/LazyPreviewVideo'
 import './Content.css'
@@ -76,8 +76,6 @@ function Content() {
   const [isClosing, setIsClosing] = useState(false)
   const [modalVideoLoaded, setModalVideoLoaded] = useState(false)
   const [areReelCardsVisible, setAreReelCardsVisible] = useState(false)
-  const [areServicesVisible, setAreServicesVisible] = useState(false)
-  const servicesListRef = useRef(null)
 
   const handleImageContextMenu = (e) => {
     e.preventDefault()
@@ -118,95 +116,18 @@ function Content() {
     return () => window.cancelAnimationFrame(animationFrame)
   }, [])
 
-  useEffect(() => {
-    const servicesList = servicesListRef.current
-    if (!servicesList) return
-
-    if (!('IntersectionObserver' in window)) {
-      setAreServicesVisible(true)
-      return
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAreServicesVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.04, rootMargin: '0px 0px 18% 0px' }
-    )
-
-    observer.observe(servicesList)
-    return () => observer.disconnect()
-  }, [])
-
   const translations = {
     en: {
       title: 'Content Creator',
-      description: 'Creating compelling digital content that connects with audiences and tells meaningful stories across various platforms and mediums.',
+      description: 'I can create the content your brand needs: I learn your identity, your goals, and your audience — then develop everything from the idea and the script, to the final shoot. Strategy and execution in one place.',
       galleryTitle: 'Recent Projects',
-      servicesTitle: 'What I can do for your brand',
-      servicesSubtitle: 'And why your brand needs me on the team.',
-      services: [
-        {
-          label: 'Network presence',
-          description: 'Strategic visibility across Instagram, TikTok, and emerging platforms — keeping your brand where the right audience is paying attention.'
-        },
-        {
-          label: 'Brand storytelling',
-          description: 'Authentic narratives that turn passive viewers into a community that buys, shares, and stays.'
-        },
-        {
-          label: 'Content creation',
-          description: 'High-impact reels, photo campaigns, and editorial pieces produced end-to-end with a refined visual language.'
-        },
-        {
-          label: 'Creative direction',
-          description: 'Concept, styling, and visual identity for digital launches, lookbooks, and campaign rollouts.'
-        },
-        {
-          label: 'Brand collaborations',
-          description: 'Considered partnerships with brands whose values, aesthetic, and audience genuinely align with mine.'
-        },
-        {
-          label: 'Analytics & strategy',
-          description: 'Data-led planning that pairs creative instinct with measurable performance.'
-        }
-      ]
+      servicesSubtitle: "Let's talk. Tell me what you need and we'll figure it out together."
     },
     es: {
       title: 'Creadora de Contenido',
-      description: 'Creando contenido digital convincente que conecta con las audiencias y cuenta historias significativas a través de varias plataformas y medios.',
+      description: 'Puedo crear el contenido que tu marca necesita: conozco tu identidad, tus objetivos y tu audiencia, y desarrollo desde la idea y el guión, hasta la grabación final. Estrategia y ejecución en un mismo lugar.',
       galleryTitle: 'Proyectos Recientes',
-      servicesTitle: 'Qué puedo hacer para tu marca',
-      servicesSubtitle: 'Y por qué tu marca me necesita en el equipo.',
-      services: [
-        {
-          label: 'Presencia digital',
-          description: 'Visibilidad estratégica en Instagram, TikTok y plataformas emergentes — manteniendo tu marca donde la audiencia correcta está prestando atención.'
-        },
-        {
-          label: 'Narrativa de marca',
-          description: 'Historias auténticas que transforman espectadores pasivos en una comunidad que compra, comparte y se queda.'
-        },
-        {
-          label: 'Creación de contenido',
-          description: 'Reels, campañas fotográficas y piezas editoriales de alto impacto producidos de principio a fin con un lenguaje visual refinado.'
-        },
-        {
-          label: 'Dirección creativa',
-          description: 'Concepto, estilismo e identidad visual para lanzamientos digitales, lookbooks y campañas.'
-        },
-        {
-          label: 'Colaboraciones',
-          description: 'Alianzas pensadas con marcas cuyos valores, estética y audiencia se alinean genuinamente con los míos.'
-        },
-        {
-          label: 'Análisis y estrategia',
-          description: 'Planificación basada en datos que combina instinto creativo con rendimiento medible.'
-        }
-      ]
+      servicesSubtitle: 'Charlemos. Contame qué necesitás y lo pensamos juntos.'
     }
   }
 
@@ -217,6 +138,7 @@ function Content() {
       <div className="content-wrapper">
         <h1 className="page-title">{t.title}</h1>
         <p className="page-description">{t.description}</p>
+        <p className="services-closing">{t.servicesSubtitle}</p>
 
         <div className={`reel-gallery reel-gallery-animated ${areReelCardsVisible ? 'reel-gallery-visible' : ''}`}>
           {contentItems.map((item) => (
@@ -257,26 +179,6 @@ function Content() {
           ))}
         </div>
 
-        <div className="services-header">
-          <h2 className="services-title">{t.servicesTitle}</h2>
-          <p className="services-subtitle">{t.servicesSubtitle}</p>
-        </div>
-        <ul ref={servicesListRef} className={`services-list services-list-animated ${areServicesVisible ? 'services-list-visible' : ''}`}>
-          {t.services.map((service, index) => {
-            const indexLabel = String(index + 1).padStart(2, '0')
-            const totalLabel = String(t.services.length).padStart(2, '0')
-            return (
-              <li key={service.label} className="services-item">
-                <span className="services-item-index" aria-hidden="true">
-                  {indexLabel}
-                  <span className="services-item-index-total">/{totalLabel}</span>
-                </span>
-                <span className="services-item-label">{service.label}</span>
-                <span className="services-item-description">{service.description}</span>
-              </li>
-            )
-          })}
-        </ul>
       </div>
 
       {(selectedItem || isClosing) && (

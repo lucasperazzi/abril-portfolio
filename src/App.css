@@ -851,6 +851,21 @@
   letter-spacing: -0.02em;
 }
 
+.description-para {
+  margin: 0 0 1.1em;
+}
+
+.description-para:last-child {
+  margin-bottom: 0;
+  border-left: 3px solid var(--site-pink);
+  padding-left: 1rem;
+}
+
+.highlight-pink {
+  color: var(--site-pink);
+  font-weight: 600;
+}
+
 @media (min-width: 769px) {
   .description,
   .actriz-description {
@@ -863,12 +878,13 @@
 .contact-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 4rem var(--content-padding-x) 5rem;
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
   box-sizing: border-box;
+  border-top: 2px solid var(--site-pink);
 }
 
 .contact-divider {
@@ -878,8 +894,8 @@
 .contact-row {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2.25rem;
+  align-items: flex-start;
+  gap: 1.75rem;
   width: 100%;
 }
 
@@ -891,7 +907,7 @@
   font-weight: 700;
   letter-spacing: 0.01em;
   color: var(--site-text);
-  text-align: center;
+  text-align: left;
   margin: 0;
   line-height: 1;
   font-family: 'NB International', 'Inter', sans-serif;
@@ -911,12 +927,13 @@
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.75rem;
-  text-align: center;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid var(--site-border);
+}
+
+.contact-list li {
+  border-bottom: 1px solid var(--site-border);
 }
 
 .contact-link {
@@ -927,26 +944,19 @@
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.2;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  display: inline-block;
+  transition: color 0.2s ease;
+  display: block;
+  padding: 0.9rem 0;
 }
 
 .contact-link:hover {
-  opacity: 0.6;
+  color: var(--site-pink);
 }
 
 @media (max-width: 768px) {
-  .contact-divider {
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: var(--site-text);
-    opacity: 0.35;
-    margin-bottom: 0.6rem;
-  }
-
   .contact-section {
-    align-items: stretch;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
   }
 
   .contact-row {
@@ -957,13 +967,25 @@
   }
 
   .contact-heading {
+    font-size: 1.35rem;
     text-align: left;
+    flex: 0 0 auto;
   }
 
   .contact-list {
-    flex-direction: column;
+    border-top: none;
+    width: auto;
     align-items: flex-end;
-    flex-wrap: nowrap;
+    gap: 0.15rem;
+  }
+
+  .contact-list li {
+    border-bottom: none;
+  }
+
+  .contact-link {
+    font-size: 1rem;
+    padding: 0.35rem 0;
     text-align: right;
   }
 }
